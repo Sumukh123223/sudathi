@@ -1,0 +1,1108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xml:lang="en" xmlns="http://www.w3.org/2005/Atom" xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/" xmlns:s="http://jadedpixel.com/-/spec/shopify">
+  <id>https://sudathi.com/collections/all.atom</id>
+  <link rel="alternate" type="text/html" href="https://sudathi.com/collections/all"/>
+  <link rel="self" type="application/atom+xml" href="https://sudathi.com/collections/daily-wear-sarees.atom"/>
+  <title>Sudathi</title>
+  <updated>2026-02-20T02:11:55+05:30</updated>
+  <author>
+    <name>Sudathi</name>
+  </author>
+  <entry>
+    <id>https://sudathi.com/products/10307884122399</id>
+    <published>2026-02-20T02:11:55+05:30</published>
+    <updated>2026-02-20T02:11:55+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://sudathi.com/products/black-satin-floral-printed-saree-4837s781"/>
+    <title>Black Satin Floral Printed Saree</title>
+    <s:type>DSarees</s:type>
+    <s:vendor>Sudathi</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0818/7107/7663/files/4837S781_6.jpg?v=1763193181"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Sudathi<br>
+        <strong>Type: </strong>DSarees<br>
+        <strong>Price: </strong>
+            1399.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>Black Satin Floral Printed Saree</p></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>DSarees</s:tag>
+    <s:tag>Sale</s:tag>
+    <s:variant>
+      <id>https://sudathi.com/products/10307884122399</id>
+      <title>Default Title</title>
+      <s:price currency="INR">1399.00</s:price>
+      <s:sku>4837S781</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://sudathi.com/products/10437488410911</id>
+    <published>2026-02-19T19:34:41+05:30</published>
+    <updated>2026-02-19T19:34:41+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://sudathi.com/products/light-olive-green-silk-printed-saree-70078s225"/>
+    <title>Light Olive Green Silk Printed Saree</title>
+    <s:type>Sarees</s:type>
+    <s:vendor>Sudathi</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0818/7107/7663/files/70078S225_1.jpg?v=1771510991"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Sudathi<br>
+        <strong>Type: </strong>Sarees<br>
+        <strong>Price: </strong>
+            2499.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>Light Olive Green Silk Printed Saree</p></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>celebrity</s:tag>
+    <s:tag>Festive</s:tag>
+    <s:tag>GoldSaree</s:tag>
+    <s:tag>Holi</s:tag>
+    <s:tag>Mother&apos;s Day</s:tag>
+    <s:tag>Sarees</s:tag>
+    <s:tag>Sharktank</s:tag>
+    <s:tag>SSS</s:tag>
+    <s:variant>
+      <id>https://sudathi.com/products/10437488410911</id>
+      <title>Default Title</title>
+      <s:price currency="INR">2499.00</s:price>
+      <s:sku>70078S225</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://sudathi.com/products/10437488378143</id>
+    <published>2026-02-19T19:34:41+05:30</published>
+    <updated>2026-02-19T19:34:41+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://sudathi.com/products/grey-silk-woven-printed-saree-70082s264"/>
+    <title>Grey Silk Woven Printed Saree</title>
+    <s:type>Sarees</s:type>
+    <s:vendor>Sudathi</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0818/7107/7663/files/70082S264_1.jpg?v=1771510991"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Sudathi<br>
+        <strong>Type: </strong>Sarees<br>
+        <strong>Price: </strong>
+            2499.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>Grey Silk Woven Printed Saree</p></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>celebrity</s:tag>
+    <s:tag>Festive</s:tag>
+    <s:tag>GoldSaree</s:tag>
+    <s:tag>Holi</s:tag>
+    <s:tag>KOTA</s:tag>
+    <s:tag>Mother&apos;s Day</s:tag>
+    <s:tag>Sarees</s:tag>
+    <s:tag>Sharktank</s:tag>
+    <s:tag>SSS</s:tag>
+    <s:variant>
+      <id>https://sudathi.com/products/10437488378143</id>
+      <title>Default Title</title>
+      <s:price currency="INR">2499.00</s:price>
+      <s:sku>70082S264</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://sudathi.com/products/10437488345375</id>
+    <published>2026-02-19T19:34:41+05:30</published>
+    <updated>2026-02-19T19:34:41+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://sudathi.com/products/light-yellow-silk-printed-saree-70078s222"/>
+    <title>Light Yellow Silk Printed Saree</title>
+    <s:type>Sarees</s:type>
+    <s:vendor>Sudathi</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0818/7107/7663/files/70078S222_1.jpg?v=1771510997"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Sudathi<br>
+        <strong>Type: </strong>Sarees<br>
+        <strong>Price: </strong>
+            2499.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>Light Yellow Silk Printed Saree</p></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>celebrity</s:tag>
+    <s:tag>Festive</s:tag>
+    <s:tag>GoldSaree</s:tag>
+    <s:tag>Holi</s:tag>
+    <s:tag>Mother&apos;s Day</s:tag>
+    <s:tag>Sarees</s:tag>
+    <s:tag>Sharktank</s:tag>
+    <s:tag>SSS</s:tag>
+    <s:variant>
+      <id>https://sudathi.com/products/10437488345375</id>
+      <title>Default Title</title>
+      <s:price currency="INR">2499.00</s:price>
+      <s:sku>70078S222</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://sudathi.com/products/10437488312607</id>
+    <published>2026-02-19T19:34:41+05:30</published>
+    <updated>2026-02-19T19:34:41+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://sudathi.com/products/light-blue-silk-woven-printed-saree-70082s266"/>
+    <title>Light Blue Silk Woven Printed Saree</title>
+    <s:type>Sarees</s:type>
+    <s:vendor>Sudathi</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0818/7107/7663/files/70082S266_1.jpg?v=1771510990"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Sudathi<br>
+        <strong>Type: </strong>Sarees<br>
+        <strong>Price: </strong>
+            2499.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>Light Blue Silk Woven Printed Saree</p></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>celebrity</s:tag>
+    <s:tag>Festive</s:tag>
+    <s:tag>GoldSaree</s:tag>
+    <s:tag>Holi</s:tag>
+    <s:tag>KOTA</s:tag>
+    <s:tag>Mother&apos;s Day</s:tag>
+    <s:tag>Sarees</s:tag>
+    <s:tag>Sharktank</s:tag>
+    <s:tag>SSS</s:tag>
+    <s:variant>
+      <id>https://sudathi.com/products/10437488312607</id>
+      <title>Default Title</title>
+      <s:price currency="INR">2499.00</s:price>
+      <s:sku>70082S266</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://sudathi.com/products/10437488247071</id>
+    <published>2026-02-19T19:34:41+05:30</published>
+    <updated>2026-02-19T19:34:41+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://sudathi.com/products/grey-silk-printed-saree-70079s235"/>
+    <title>Grey Silk Printed Saree</title>
+    <s:type>Sarees</s:type>
+    <s:vendor>Sudathi</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0818/7107/7663/files/70079S235_1.jpg?v=1771510987"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Sudathi<br>
+        <strong>Type: </strong>Sarees<br>
+        <strong>Price: </strong>
+            2499.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>Grey Silk Printed Saree</p></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>celebrity</s:tag>
+    <s:tag>Festive</s:tag>
+    <s:tag>GoldSaree</s:tag>
+    <s:tag>Holi</s:tag>
+    <s:tag>Mother&apos;s Day</s:tag>
+    <s:tag>Sarees</s:tag>
+    <s:tag>Sharktank</s:tag>
+    <s:tag>SSS</s:tag>
+    <s:variant>
+      <id>https://sudathi.com/products/10437488247071</id>
+      <title>Default Title</title>
+      <s:price currency="INR">2499.00</s:price>
+      <s:sku>70079S235</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://sudathi.com/products/10437487821087</id>
+    <published>2026-02-19T19:34:41+05:30</published>
+    <updated>2026-02-19T19:34:41+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://sudathi.com/products/mehndi-green-silk-printed-saree-70079s234"/>
+    <title>Mehndi Green Silk Printed Saree</title>
+    <s:type>Sarees</s:type>
+    <s:vendor>Sudathi</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0818/7107/7663/files/70079S234_1.jpg?v=1771510996"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Sudathi<br>
+        <strong>Type: </strong>Sarees<br>
+        <strong>Price: </strong>
+            2499.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>Mehndi Green Silk Printed Saree</p></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>celebrity</s:tag>
+    <s:tag>Festive</s:tag>
+    <s:tag>GoldSaree</s:tag>
+    <s:tag>Holi</s:tag>
+    <s:tag>Mother&apos;s Day</s:tag>
+    <s:tag>Sarees</s:tag>
+    <s:tag>Sharktank</s:tag>
+    <s:tag>SSS</s:tag>
+    <s:variant>
+      <id>https://sudathi.com/products/10437487821087</id>
+      <title>Default Title</title>
+      <s:price currency="INR">2499.00</s:price>
+      <s:sku>70079S234</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://sudathi.com/products/10437488214303</id>
+    <published>2026-02-19T19:34:40+05:30</published>
+    <updated>2026-02-19T19:34:40+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://sudathi.com/products/orange-georgette-printed-saree-70084s213"/>
+    <title>Orange Georgette Printed Saree</title>
+    <s:type>Sarees</s:type>
+    <s:vendor>Sudathi</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0818/7107/7663/files/70084S213_1.jpg?v=1771510987"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Sudathi<br>
+        <strong>Type: </strong>Sarees<br>
+        <strong>Price: </strong>
+            1299.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>Orange Georgette Printed Saree</p></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>celebrity</s:tag>
+    <s:tag>Festive</s:tag>
+    <s:tag>Holi</s:tag>
+    <s:tag>Mother&apos;s Day</s:tag>
+    <s:tag>Sarees</s:tag>
+    <s:tag>Sharktank</s:tag>
+    <s:tag>SSS</s:tag>
+    <s:variant>
+      <id>https://sudathi.com/products/10437488214303</id>
+      <title>Default Title</title>
+      <s:price currency="INR">1299.00</s:price>
+      <s:sku>70084S213</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://sudathi.com/products/10437488181535</id>
+    <published>2026-02-19T19:34:40+05:30</published>
+    <updated>2026-02-19T19:34:40+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://sudathi.com/products/beige-silk-woven-printed-saree-70082s261"/>
+    <title>Beige Silk Woven Printed Saree</title>
+    <s:type>Sarees</s:type>
+    <s:vendor>Sudathi</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0818/7107/7663/files/70082S261_1.jpg?v=1771510988"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Sudathi<br>
+        <strong>Type: </strong>Sarees<br>
+        <strong>Price: </strong>
+            2499.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>Beige Silk Woven Printed Saree</p></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>celebrity</s:tag>
+    <s:tag>Festive</s:tag>
+    <s:tag>GoldSaree</s:tag>
+    <s:tag>Holi</s:tag>
+    <s:tag>KOTA</s:tag>
+    <s:tag>Mother&apos;s Day</s:tag>
+    <s:tag>Sarees</s:tag>
+    <s:tag>Sharktank</s:tag>
+    <s:tag>SSS</s:tag>
+    <s:variant>
+      <id>https://sudathi.com/products/10437488181535</id>
+      <title>Default Title</title>
+      <s:price currency="INR">2499.00</s:price>
+      <s:sku>70082S261</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://sudathi.com/products/10437488148767</id>
+    <published>2026-02-19T19:34:40+05:30</published>
+    <updated>2026-02-19T19:34:40+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://sudathi.com/products/peach-georgette-printed-saree-70084s214"/>
+    <title>Peach Georgette Printed Saree</title>
+    <s:type>Sarees</s:type>
+    <s:vendor>Sudathi</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0818/7107/7663/files/70084S214_1.jpg?v=1771510997"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Sudathi<br>
+        <strong>Type: </strong>Sarees<br>
+        <strong>Price: </strong>
+            1299.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>Peach Georgette Printed Saree</p></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>celebrity</s:tag>
+    <s:tag>Festive</s:tag>
+    <s:tag>Holi</s:tag>
+    <s:tag>Mother&apos;s Day</s:tag>
+    <s:tag>Sarees</s:tag>
+    <s:tag>Sharktank</s:tag>
+    <s:tag>SSS</s:tag>
+    <s:variant>
+      <id>https://sudathi.com/products/10437488148767</id>
+      <title>Default Title</title>
+      <s:price currency="INR">1299.00</s:price>
+      <s:sku>70084S214</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://sudathi.com/products/10437488050463</id>
+    <published>2026-02-19T19:34:40+05:30</published>
+    <updated>2026-02-19T19:34:40+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://sudathi.com/products/light-peach-silk-woven-printed-saree-70082s262"/>
+    <title>Light Peach Silk Woven Printed Saree</title>
+    <s:type>Sarees</s:type>
+    <s:vendor>Sudathi</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0818/7107/7663/files/70082S262_1.jpg?v=1771510989"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Sudathi<br>
+        <strong>Type: </strong>Sarees<br>
+        <strong>Price: </strong>
+            2499.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>Light Peach Silk Woven Printed Saree</p></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>celebrity</s:tag>
+    <s:tag>Festive</s:tag>
+    <s:tag>GoldSaree</s:tag>
+    <s:tag>Holi</s:tag>
+    <s:tag>KOTA</s:tag>
+    <s:tag>Mother&apos;s Day</s:tag>
+    <s:tag>Sarees</s:tag>
+    <s:tag>Sharktank</s:tag>
+    <s:tag>SSS</s:tag>
+    <s:variant>
+      <id>https://sudathi.com/products/10437488050463</id>
+      <title>Default Title</title>
+      <s:price currency="INR">2499.00</s:price>
+      <s:sku>70082S262</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://sudathi.com/products/10437488017695</id>
+    <published>2026-02-19T19:34:40+05:30</published>
+    <updated>2026-02-19T19:34:40+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://sudathi.com/products/mauve-georgette-printed-saree-70084s211"/>
+    <title>Mauve Georgette Printed Saree</title>
+    <s:type>Sarees</s:type>
+    <s:vendor>Sudathi</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0818/7107/7663/files/70084S211_1.jpg?v=1771510991"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Sudathi<br>
+        <strong>Type: </strong>Sarees<br>
+        <strong>Price: </strong>
+            1299.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>Mauve Georgette Printed Saree</p></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>celebrity</s:tag>
+    <s:tag>Festive</s:tag>
+    <s:tag>Holi</s:tag>
+    <s:tag>Mother&apos;s Day</s:tag>
+    <s:tag>Sarees</s:tag>
+    <s:tag>Sharktank</s:tag>
+    <s:tag>SSS</s:tag>
+    <s:variant>
+      <id>https://sudathi.com/products/10437488017695</id>
+      <title>Default Title</title>
+      <s:price currency="INR">1299.00</s:price>
+      <s:sku>70084S211</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://sudathi.com/products/10437487952159</id>
+    <published>2026-02-19T19:34:40+05:30</published>
+    <updated>2026-02-19T19:34:40+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://sudathi.com/products/peach-silk-printed-saree-70078s221"/>
+    <title>Peach Silk Printed Saree</title>
+    <s:type>Sarees</s:type>
+    <s:vendor>Sudathi</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0818/7107/7663/files/70078S221_1.jpg?v=1771510990"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Sudathi<br>
+        <strong>Type: </strong>Sarees<br>
+        <strong>Price: </strong>
+            2499.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>Peach Silk Printed Saree</p></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>celebrity</s:tag>
+    <s:tag>Festive</s:tag>
+    <s:tag>GoldSaree</s:tag>
+    <s:tag>Holi</s:tag>
+    <s:tag>Mother&apos;s Day</s:tag>
+    <s:tag>Sarees</s:tag>
+    <s:tag>Sharktank</s:tag>
+    <s:tag>SSS</s:tag>
+    <s:variant>
+      <id>https://sudathi.com/products/10437487952159</id>
+      <title>Default Title</title>
+      <s:price currency="INR">2499.00</s:price>
+      <s:sku>70078S221</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://sudathi.com/products/10437487591711</id>
+    <published>2026-02-19T19:34:40+05:30</published>
+    <updated>2026-02-19T19:34:40+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://sudathi.com/products/yellow-silk-printed-saree-70079s232"/>
+    <title>Yellow Silk Printed Saree</title>
+    <s:type>Sarees</s:type>
+    <s:vendor>Sudathi</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0818/7107/7663/files/70079S232_1.jpg?v=1771510992"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Sudathi<br>
+        <strong>Type: </strong>Sarees<br>
+        <strong>Price: </strong>
+            2499.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>Yellow Silk Printed Saree</p></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>celebrity</s:tag>
+    <s:tag>Festive</s:tag>
+    <s:tag>GoldSaree</s:tag>
+    <s:tag>Holi</s:tag>
+    <s:tag>Mother&apos;s Day</s:tag>
+    <s:tag>Sarees</s:tag>
+    <s:tag>Sharktank</s:tag>
+    <s:tag>SSS</s:tag>
+    <s:variant>
+      <id>https://sudathi.com/products/10437487591711</id>
+      <title>Default Title</title>
+      <s:price currency="INR">2499.00</s:price>
+      <s:sku>70079S232</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://sudathi.com/products/10437487460639</id>
+    <published>2026-02-19T19:34:40+05:30</published>
+    <updated>2026-02-19T19:34:40+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://sudathi.com/products/light-brown-silk-printed-saree-70079s231"/>
+    <title>Light Brown Silk Printed Saree</title>
+    <s:type>Sarees</s:type>
+    <s:vendor>Sudathi</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0818/7107/7663/files/70079S231_1.jpg?v=1771510993"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Sudathi<br>
+        <strong>Type: </strong>Sarees<br>
+        <strong>Price: </strong>
+            2499.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>Light Brown Silk Printed Saree</p></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>celebrity</s:tag>
+    <s:tag>Festive</s:tag>
+    <s:tag>GoldSaree</s:tag>
+    <s:tag>Holi</s:tag>
+    <s:tag>Mother&apos;s Day</s:tag>
+    <s:tag>Sarees</s:tag>
+    <s:tag>Sharktank</s:tag>
+    <s:tag>SSS</s:tag>
+    <s:variant>
+      <id>https://sudathi.com/products/10437487460639</id>
+      <title>Default Title</title>
+      <s:price currency="INR">2499.00</s:price>
+      <s:sku>70079S231</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://sudathi.com/products/10437487296799</id>
+    <published>2026-02-19T19:34:40+05:30</published>
+    <updated>2026-02-19T19:34:40+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://sudathi.com/products/light-yellow-silk-woven-printed-saree-70082s265"/>
+    <title>Light Yellow Silk Woven Printed Saree</title>
+    <s:type>Sarees</s:type>
+    <s:vendor>Sudathi</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0818/7107/7663/files/70082S265_1.jpg?v=1771510992"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Sudathi<br>
+        <strong>Type: </strong>Sarees<br>
+        <strong>Price: </strong>
+            2499.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>Light Yellow Silk Woven Printed Saree</p></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>celebrity</s:tag>
+    <s:tag>Festive</s:tag>
+    <s:tag>GoldSaree</s:tag>
+    <s:tag>Holi</s:tag>
+    <s:tag>KOTA</s:tag>
+    <s:tag>Mother&apos;s Day</s:tag>
+    <s:tag>Sarees</s:tag>
+    <s:tag>Sharktank</s:tag>
+    <s:tag>SSS</s:tag>
+    <s:variant>
+      <id>https://sudathi.com/products/10437487296799</id>
+      <title>Default Title</title>
+      <s:price currency="INR">2499.00</s:price>
+      <s:sku>70082S265</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://sudathi.com/products/10437487722783</id>
+    <published>2026-02-19T19:34:39+05:30</published>
+    <updated>2026-02-19T19:34:39+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://sudathi.com/products/green-georgette-printed-saree-70084s212"/>
+    <title>Green Georgette Printed Saree</title>
+    <s:type>Sarees</s:type>
+    <s:vendor>Sudathi</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0818/7107/7663/files/70084S212_1.jpg?v=1771510988"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Sudathi<br>
+        <strong>Type: </strong>Sarees<br>
+        <strong>Price: </strong>
+            1299.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>Green Georgette Printed Saree</p></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>celebrity</s:tag>
+    <s:tag>Festive</s:tag>
+    <s:tag>Holi</s:tag>
+    <s:tag>Mother&apos;s Day</s:tag>
+    <s:tag>Sarees</s:tag>
+    <s:tag>Sharktank</s:tag>
+    <s:tag>SSS</s:tag>
+    <s:variant>
+      <id>https://sudathi.com/products/10437487722783</id>
+      <title>Default Title</title>
+      <s:price currency="INR">1299.00</s:price>
+      <s:sku>70084S212</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://sudathi.com/products/10437487264031</id>
+    <published>2026-02-19T19:34:39+05:30</published>
+    <updated>2026-02-19T19:34:39+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://sudathi.com/products/beige-silk-printed-saree-70078s226"/>
+    <title>Beige Silk Printed Saree</title>
+    <s:type>Sarees</s:type>
+    <s:vendor>Sudathi</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0818/7107/7663/files/70078S226_1.jpg?v=1771510991"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Sudathi<br>
+        <strong>Type: </strong>Sarees<br>
+        <strong>Price: </strong>
+            2499.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>Beige Silk Printed Saree</p></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>celebrity</s:tag>
+    <s:tag>Festive</s:tag>
+    <s:tag>GoldSaree</s:tag>
+    <s:tag>Holi</s:tag>
+    <s:tag>Mother&apos;s Day</s:tag>
+    <s:tag>Sarees</s:tag>
+    <s:tag>Sharktank</s:tag>
+    <s:tag>SSS</s:tag>
+    <s:variant>
+      <id>https://sudathi.com/products/10437487264031</id>
+      <title>Default Title</title>
+      <s:price currency="INR">2499.00</s:price>
+      <s:sku>70078S226</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://sudathi.com/products/10437487034655</id>
+    <published>2026-02-19T19:34:39+05:30</published>
+    <updated>2026-02-19T19:34:39+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://sudathi.com/products/light-blue-silk-printed-saree-70078s224"/>
+    <title>Light Blue Silk Printed Saree</title>
+    <s:type>Sarees</s:type>
+    <s:vendor>Sudathi</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0818/7107/7663/files/70078S224_1.jpg?v=1771510993"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Sudathi<br>
+        <strong>Type: </strong>Sarees<br>
+        <strong>Price: </strong>
+            2499.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>Light Blue Silk Printed Saree</p></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>celebrity</s:tag>
+    <s:tag>Festive</s:tag>
+    <s:tag>GoldSaree</s:tag>
+    <s:tag>Holi</s:tag>
+    <s:tag>Mother&apos;s Day</s:tag>
+    <s:tag>Sarees</s:tag>
+    <s:tag>Sharktank</s:tag>
+    <s:tag>SSS</s:tag>
+    <s:variant>
+      <id>https://sudathi.com/products/10437487034655</id>
+      <title>Default Title</title>
+      <s:price currency="INR">2499.00</s:price>
+      <s:sku>70078S224</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://sudathi.com/products/10437487657247</id>
+    <published>2026-02-19T19:34:38+05:30</published>
+    <updated>2026-02-19T19:34:38+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://sudathi.com/products/light-mauve-silk-printed-saree-70079s233"/>
+    <title>Light Mauve Silk Printed Saree</title>
+    <s:type>Sarees</s:type>
+    <s:vendor>Sudathi</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0818/7107/7663/files/70079S233_1.jpg?v=1771510989"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Sudathi<br>
+        <strong>Type: </strong>Sarees<br>
+        <strong>Price: </strong>
+            2499.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>Light Mauve Silk Printed Saree</p></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>celebrity</s:tag>
+    <s:tag>Festive</s:tag>
+    <s:tag>GoldSaree</s:tag>
+    <s:tag>Holi</s:tag>
+    <s:tag>Mother&apos;s Day</s:tag>
+    <s:tag>Sarees</s:tag>
+    <s:tag>Sharktank</s:tag>
+    <s:tag>SSS</s:tag>
+    <s:variant>
+      <id>https://sudathi.com/products/10437487657247</id>
+      <title>Default Title</title>
+      <s:price currency="INR">2499.00</s:price>
+      <s:sku>70079S233</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://sudathi.com/products/10437487231263</id>
+    <published>2026-02-19T19:34:38+05:30</published>
+    <updated>2026-02-19T19:34:38+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://sudathi.com/products/yellow-silk-woven-printed-saree-70082s263"/>
+    <title>Yellow Silk Woven Printed Saree</title>
+    <s:type>Sarees</s:type>
+    <s:vendor>Sudathi</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0818/7107/7663/files/70082S263_1.jpg?v=1771510990"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Sudathi<br>
+        <strong>Type: </strong>Sarees<br>
+        <strong>Price: </strong>
+            2499.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>Yellow Silk Woven Printed Saree</p></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>celebrity</s:tag>
+    <s:tag>Festive</s:tag>
+    <s:tag>GoldSaree</s:tag>
+    <s:tag>Holi</s:tag>
+    <s:tag>KOTA</s:tag>
+    <s:tag>Mother&apos;s Day</s:tag>
+    <s:tag>Sarees</s:tag>
+    <s:tag>Sharktank</s:tag>
+    <s:tag>SSS</s:tag>
+    <s:variant>
+      <id>https://sudathi.com/products/10437487231263</id>
+      <title>Default Title</title>
+      <s:price currency="INR">2499.00</s:price>
+      <s:sku>70082S263</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://sudathi.com/products/10437487100191</id>
+    <published>2026-02-19T19:34:36+05:30</published>
+    <updated>2026-02-19T19:34:36+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://sudathi.com/products/light-khaki-silk-printed-saree-70078s223"/>
+    <title>Light Khaki Silk Printed Saree</title>
+    <s:type>Sarees</s:type>
+    <s:vendor>Sudathi</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0818/7107/7663/files/70078S223_1.jpg?v=1771510989"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Sudathi<br>
+        <strong>Type: </strong>Sarees<br>
+        <strong>Price: </strong>
+            2499.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>Light Khaki Silk Printed Saree</p></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>celebrity</s:tag>
+    <s:tag>Festive</s:tag>
+    <s:tag>GoldSaree</s:tag>
+    <s:tag>Holi</s:tag>
+    <s:tag>Mother&apos;s Day</s:tag>
+    <s:tag>Sarees</s:tag>
+    <s:tag>Sharktank</s:tag>
+    <s:tag>SSS</s:tag>
+    <s:variant>
+      <id>https://sudathi.com/products/10437487100191</id>
+      <title>Default Title</title>
+      <s:price currency="INR">2499.00</s:price>
+      <s:sku>70078S223</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://sudathi.com/products/10437486641439</id>
+    <published>2026-02-19T19:34:25+05:30</published>
+    <updated>2026-02-19T19:34:25+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://sudathi.com/products/red-silk-printed-saree-5114s3611"/>
+    <title>Red Silk Printed Saree</title>
+    <s:type>Sarees</s:type>
+    <s:vendor>Sudathi</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0818/7107/7663/files/5114S3611_1.jpg?v=1771510991"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Sudathi<br>
+        <strong>Type: </strong>Sarees<br>
+        <strong>Price: </strong>
+            799.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>Red Silk Printed Saree</p></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>celebrity</s:tag>
+    <s:tag>Festive</s:tag>
+    <s:tag>Holi</s:tag>
+    <s:tag>Mother&apos;s Day</s:tag>
+    <s:tag>Office Wear</s:tag>
+    <s:tag>Sarees</s:tag>
+    <s:tag>Sharktank</s:tag>
+    <s:tag>SSS</s:tag>
+    <s:variant>
+      <id>https://sudathi.com/products/10437486641439</id>
+      <title>Default Title</title>
+      <s:price currency="INR">799.00</s:price>
+      <s:sku>5114S3611</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://sudathi.com/products/10437486838047</id>
+    <published>2026-02-19T19:34:24+05:30</published>
+    <updated>2026-02-19T19:34:24+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://sudathi.com/products/beige-crepe-silk-printed-saree-5190s412"/>
+    <title>Beige Crepe Silk Printed Saree</title>
+    <s:type>Sarees</s:type>
+    <s:vendor>Sudathi</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0818/7107/7663/files/5190S412_1.jpg?v=1771510989"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Sudathi<br>
+        <strong>Type: </strong>Sarees<br>
+        <strong>Price: </strong>
+            1299.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>Beige Crepe Silk Printed Saree</p></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>celebrity</s:tag>
+    <s:tag>Festive</s:tag>
+    <s:tag>Holi</s:tag>
+    <s:tag>Mother&apos;s Day</s:tag>
+    <s:tag>Office Wear</s:tag>
+    <s:tag>Sarees</s:tag>
+    <s:tag>Sharktank</s:tag>
+    <s:tag>SSS</s:tag>
+    <s:variant>
+      <id>https://sudathi.com/products/10437486838047</id>
+      <title>Default Title</title>
+      <s:price currency="INR">1299.00</s:price>
+      <s:sku>5190S412</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://sudathi.com/products/10437486805279</id>
+    <published>2026-02-19T19:34:24+05:30</published>
+    <updated>2026-02-19T19:34:24+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://sudathi.com/products/mint-green-linen-silk-woven-printed-saree-70071s154"/>
+    <title>Mint Green Linen Silk Woven Printed Saree</title>
+    <s:type>Sarees</s:type>
+    <s:vendor>Sudathi</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0818/7107/7663/files/70071S154_1.jpg?v=1771510986"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Sudathi<br>
+        <strong>Type: </strong>Sarees<br>
+        <strong>Price: </strong>
+            2799.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>Mint Green Linen Silk Woven Printed Saree</p></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>celebrity</s:tag>
+    <s:tag>Festive</s:tag>
+    <s:tag>GoldSaree</s:tag>
+    <s:tag>Holi</s:tag>
+    <s:tag>KOTA</s:tag>
+    <s:tag>Mother&apos;s Day</s:tag>
+    <s:tag>Sarees</s:tag>
+    <s:tag>Sharktank</s:tag>
+    <s:tag>SSS</s:tag>
+    <s:variant>
+      <id>https://sudathi.com/products/10437486805279</id>
+      <title>Default Title</title>
+      <s:price currency="INR">2799.00</s:price>
+      <s:sku>70071S154</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+  </entry>
+</feed>

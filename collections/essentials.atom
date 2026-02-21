@@ -1,0 +1,1375 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xml:lang="en" xmlns="http://www.w3.org/2005/Atom" xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/" xmlns:s="http://jadedpixel.com/-/spec/shopify">
+  <id>https://sudathi.com/collections/all.atom</id>
+  <link rel="alternate" type="text/html" href="https://sudathi.com/collections/all"/>
+  <link rel="self" type="application/atom+xml" href="https://sudathi.com/collections/essentials.atom"/>
+  <title>Sudathi</title>
+  <updated>2025-11-25T19:17:48+05:30</updated>
+  <author>
+    <name>Sudathi</name>
+  </author>
+  <entry>
+    <id>https://sudathi.com/products/9842414387487</id>
+    <published>2025-11-25T19:17:48+05:30</published>
+    <updated>2025-11-25T19:17:48+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://sudathi.com/products/pink-lycra-plain-elastic-waist-shapewear-755swtk401"/>
+    <title>Pink Lycra Plain Elastic Waist Shapewear</title>
+    <s:type>Shapewear</s:type>
+    <s:vendor>Sudathi</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0818/7107/7663/files/755WTK401_5.jpg?v=1739261734"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Sudathi<br>
+        <strong>Type: </strong>Shapewear<br>
+        <strong>Price: </strong>
+            499.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>Pink Lycra Plain Elastic Waist Shapewear</p></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>Accessories</s:tag>
+    <s:tag>Shapewear</s:tag>
+    <s:variant>
+      <id>https://sudathi.com/products/9842414387487</id>
+      <title>S</title>
+      <s:price currency="INR">499.00</s:price>
+      <s:sku>755SWTK401-S</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://sudathi.com/products/9842414387487</id>
+      <title>M</title>
+      <s:price currency="INR">499.00</s:price>
+      <s:sku>755SWTK401-M</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://sudathi.com/products/9842414387487</id>
+      <title>L</title>
+      <s:price currency="INR">499.00</s:price>
+      <s:sku>755SWTK401-L</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://sudathi.com/products/9842414387487</id>
+      <title>XL</title>
+      <s:price currency="INR">499.00</s:price>
+      <s:sku>755SWTK401-XL</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://sudathi.com/products/9842414387487</id>
+      <title>XXL</title>
+      <s:price currency="INR">499.00</s:price>
+      <s:sku>755SWTK401-XXL</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://sudathi.com/products/8629495791903</id>
+    <published>2025-11-25T19:17:42+05:30</published>
+    <updated>2025-11-25T19:17:42+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://sudathi.com/products/navy-blue-coloured-lycra-solid-saree-shapewear-slv180tk112"/>
+    <title>Navy Blue Coloured Lycra Solid Saree Shapewear</title>
+    <s:type>Shapewear</s:type>
+    <s:vendor>Sudathi</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0818/7107/7663/files/180tk112-2_ea382695-b13e-42f3-b5c6-4964291265b2.jpg?v=1695125897"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Sudathi<br>
+        <strong>Type: </strong>Shapewear<br>
+        <strong>Price: </strong>
+            499.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>Navy Blue Coloured Lycra Solid Saree Shapewear | SLV180TK112</p></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>Accessories</s:tag>
+    <s:tag>Shapewear</s:tag>
+    <s:variant>
+      <id>https://sudathi.com/products/8629495791903</id>
+      <title>S</title>
+      <s:price currency="INR">499.00</s:price>
+      <s:sku>180TK112-S</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://sudathi.com/products/8629495791903</id>
+      <title>M</title>
+      <s:price currency="INR">499.00</s:price>
+      <s:sku>180TK112-M</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://sudathi.com/products/8629495791903</id>
+      <title>L</title>
+      <s:price currency="INR">499.00</s:price>
+      <s:sku>180TK112-L</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://sudathi.com/products/8629495791903</id>
+      <title>XL</title>
+      <s:price currency="INR">499.00</s:price>
+      <s:sku>180TK112-XL</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://sudathi.com/products/10082180661535</id>
+    <published>2025-10-18T15:51:40+05:30</published>
+    <updated>2025-10-18T15:51:40+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://sudathi.com/products/light-peach-cotton-lycra-dyed-self-woven-blouse-73b1262"/>
+    <title>Light Peach Cotton Lycra Dyed Self Woven Blouse</title>
+    <s:type>Blouse</s:type>
+    <s:vendor>Sudathi</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0818/7107/7663/files/73B1262_1.jpg?v=1740478106"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Sudathi<br>
+        <strong>Type: </strong>Blouse<br>
+        <strong>Price: </strong>
+            399.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>Light Peach Cotton Lycra Dyed Self Woven Blouse</p></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>Accessories</s:tag>
+    <s:tag>Blouse</s:tag>
+    <s:variant>
+      <id>https://sudathi.com/products/10082180661535</id>
+      <title>L</title>
+      <s:price currency="INR">399.00</s:price>
+      <s:sku>73B1262-L</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://sudathi.com/products/10082180661535</id>
+      <title>XL</title>
+      <s:price currency="INR">399.00</s:price>
+      <s:sku>73B1262-XL</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://sudathi.com/products/10082180661535</id>
+      <title>XXL</title>
+      <s:price currency="INR">399.00</s:price>
+      <s:sku>73B1262-XXL</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://sudathi.com/products/10072359764255</id>
+    <published>2025-07-24T13:08:39+05:30</published>
+    <updated>2025-07-24T13:08:39+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://sudathi.com/products/light-pink-cotton-dyed-self-woven-blouse-73b1251"/>
+    <title>Light Pink Cotton Dyed Self Woven Blouse</title>
+    <s:type>Blouse</s:type>
+    <s:vendor>Sudathi</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0818/7107/7663/files/73B1251_1.jpg?v=1754467077"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Sudathi<br>
+        <strong>Type: </strong>Blouse<br>
+        <strong>Price: </strong>
+            399.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>Light Pink Cotton Dyed Self Woven Blouse</p></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>Accessories</s:tag>
+    <s:tag>Blouse</s:tag>
+    <s:variant>
+      <id>https://sudathi.com/products/10072359764255</id>
+      <title>L</title>
+      <s:price currency="INR">399.00</s:price>
+      <s:sku>73B1251-L</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://sudathi.com/products/10072359764255</id>
+      <title>XL</title>
+      <s:price currency="INR">399.00</s:price>
+      <s:sku>73B1251-XL</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://sudathi.com/products/10072359764255</id>
+      <title>XXL</title>
+      <s:price currency="INR">399.00</s:price>
+      <s:sku>73B1251-XXL</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://sudathi.com/products/10072359403807</id>
+    <published>2025-07-24T13:08:37+05:30</published>
+    <updated>2025-07-24T13:08:37+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://sudathi.com/products/light-blue-cotton-dyed-self-woven-blouse-73b1241"/>
+    <title>Light Blue Cotton Dyed Self Woven Blouse</title>
+    <s:type>Blouse</s:type>
+    <s:vendor>Sudathi</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0818/7107/7663/files/73B1241_1.jpg?v=1754467070"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Sudathi<br>
+        <strong>Type: </strong>Blouse<br>
+        <strong>Price: </strong>
+            399.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>Light Blue Cotton Dyed Self Woven Blouse</p></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>Accessories</s:tag>
+    <s:tag>Blouse</s:tag>
+    <s:variant>
+      <id>https://sudathi.com/products/10072359403807</id>
+      <title>L</title>
+      <s:price currency="INR">399.00</s:price>
+      <s:sku>73B1241-L</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://sudathi.com/products/10072359403807</id>
+      <title>XL</title>
+      <s:price currency="INR">399.00</s:price>
+      <s:sku>73B1241-XL</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://sudathi.com/products/10072359403807</id>
+      <title>XXL</title>
+      <s:price currency="INR">399.00</s:price>
+      <s:sku>73B1241-XXL</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://sudathi.com/products/10072359338271</id>
+    <published>2025-07-24T13:08:37+05:30</published>
+    <updated>2025-07-24T13:08:37+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://sudathi.com/products/maroon-cotton-dyed-self-woven-blouse-73b1239"/>
+    <title>Maroon Cotton Dyed Self Woven Blouse</title>
+    <s:type>Blouse</s:type>
+    <s:vendor>Sudathi</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0818/7107/7663/files/73B1239_1.jpg?v=1754467065"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Sudathi<br>
+        <strong>Type: </strong>Blouse<br>
+        <strong>Price: </strong>
+            399.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>Maroon Cotton Dyed Self Woven Blouse</p></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>Accessories</s:tag>
+    <s:tag>Blouse</s:tag>
+    <s:variant>
+      <id>https://sudathi.com/products/10072359338271</id>
+      <title>L</title>
+      <s:price currency="INR">399.00</s:price>
+      <s:sku>73B1239-L</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://sudathi.com/products/10072359338271</id>
+      <title>XL</title>
+      <s:price currency="INR">399.00</s:price>
+      <s:sku>73B1239-XL</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://sudathi.com/products/10072359338271</id>
+      <title>XXL</title>
+      <s:price currency="INR">399.00</s:price>
+      <s:sku>73B1239-XXL</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://sudathi.com/products/10072358846751</id>
+    <published>2025-07-24T13:08:35+05:30</published>
+    <updated>2025-07-24T13:08:35+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://sudathi.com/products/rani-pink-cotton-dyed-self-woven-blouse-73b1224"/>
+    <title>Rani Pink Cotton Dyed Self Woven Blouse</title>
+    <s:type>Blouse</s:type>
+    <s:vendor>Sudathi</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0818/7107/7663/files/73B1224_1.jpg?v=1754467053"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Sudathi<br>
+        <strong>Type: </strong>Blouse<br>
+        <strong>Price: </strong>
+            399.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>Rani Pink Cotton Dyed Self Woven Blouse</p></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>Accessories</s:tag>
+    <s:tag>Blouse</s:tag>
+    <s:variant>
+      <id>https://sudathi.com/products/10072358846751</id>
+      <title>L</title>
+      <s:price currency="INR">399.00</s:price>
+      <s:sku>73B1224-L</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://sudathi.com/products/10072358846751</id>
+      <title>XL</title>
+      <s:price currency="INR">399.00</s:price>
+      <s:sku>73B1224-XL</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://sudathi.com/products/10072358846751</id>
+      <title>XXL</title>
+      <s:price currency="INR">399.00</s:price>
+      <s:sku>73B1224-XXL</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://sudathi.com/products/9842416091423</id>
+    <published>2025-07-24T13:08:14+05:30</published>
+    <updated>2025-07-24T13:08:14+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://sudathi.com/products/dark-grey-lycra-plain-elastic-waist-shapewear-755swtk413"/>
+    <title>Dark Grey Lycra Plain Elastic Waist Shapewear</title>
+    <s:type>Shapewear</s:type>
+    <s:vendor>Sudathi</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0818/7107/7663/files/755WTK413_5.jpg?v=1754466268"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Sudathi<br>
+        <strong>Type: </strong>Shapewear<br>
+        <strong>Price: </strong>
+            499.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>Dark Grey Lycra Plain Elastic Waist Shapewear</p></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>Accessories</s:tag>
+    <s:tag>Shapewear</s:tag>
+    <s:variant>
+      <id>https://sudathi.com/products/9842416091423</id>
+      <title>S</title>
+      <s:price currency="INR">499.00</s:price>
+      <s:sku>755SWTK413-S</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://sudathi.com/products/9842416091423</id>
+      <title>M</title>
+      <s:price currency="INR">499.00</s:price>
+      <s:sku>755SWTK413-M</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://sudathi.com/products/9842416091423</id>
+      <title>L</title>
+      <s:price currency="INR">499.00</s:price>
+      <s:sku>755SWTK413-L</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://sudathi.com/products/9842416091423</id>
+      <title>XL</title>
+      <s:price currency="INR">499.00</s:price>
+      <s:sku>755SWTK413-XL</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://sudathi.com/products/9842416091423</id>
+      <title>XXL</title>
+      <s:price currency="INR">499.00</s:price>
+      <s:sku>755SWTK413-XXL</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://sudathi.com/products/9842413666591</id>
+    <published>2025-07-24T13:08:12+05:30</published>
+    <updated>2025-07-24T13:08:12+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://sudathi.com/products/wine-lycra-plain-elastic-waist-shapewear-754swtk312"/>
+    <title>Wine Lycra Plain Elastic Waist Shapewear</title>
+    <s:type>Shapewear</s:type>
+    <s:vendor>Sudathi</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0818/7107/7663/files/754SWTK312_4_9bd6e04a-c951-448c-b275-254522a9ce0f.jpg?v=1754466255"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Sudathi<br>
+        <strong>Type: </strong>Shapewear<br>
+        <strong>Price: </strong>
+            499.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>Wine Lycra Plain Elastic Waist Shapewear</p></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>Accessories</s:tag>
+    <s:tag>Shapewear</s:tag>
+    <s:variant>
+      <id>https://sudathi.com/products/9842413666591</id>
+      <title>S</title>
+      <s:price currency="INR">499.00</s:price>
+      <s:sku>754SWTK312-S</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://sudathi.com/products/9842413666591</id>
+      <title>M</title>
+      <s:price currency="INR">499.00</s:price>
+      <s:sku>754SWTK312-M</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://sudathi.com/products/9842413666591</id>
+      <title>L</title>
+      <s:price currency="INR">499.00</s:price>
+      <s:sku>754SWTK312-L</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://sudathi.com/products/9842413666591</id>
+      <title>XL</title>
+      <s:price currency="INR">499.00</s:price>
+      <s:sku>754SWTK312-XL</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://sudathi.com/products/9842413666591</id>
+      <title>XXL</title>
+      <s:price currency="INR">499.00</s:price>
+      <s:sku>754SWTK312-XXL</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://sudathi.com/products/9842412781855</id>
+    <published>2025-07-24T13:08:11+05:30</published>
+    <updated>2025-07-24T13:08:11+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://sudathi.com/products/light-green-lycra-plain-elastic-waist-shapewear-754swtk305"/>
+    <title>Light Green Lycra Plain Elastic Waist Shapewear</title>
+    <s:type>Shapewear</s:type>
+    <s:vendor>Sudathi</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0818/7107/7663/files/754SWTK305_5_0c271cdd-fa9a-48ec-b541-683945d33699.jpg?v=1754466250"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Sudathi<br>
+        <strong>Type: </strong>Shapewear<br>
+        <strong>Price: </strong>
+            499.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>Light Green Lycra Plain Elastic Waist Shapewear</p></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>Accessories</s:tag>
+    <s:tag>Shapewear</s:tag>
+    <s:variant>
+      <id>https://sudathi.com/products/9842412781855</id>
+      <title>S</title>
+      <s:price currency="INR">499.00</s:price>
+      <s:sku>754SWTK305-S</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://sudathi.com/products/9842412781855</id>
+      <title>M</title>
+      <s:price currency="INR">499.00</s:price>
+      <s:sku>754SWTK305-M</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://sudathi.com/products/9842412781855</id>
+      <title>L</title>
+      <s:price currency="INR">499.00</s:price>
+      <s:sku>754SWTK305-L</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://sudathi.com/products/9842412781855</id>
+      <title>XL</title>
+      <s:price currency="INR">499.00</s:price>
+      <s:sku>754SWTK305-XL</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://sudathi.com/products/9842412781855</id>
+      <title>XXL</title>
+      <s:price currency="INR">499.00</s:price>
+      <s:sku>754SWTK305-XXL</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://sudathi.com/products/10082180366623</id>
+    <published>2025-02-25T15:33:08+05:30</published>
+    <updated>2025-02-25T15:33:08+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://sudathi.com/products/dark-maroon-cotton-lycra-dyed-self-woven-blouse-73b1255"/>
+    <title>Dark Maroon Cotton Lycra Dyed Self Woven Blouse</title>
+    <s:type>Blouse</s:type>
+    <s:vendor>Sudathi</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0818/7107/7663/files/73B1255_1.jpg?v=1754467303"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Sudathi<br>
+        <strong>Type: </strong>Blouse<br>
+        <strong>Price: </strong>
+            399.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>Dark Maroon Cotton Lycra Dyed Self Woven Blouse</p></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>Accessories</s:tag>
+    <s:tag>Blouse</s:tag>
+    <s:variant>
+      <id>https://sudathi.com/products/10082180366623</id>
+      <title>L</title>
+      <s:price currency="INR">399.00</s:price>
+      <s:sku>73B1255-L</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://sudathi.com/products/10082180366623</id>
+      <title>XL</title>
+      <s:price currency="INR">399.00</s:price>
+      <s:sku>73B1255-XL</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://sudathi.com/products/10082180366623</id>
+      <title>XXL</title>
+      <s:price currency="INR">399.00</s:price>
+      <s:sku>73B1255-XXL</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://sudathi.com/products/10072359731487</id>
+    <published>2025-02-15T11:06:05+05:30</published>
+    <updated>2025-02-15T11:06:05+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://sudathi.com/products/olive-green-cotton-dyed-self-woven-blouse-73b1250"/>
+    <title>Olive Green Cotton Dyed Self Woven Blouse</title>
+    <s:type>Blouse</s:type>
+    <s:vendor>Sudathi</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0818/7107/7663/files/73B1250_1.jpg?v=1754467077"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Sudathi<br>
+        <strong>Type: </strong>Blouse<br>
+        <strong>Price: </strong>
+            399.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>Olive Green Cotton Dyed Self Woven Blouse</p></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>Accessories</s:tag>
+    <s:tag>Blouse</s:tag>
+    <s:variant>
+      <id>https://sudathi.com/products/10072359731487</id>
+      <title>L</title>
+      <s:price currency="INR">399.00</s:price>
+      <s:sku>73B1250-L</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://sudathi.com/products/10072359731487</id>
+      <title>XL</title>
+      <s:price currency="INR">399.00</s:price>
+      <s:sku>73B1250-XL</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://sudathi.com/products/10072359731487</id>
+      <title>XXL</title>
+      <s:price currency="INR">399.00</s:price>
+      <s:sku>73B1250-XXL</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://sudathi.com/products/10072359698719</id>
+    <published>2025-02-15T11:06:05+05:30</published>
+    <updated>2025-02-15T11:06:05+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://sudathi.com/products/light-beige-cotton-dyed-self-woven-blouse-73b1249"/>
+    <title>Light Beige Cotton Dyed Self Woven Blouse</title>
+    <s:type>Blouse</s:type>
+    <s:vendor>Sudathi</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0818/7107/7663/files/73B1249_1.jpg?v=1754467075"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Sudathi<br>
+        <strong>Type: </strong>Blouse<br>
+        <strong>Price: </strong>
+            399.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>Light Beige Cotton Dyed Self Woven Blouse</p></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>Accessories</s:tag>
+    <s:tag>Blouse</s:tag>
+    <s:variant>
+      <id>https://sudathi.com/products/10072359698719</id>
+      <title>L</title>
+      <s:price currency="INR">399.00</s:price>
+      <s:sku>73B1249-L</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://sudathi.com/products/10072359698719</id>
+      <title>XL</title>
+      <s:price currency="INR">399.00</s:price>
+      <s:sku>73B1249-XL</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://sudathi.com/products/10072359698719</id>
+      <title>XXL</title>
+      <s:price currency="INR">399.00</s:price>
+      <s:sku>73B1249-XXL</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://sudathi.com/products/10072359665951</id>
+    <published>2025-02-15T11:06:04+05:30</published>
+    <updated>2025-02-15T11:06:04+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://sudathi.com/products/wine-cotton-dyed-self-woven-blouse-73b1248"/>
+    <title>Wine Cotton Dyed Self Woven Blouse</title>
+    <s:type>Blouse</s:type>
+    <s:vendor>Sudathi</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0818/7107/7663/files/73B1248_1.jpg?v=1754467075"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Sudathi<br>
+        <strong>Type: </strong>Blouse<br>
+        <strong>Price: </strong>
+            399.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>Wine Cotton Dyed Self Woven Blouse</p></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>Accessories</s:tag>
+    <s:tag>Blouse</s:tag>
+    <s:variant>
+      <id>https://sudathi.com/products/10072359665951</id>
+      <title>L</title>
+      <s:price currency="INR">399.00</s:price>
+      <s:sku>73B1248-L</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://sudathi.com/products/10072359665951</id>
+      <title>XL</title>
+      <s:price currency="INR">399.00</s:price>
+      <s:sku>73B1248-XL</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://sudathi.com/products/10072359665951</id>
+      <title>XXL</title>
+      <s:price currency="INR">399.00</s:price>
+      <s:sku>73B1248-XXL</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://sudathi.com/products/10072359633183</id>
+    <published>2025-02-15T11:06:04+05:30</published>
+    <updated>2025-02-15T11:06:04+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://sudathi.com/products/red-cotton-dyed-self-woven-blouse-73b1247"/>
+    <title>Red Cotton Dyed Self Woven Blouse</title>
+    <s:type>Blouse</s:type>
+    <s:vendor>Sudathi</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0818/7107/7663/files/73B1247_1.jpg?v=1754467073"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Sudathi<br>
+        <strong>Type: </strong>Blouse<br>
+        <strong>Price: </strong>
+            399.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>Red Cotton Dyed Self Woven Blouse</p></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>Accessories</s:tag>
+    <s:tag>Blouse</s:tag>
+    <s:tag>Valentine</s:tag>
+    <s:variant>
+      <id>https://sudathi.com/products/10072359633183</id>
+      <title>L</title>
+      <s:price currency="INR">399.00</s:price>
+      <s:sku>73B1247-L</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://sudathi.com/products/10072359633183</id>
+      <title>XL</title>
+      <s:price currency="INR">399.00</s:price>
+      <s:sku>73B1247-XL</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://sudathi.com/products/10072359633183</id>
+      <title>XXL</title>
+      <s:price currency="INR">399.00</s:price>
+      <s:sku>73B1247-XXL</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://sudathi.com/products/10072359600415</id>
+    <published>2025-02-15T11:06:01+05:30</published>
+    <updated>2025-02-15T11:06:01+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://sudathi.com/products/rama-blue-cotton-dyed-self-woven-blouse-73b1246"/>
+    <title>Rama Blue Cotton Dyed Self Woven Blouse</title>
+    <s:type>Blouse</s:type>
+    <s:vendor>Sudathi</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0818/7107/7663/files/73B1246_1.jpg?v=1754467073"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Sudathi<br>
+        <strong>Type: </strong>Blouse<br>
+        <strong>Price: </strong>
+            399.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>Rama Blue Cotton Dyed Self Woven Blouse</p></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>Accessories</s:tag>
+    <s:tag>Blouse</s:tag>
+    <s:variant>
+      <id>https://sudathi.com/products/10072359600415</id>
+      <title>L</title>
+      <s:price currency="INR">399.00</s:price>
+      <s:sku>73B1246-L</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://sudathi.com/products/10072359600415</id>
+      <title>XL</title>
+      <s:price currency="INR">399.00</s:price>
+      <s:sku>73B1246-XL</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://sudathi.com/products/10072359600415</id>
+      <title>XXL</title>
+      <s:price currency="INR">399.00</s:price>
+      <s:sku>73B1246-XXL</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://sudathi.com/products/10072359567647</id>
+    <published>2025-02-15T11:06:01+05:30</published>
+    <updated>2025-02-15T11:06:01+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://sudathi.com/products/light-green-cotton-dyed-self-woven-blouse-73b1245"/>
+    <title>Light Green Cotton Dyed Self Woven Blouse</title>
+    <s:type>Blouse</s:type>
+    <s:vendor>Sudathi</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0818/7107/7663/files/73B1245_1.jpg?v=1754467071"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Sudathi<br>
+        <strong>Type: </strong>Blouse<br>
+        <strong>Price: </strong>
+            399.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>Light Green Cotton Dyed Self Woven Blouse</p></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>Accessories</s:tag>
+    <s:tag>Blouse</s:tag>
+    <s:variant>
+      <id>https://sudathi.com/products/10072359567647</id>
+      <title>L</title>
+      <s:price currency="INR">399.00</s:price>
+      <s:sku>73B1245-L</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://sudathi.com/products/10072359567647</id>
+      <title>XL</title>
+      <s:price currency="INR">399.00</s:price>
+      <s:sku>73B1245-XL</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://sudathi.com/products/10072359567647</id>
+      <title>XXL</title>
+      <s:price currency="INR">399.00</s:price>
+      <s:sku>73B1245-XXL</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://sudathi.com/products/10072359502111</id>
+    <published>2025-02-15T11:06:00+05:30</published>
+    <updated>2025-02-15T11:06:00+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://sudathi.com/products/grey-cotton-dyed-self-woven-blouse-73b1243"/>
+    <title>Grey Cotton Dyed Self Woven Blouse</title>
+    <s:type>Blouse</s:type>
+    <s:vendor>Sudathi</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0818/7107/7663/files/73B1243_1.jpg?v=1754467090"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Sudathi<br>
+        <strong>Type: </strong>Blouse<br>
+        <strong>Price: </strong>
+            399.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>Grey Cotton Dyed Self Woven Blouse</p></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>Accessories</s:tag>
+    <s:tag>Blouse</s:tag>
+    <s:variant>
+      <id>https://sudathi.com/products/10072359502111</id>
+      <title>L</title>
+      <s:price currency="INR">399.00</s:price>
+      <s:sku>73B1243-L</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://sudathi.com/products/10072359502111</id>
+      <title>XL</title>
+      <s:price currency="INR">399.00</s:price>
+      <s:sku>73B1243-XL</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://sudathi.com/products/10072359502111</id>
+      <title>XXL</title>
+      <s:price currency="INR">399.00</s:price>
+      <s:sku>73B1243-XXL</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://sudathi.com/products/10072359436575</id>
+    <published>2025-02-15T11:05:57+05:30</published>
+    <updated>2025-02-15T11:05:57+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://sudathi.com/products/mehandi-green-cotton-dyed-self-woven-blouse-73b1242"/>
+    <title>Mehandi Green Cotton Dyed Self Woven Blouse</title>
+    <s:type>Blouse</s:type>
+    <s:vendor>Sudathi</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0818/7107/7663/files/73B1242_1.jpg?v=1754467090"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Sudathi<br>
+        <strong>Type: </strong>Blouse<br>
+        <strong>Price: </strong>
+            399.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>Mehandi Green Cotton Dyed Self Woven Blouse</p></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>Accessories</s:tag>
+    <s:tag>Blouse</s:tag>
+    <s:variant>
+      <id>https://sudathi.com/products/10072359436575</id>
+      <title>L</title>
+      <s:price currency="INR">399.00</s:price>
+      <s:sku>73B1242-L</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://sudathi.com/products/10072359436575</id>
+      <title>XL</title>
+      <s:price currency="INR">399.00</s:price>
+      <s:sku>73B1242-XL</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://sudathi.com/products/10072359436575</id>
+      <title>XXL</title>
+      <s:price currency="INR">399.00</s:price>
+      <s:sku>73B1242-XXL</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://sudathi.com/products/10072359371039</id>
+    <published>2025-02-15T11:05:57+05:30</published>
+    <updated>2025-02-15T11:05:57+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://sudathi.com/products/orange-cotton-dyed-self-woven-blouse-73b1240"/>
+    <title>Orange Cotton Dyed Self Woven Blouse</title>
+    <s:type>Blouse</s:type>
+    <s:vendor>Sudathi</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0818/7107/7663/files/73B1240_1.jpg?v=1754467066"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Sudathi<br>
+        <strong>Type: </strong>Blouse<br>
+        <strong>Price: </strong>
+            399.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>Orange Cotton Dyed Self Woven Blouse</p></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>Accessories</s:tag>
+    <s:tag>Blouse</s:tag>
+    <s:variant>
+      <id>https://sudathi.com/products/10072359371039</id>
+      <title>L</title>
+      <s:price currency="INR">399.00</s:price>
+      <s:sku>73B1240-L</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://sudathi.com/products/10072359371039</id>
+      <title>XL</title>
+      <s:price currency="INR">399.00</s:price>
+      <s:sku>73B1240-XL</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://sudathi.com/products/10072359371039</id>
+      <title>XXL</title>
+      <s:price currency="INR">399.00</s:price>
+      <s:sku>73B1240-XXL</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://sudathi.com/products/10072359305503</id>
+    <published>2025-02-15T11:05:54+05:30</published>
+    <updated>2025-02-15T11:05:54+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://sudathi.com/products/dark-blue-cotton-dyed-self-woven-blouse-73b1238"/>
+    <title>Dark Blue Cotton Dyed Self Woven Blouse</title>
+    <s:type>Blouse</s:type>
+    <s:vendor>Sudathi</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0818/7107/7663/files/73B1238_1.jpg?v=1754467064"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Sudathi<br>
+        <strong>Type: </strong>Blouse<br>
+        <strong>Price: </strong>
+            399.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>Dark Blue Cotton Dyed Self Woven Blouse</p></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>Accessories</s:tag>
+    <s:tag>Blouse</s:tag>
+    <s:variant>
+      <id>https://sudathi.com/products/10072359305503</id>
+      <title>L</title>
+      <s:price currency="INR">399.00</s:price>
+      <s:sku>73B1238-L</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://sudathi.com/products/10072359305503</id>
+      <title>XL</title>
+      <s:price currency="INR">399.00</s:price>
+      <s:sku>73B1238-XL</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://sudathi.com/products/10072359305503</id>
+      <title>XXL</title>
+      <s:price currency="INR">399.00</s:price>
+      <s:sku>73B1238-XXL</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://sudathi.com/products/10072359239967</id>
+    <published>2025-02-15T11:05:53+05:30</published>
+    <updated>2025-02-15T11:05:53+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://sudathi.com/products/mustard-yellow-cotton-dyed-self-woven-blouse-73b1236"/>
+    <title>Mustard Yellow Cotton Dyed Self Woven Blouse</title>
+    <s:type>Blouse</s:type>
+    <s:vendor>Sudathi</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0818/7107/7663/files/73B1236_1.jpg?v=1754467062"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Sudathi<br>
+        <strong>Type: </strong>Blouse<br>
+        <strong>Price: </strong>
+            399.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>Mustard Yellow Cotton Dyed Self Woven Blouse</p></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>Accessories</s:tag>
+    <s:tag>Blouse</s:tag>
+    <s:variant>
+      <id>https://sudathi.com/products/10072359239967</id>
+      <title>L</title>
+      <s:price currency="INR">399.00</s:price>
+      <s:sku>73B1236-L</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://sudathi.com/products/10072359239967</id>
+      <title>XL</title>
+      <s:price currency="INR">399.00</s:price>
+      <s:sku>73B1236-XL</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://sudathi.com/products/10072359239967</id>
+      <title>XXL</title>
+      <s:price currency="INR">399.00</s:price>
+      <s:sku>73B1236-XXL</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://sudathi.com/products/10072359108895</id>
+    <published>2025-02-15T11:05:49+05:30</published>
+    <updated>2025-02-15T11:05:49+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://sudathi.com/products/peach-cotton-dyed-self-woven-blouse-73b1232"/>
+    <title>Peach Cotton Dyed Self Woven Blouse</title>
+    <s:type>Blouse</s:type>
+    <s:vendor>Sudathi</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0818/7107/7663/files/73B1232_1.jpg?v=1754467058"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Sudathi<br>
+        <strong>Type: </strong>Blouse<br>
+        <strong>Price: </strong>
+            399.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>Peach Cotton Dyed Self Woven Blouse</p></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>Accessories</s:tag>
+    <s:tag>Blouse</s:tag>
+    <s:variant>
+      <id>https://sudathi.com/products/10072359108895</id>
+      <title>L</title>
+      <s:price currency="INR">399.00</s:price>
+      <s:sku>73B1232-L</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://sudathi.com/products/10072359108895</id>
+      <title>XL</title>
+      <s:price currency="INR">399.00</s:price>
+      <s:sku>73B1232-XL</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://sudathi.com/products/10072359108895</id>
+      <title>XXL</title>
+      <s:price currency="INR">399.00</s:price>
+      <s:sku>73B1232-XXL</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://sudathi.com/products/10072359043359</id>
+    <published>2025-02-15T11:05:46+05:30</published>
+    <updated>2025-02-15T11:05:46+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://sudathi.com/products/light-mint-green-cotton-dyed-self-woven-blouse-73b1230"/>
+    <title>Light Mint Green Cotton Dyed Self Woven Blouse</title>
+    <s:type>Blouse</s:type>
+    <s:vendor>Sudathi</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0818/7107/7663/files/73B1230_1.jpg?v=1754467057"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Sudathi<br>
+        <strong>Type: </strong>Blouse<br>
+        <strong>Price: </strong>
+            399.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>Light Mint Green Cotton Dyed Self Woven Blouse</p></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>Accessories</s:tag>
+    <s:tag>Blouse</s:tag>
+    <s:variant>
+      <id>https://sudathi.com/products/10072359043359</id>
+      <title>L</title>
+      <s:price currency="INR">399.00</s:price>
+      <s:sku>73B1230-L</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://sudathi.com/products/10072359043359</id>
+      <title>XL</title>
+      <s:price currency="INR">399.00</s:price>
+      <s:sku>73B1230-XL</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://sudathi.com/products/10072359043359</id>
+      <title>XXL</title>
+      <s:price currency="INR">399.00</s:price>
+      <s:sku>73B1230-XXL</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://sudathi.com/products/10072359010591</id>
+    <published>2025-02-15T11:05:46+05:30</published>
+    <updated>2025-02-15T11:05:46+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://sudathi.com/products/black-cotton-dyed-self-woven-blouse-73b1229"/>
+    <title>Black Cotton Dyed Self Woven Blouse</title>
+    <s:type>Blouse</s:type>
+    <s:vendor>Sudathi</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0818/7107/7663/files/73B1229_pose_64381_output_418145.jpg?v=1754467056"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Sudathi<br>
+        <strong>Type: </strong>Blouse<br>
+        <strong>Price: </strong>
+            399.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>Black Cotton Dyed Self Woven Blouse</p></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>Accessories</s:tag>
+    <s:tag>Blouse</s:tag>
+    <s:variant>
+      <id>https://sudathi.com/products/10072359010591</id>
+      <title>L</title>
+      <s:price currency="INR">399.00</s:price>
+      <s:sku>73B1229-L</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://sudathi.com/products/10072359010591</id>
+      <title>XL</title>
+      <s:price currency="INR">399.00</s:price>
+      <s:sku>73B1229-XL</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://sudathi.com/products/10072359010591</id>
+      <title>XXL</title>
+      <s:price currency="INR">399.00</s:price>
+      <s:sku>73B1229-XXL</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+  </entry>
+</feed>

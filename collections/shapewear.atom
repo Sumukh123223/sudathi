@@ -1,0 +1,1390 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xml:lang="en" xmlns="http://www.w3.org/2005/Atom" xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/" xmlns:s="http://jadedpixel.com/-/spec/shopify">
+  <id>https://sudathi.com/collections/all.atom</id>
+  <link rel="alternate" type="text/html" href="https://sudathi.com/collections/all"/>
+  <link rel="self" type="application/atom+xml" href="https://sudathi.com/collections/shapewear.atom"/>
+  <title>Sudathi</title>
+  <updated>2025-11-25T19:17:48+05:30</updated>
+  <author>
+    <name>Sudathi</name>
+  </author>
+  <entry>
+    <id>https://sudathi.com/products/9842414387487</id>
+    <published>2025-11-25T19:17:48+05:30</published>
+    <updated>2025-11-25T19:17:48+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://sudathi.com/products/pink-lycra-plain-elastic-waist-shapewear-755swtk401"/>
+    <title>Pink Lycra Plain Elastic Waist Shapewear</title>
+    <s:type>Shapewear</s:type>
+    <s:vendor>Sudathi</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0818/7107/7663/files/755WTK401_5.jpg?v=1739261734"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Sudathi<br>
+        <strong>Type: </strong>Shapewear<br>
+        <strong>Price: </strong>
+            499.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>Pink Lycra Plain Elastic Waist Shapewear</p></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>Accessories</s:tag>
+    <s:tag>Shapewear</s:tag>
+    <s:variant>
+      <id>https://sudathi.com/products/9842414387487</id>
+      <title>S</title>
+      <s:price currency="INR">499.00</s:price>
+      <s:sku>755SWTK401-S</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://sudathi.com/products/9842414387487</id>
+      <title>M</title>
+      <s:price currency="INR">499.00</s:price>
+      <s:sku>755SWTK401-M</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://sudathi.com/products/9842414387487</id>
+      <title>L</title>
+      <s:price currency="INR">499.00</s:price>
+      <s:sku>755SWTK401-L</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://sudathi.com/products/9842414387487</id>
+      <title>XL</title>
+      <s:price currency="INR">499.00</s:price>
+      <s:sku>755SWTK401-XL</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://sudathi.com/products/9842414387487</id>
+      <title>XXL</title>
+      <s:price currency="INR">499.00</s:price>
+      <s:sku>755SWTK401-XXL</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://sudathi.com/products/8629495791903</id>
+    <published>2025-11-25T19:17:42+05:30</published>
+    <updated>2025-11-25T19:17:42+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://sudathi.com/products/navy-blue-coloured-lycra-solid-saree-shapewear-slv180tk112"/>
+    <title>Navy Blue Coloured Lycra Solid Saree Shapewear</title>
+    <s:type>Shapewear</s:type>
+    <s:vendor>Sudathi</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0818/7107/7663/files/180tk112-2_ea382695-b13e-42f3-b5c6-4964291265b2.jpg?v=1695125897"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Sudathi<br>
+        <strong>Type: </strong>Shapewear<br>
+        <strong>Price: </strong>
+            499.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>Navy Blue Coloured Lycra Solid Saree Shapewear | SLV180TK112</p></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>Accessories</s:tag>
+    <s:tag>Shapewear</s:tag>
+    <s:variant>
+      <id>https://sudathi.com/products/8629495791903</id>
+      <title>S</title>
+      <s:price currency="INR">499.00</s:price>
+      <s:sku>180TK112-S</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://sudathi.com/products/8629495791903</id>
+      <title>M</title>
+      <s:price currency="INR">499.00</s:price>
+      <s:sku>180TK112-M</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://sudathi.com/products/8629495791903</id>
+      <title>L</title>
+      <s:price currency="INR">499.00</s:price>
+      <s:sku>180TK112-L</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://sudathi.com/products/8629495791903</id>
+      <title>XL</title>
+      <s:price currency="INR">499.00</s:price>
+      <s:sku>180TK112-XL</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://sudathi.com/products/9842416091423</id>
+    <published>2025-07-24T13:08:14+05:30</published>
+    <updated>2025-07-24T13:08:14+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://sudathi.com/products/dark-grey-lycra-plain-elastic-waist-shapewear-755swtk413"/>
+    <title>Dark Grey Lycra Plain Elastic Waist Shapewear</title>
+    <s:type>Shapewear</s:type>
+    <s:vendor>Sudathi</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0818/7107/7663/files/755WTK413_5.jpg?v=1754466268"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Sudathi<br>
+        <strong>Type: </strong>Shapewear<br>
+        <strong>Price: </strong>
+            499.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>Dark Grey Lycra Plain Elastic Waist Shapewear</p></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>Accessories</s:tag>
+    <s:tag>Shapewear</s:tag>
+    <s:variant>
+      <id>https://sudathi.com/products/9842416091423</id>
+      <title>S</title>
+      <s:price currency="INR">499.00</s:price>
+      <s:sku>755SWTK413-S</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://sudathi.com/products/9842416091423</id>
+      <title>M</title>
+      <s:price currency="INR">499.00</s:price>
+      <s:sku>755SWTK413-M</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://sudathi.com/products/9842416091423</id>
+      <title>L</title>
+      <s:price currency="INR">499.00</s:price>
+      <s:sku>755SWTK413-L</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://sudathi.com/products/9842416091423</id>
+      <title>XL</title>
+      <s:price currency="INR">499.00</s:price>
+      <s:sku>755SWTK413-XL</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://sudathi.com/products/9842416091423</id>
+      <title>XXL</title>
+      <s:price currency="INR">499.00</s:price>
+      <s:sku>755SWTK413-XXL</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://sudathi.com/products/9842413666591</id>
+    <published>2025-07-24T13:08:12+05:30</published>
+    <updated>2025-07-24T13:08:12+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://sudathi.com/products/wine-lycra-plain-elastic-waist-shapewear-754swtk312"/>
+    <title>Wine Lycra Plain Elastic Waist Shapewear</title>
+    <s:type>Shapewear</s:type>
+    <s:vendor>Sudathi</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0818/7107/7663/files/754SWTK312_4_9bd6e04a-c951-448c-b275-254522a9ce0f.jpg?v=1754466255"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Sudathi<br>
+        <strong>Type: </strong>Shapewear<br>
+        <strong>Price: </strong>
+            499.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>Wine Lycra Plain Elastic Waist Shapewear</p></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>Accessories</s:tag>
+    <s:tag>Shapewear</s:tag>
+    <s:variant>
+      <id>https://sudathi.com/products/9842413666591</id>
+      <title>S</title>
+      <s:price currency="INR">499.00</s:price>
+      <s:sku>754SWTK312-S</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://sudathi.com/products/9842413666591</id>
+      <title>M</title>
+      <s:price currency="INR">499.00</s:price>
+      <s:sku>754SWTK312-M</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://sudathi.com/products/9842413666591</id>
+      <title>L</title>
+      <s:price currency="INR">499.00</s:price>
+      <s:sku>754SWTK312-L</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://sudathi.com/products/9842413666591</id>
+      <title>XL</title>
+      <s:price currency="INR">499.00</s:price>
+      <s:sku>754SWTK312-XL</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://sudathi.com/products/9842413666591</id>
+      <title>XXL</title>
+      <s:price currency="INR">499.00</s:price>
+      <s:sku>754SWTK312-XXL</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://sudathi.com/products/9842412781855</id>
+    <published>2025-07-24T13:08:11+05:30</published>
+    <updated>2025-07-24T13:08:11+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://sudathi.com/products/light-green-lycra-plain-elastic-waist-shapewear-754swtk305"/>
+    <title>Light Green Lycra Plain Elastic Waist Shapewear</title>
+    <s:type>Shapewear</s:type>
+    <s:vendor>Sudathi</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0818/7107/7663/files/754SWTK305_5_0c271cdd-fa9a-48ec-b541-683945d33699.jpg?v=1754466250"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Sudathi<br>
+        <strong>Type: </strong>Shapewear<br>
+        <strong>Price: </strong>
+            499.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>Light Green Lycra Plain Elastic Waist Shapewear</p></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>Accessories</s:tag>
+    <s:tag>Shapewear</s:tag>
+    <s:variant>
+      <id>https://sudathi.com/products/9842412781855</id>
+      <title>S</title>
+      <s:price currency="INR">499.00</s:price>
+      <s:sku>754SWTK305-S</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://sudathi.com/products/9842412781855</id>
+      <title>M</title>
+      <s:price currency="INR">499.00</s:price>
+      <s:sku>754SWTK305-M</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://sudathi.com/products/9842412781855</id>
+      <title>L</title>
+      <s:price currency="INR">499.00</s:price>
+      <s:sku>754SWTK305-L</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://sudathi.com/products/9842412781855</id>
+      <title>XL</title>
+      <s:price currency="INR">499.00</s:price>
+      <s:sku>754SWTK305-XL</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://sudathi.com/products/9842412781855</id>
+      <title>XXL</title>
+      <s:price currency="INR">499.00</s:price>
+      <s:sku>754SWTK305-XXL</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://sudathi.com/products/9842416124191</id>
+    <published>2024-12-25T15:40:43+05:30</published>
+    <updated>2024-12-25T15:40:43+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://sudathi.com/products/wine-lycra-plain-elastic-waist-shapewear-755swtk412"/>
+    <title>Wine Lycra Plain Elastic Waist Shapewear</title>
+    <s:type>Shapewear</s:type>
+    <s:vendor>Sudathi</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0818/7107/7663/files/755WTK412_6.jpg?v=1754466271"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Sudathi<br>
+        <strong>Type: </strong>Shapewear<br>
+        <strong>Price: </strong>
+            499.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>Wine Lycra Plain Elastic Waist Shapewear</p></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>Accessories</s:tag>
+    <s:tag>Shapewear</s:tag>
+    <s:variant>
+      <id>https://sudathi.com/products/9842416124191</id>
+      <title>S</title>
+      <s:price currency="INR">499.00</s:price>
+      <s:sku>755SWTK412-S</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://sudathi.com/products/9842416124191</id>
+      <title>M</title>
+      <s:price currency="INR">499.00</s:price>
+      <s:sku>755SWTK412-M</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://sudathi.com/products/9842416124191</id>
+      <title>L</title>
+      <s:price currency="INR">499.00</s:price>
+      <s:sku>755SWTK412-L</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://sudathi.com/products/9842416124191</id>
+      <title>XL</title>
+      <s:price currency="INR">499.00</s:price>
+      <s:sku>755SWTK412-XL</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://sudathi.com/products/9842416124191</id>
+      <title>XXL</title>
+      <s:price currency="INR">499.00</s:price>
+      <s:sku>755SWTK412-XXL</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://sudathi.com/products/9842415730975</id>
+    <published>2024-12-25T15:40:39+05:30</published>
+    <updated>2024-12-25T15:40:39+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://sudathi.com/products/dusty-pink-lycra-plain-elastic-waist-shapewear-755swtk409"/>
+    <title>Dusty Pink Lycra Plain Elastic Waist Shapewear</title>
+    <s:type>Shapewear</s:type>
+    <s:vendor>Sudathi</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0818/7107/7663/files/755SWTK409_pose_64410_output_415955_6a59e81d-b94a-4019-a331-ecd3d4807a50.jpg?v=1754466267"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Sudathi<br>
+        <strong>Type: </strong>Shapewear<br>
+        <strong>Price: </strong>
+            499.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>Dusty Pink Lycra Plain Elastic Waist Shapewear</p></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>Accessories</s:tag>
+    <s:tag>Shapewear</s:tag>
+    <s:variant>
+      <id>https://sudathi.com/products/9842415730975</id>
+      <title>S</title>
+      <s:price currency="INR">499.00</s:price>
+      <s:sku>755SWTK409-S</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://sudathi.com/products/9842415730975</id>
+      <title>M</title>
+      <s:price currency="INR">499.00</s:price>
+      <s:sku>755SWTK409-M</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://sudathi.com/products/9842415730975</id>
+      <title>L</title>
+      <s:price currency="INR">499.00</s:price>
+      <s:sku>755SWTK409-L</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://sudathi.com/products/9842415730975</id>
+      <title>XL</title>
+      <s:price currency="INR">499.00</s:price>
+      <s:sku>755SWTK409-XL</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://sudathi.com/products/9842415730975</id>
+      <title>XXL</title>
+      <s:price currency="INR">499.00</s:price>
+      <s:sku>755SWTK409-XXL</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://sudathi.com/products/9842415665439</id>
+    <published>2024-12-25T15:40:38+05:30</published>
+    <updated>2024-12-25T15:40:38+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://sudathi.com/products/dark-green-lycra-plain-elastic-waist-shapewear-755swtk408"/>
+    <title>Dark Green Lycra Plain Elastic Waist Shapewear</title>
+    <s:type>Shapewear</s:type>
+    <s:vendor>Sudathi</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0818/7107/7663/files/755WTK408_6.jpg?v=1754466264"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Sudathi<br>
+        <strong>Type: </strong>Shapewear<br>
+        <strong>Price: </strong>
+            499.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>Dark Green Lycra Plain Elastic Waist Shapewear</p></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>Accessories</s:tag>
+    <s:tag>Shapewear</s:tag>
+    <s:variant>
+      <id>https://sudathi.com/products/9842415665439</id>
+      <title>S</title>
+      <s:price currency="INR">499.00</s:price>
+      <s:sku>755SWTK408-S</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://sudathi.com/products/9842415665439</id>
+      <title>M</title>
+      <s:price currency="INR">499.00</s:price>
+      <s:sku>755SWTK408-M</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://sudathi.com/products/9842415665439</id>
+      <title>L</title>
+      <s:price currency="INR">499.00</s:price>
+      <s:sku>755SWTK408-L</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://sudathi.com/products/9842415665439</id>
+      <title>XL</title>
+      <s:price currency="INR">499.00</s:price>
+      <s:sku>755SWTK408-XL</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://sudathi.com/products/9842415665439</id>
+      <title>XXL</title>
+      <s:price currency="INR">499.00</s:price>
+      <s:sku>755SWTK408-XXL</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://sudathi.com/products/9842415010079</id>
+    <published>2024-12-25T15:40:35+05:30</published>
+    <updated>2024-12-25T15:40:35+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://sudathi.com/products/olive-green-lycra-plain-elastic-waist-shapewear-755swtk407"/>
+    <title>Olive Green Lycra Plain Elastic Waist Shapewear</title>
+    <s:type>Shapewear</s:type>
+    <s:vendor>Sudathi</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0818/7107/7663/files/755WTK407_5.jpg?v=1754466263"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Sudathi<br>
+        <strong>Type: </strong>Shapewear<br>
+        <strong>Price: </strong>
+            499.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>Olive Green Lycra Plain Elastic Waist Shapewear</p></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>Accessories</s:tag>
+    <s:tag>Shapewear</s:tag>
+    <s:variant>
+      <id>https://sudathi.com/products/9842415010079</id>
+      <title>S</title>
+      <s:price currency="INR">499.00</s:price>
+      <s:sku>755SWTK407-S</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://sudathi.com/products/9842415010079</id>
+      <title>M</title>
+      <s:price currency="INR">499.00</s:price>
+      <s:sku>755SWTK407-M</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://sudathi.com/products/9842415010079</id>
+      <title>L</title>
+      <s:price currency="INR">499.00</s:price>
+      <s:sku>755SWTK407-L</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://sudathi.com/products/9842415010079</id>
+      <title>XL</title>
+      <s:price currency="INR">499.00</s:price>
+      <s:sku>755SWTK407-XL</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://sudathi.com/products/9842415010079</id>
+      <title>XXL</title>
+      <s:price currency="INR">499.00</s:price>
+      <s:sku>755SWTK407-XXL</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://sudathi.com/products/9842414879007</id>
+    <published>2024-12-25T15:40:34+05:30</published>
+    <updated>2024-12-25T15:40:34+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://sudathi.com/products/light-green-lycra-plain-elastic-waist-shapewear-755swtk405"/>
+    <title>Light Green Lycra Plain Elastic Waist Shapewear</title>
+    <s:type>Shapewear</s:type>
+    <s:vendor>Sudathi</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0818/7107/7663/files/755WTK405_5.jpg?v=1754466263"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Sudathi<br>
+        <strong>Type: </strong>Shapewear<br>
+        <strong>Price: </strong>
+            499.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>Light Green Lycra Plain Elastic Waist Shapewear</p></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>Accessories</s:tag>
+    <s:tag>Shapewear</s:tag>
+    <s:variant>
+      <id>https://sudathi.com/products/9842414879007</id>
+      <title>S</title>
+      <s:price currency="INR">499.00</s:price>
+      <s:sku>755SWTK405-S</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://sudathi.com/products/9842414879007</id>
+      <title>M</title>
+      <s:price currency="INR">499.00</s:price>
+      <s:sku>755SWTK405-M</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://sudathi.com/products/9842414879007</id>
+      <title>L</title>
+      <s:price currency="INR">499.00</s:price>
+      <s:sku>755SWTK405-L</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://sudathi.com/products/9842414879007</id>
+      <title>XL</title>
+      <s:price currency="INR">499.00</s:price>
+      <s:sku>755SWTK405-XL</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://sudathi.com/products/9842414879007</id>
+      <title>XXL</title>
+      <s:price currency="INR">499.00</s:price>
+      <s:sku>755SWTK405-XXL</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://sudathi.com/products/9842414813471</id>
+    <published>2024-12-25T15:40:34+05:30</published>
+    <updated>2024-12-25T15:40:34+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://sudathi.com/products/sky-blue-lycra-plain-elastic-waist-shapewear-755swtk404"/>
+    <title>Sky Blue Lycra Plain Elastic Waist Shapewear</title>
+    <s:type>Shapewear</s:type>
+    <s:vendor>Sudathi</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0818/7107/7663/files/755WTK404_5.jpg?v=1754466260"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Sudathi<br>
+        <strong>Type: </strong>Shapewear<br>
+        <strong>Price: </strong>
+            499.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>Sky Blue Lycra Plain Elastic Waist Shapewear</p></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>Accessories</s:tag>
+    <s:tag>Shapewear</s:tag>
+    <s:variant>
+      <id>https://sudathi.com/products/9842414813471</id>
+      <title>S</title>
+      <s:price currency="INR">499.00</s:price>
+      <s:sku>755SWTK404-S</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://sudathi.com/products/9842414813471</id>
+      <title>M</title>
+      <s:price currency="INR">499.00</s:price>
+      <s:sku>755SWTK404-M</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://sudathi.com/products/9842414813471</id>
+      <title>L</title>
+      <s:price currency="INR">499.00</s:price>
+      <s:sku>755SWTK404-L</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://sudathi.com/products/9842414813471</id>
+      <title>XL</title>
+      <s:price currency="INR">499.00</s:price>
+      <s:sku>755SWTK404-XL</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://sudathi.com/products/9842414813471</id>
+      <title>XXL</title>
+      <s:price currency="INR">499.00</s:price>
+      <s:sku>755SWTK404-XXL</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://sudathi.com/products/9842414354719</id>
+    <published>2024-12-25T15:40:30+05:30</published>
+    <updated>2024-12-25T15:40:30+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://sudathi.com/products/mustard-lycra-plain-elastic-waist-shapewear-755swtk402"/>
+    <title>Mustard Lycra Plain Elastic Waist Shapewear</title>
+    <s:type>Shapewear</s:type>
+    <s:vendor>Sudathi</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0818/7107/7663/files/755WTK402_5.jpg?v=1754466259"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Sudathi<br>
+        <strong>Type: </strong>Shapewear<br>
+        <strong>Price: </strong>
+            499.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>Mustard Lycra Plain Elastic Waist Shapewear</p></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>Accessories</s:tag>
+    <s:tag>Shapewear</s:tag>
+    <s:variant>
+      <id>https://sudathi.com/products/9842414354719</id>
+      <title>S</title>
+      <s:price currency="INR">499.00</s:price>
+      <s:sku>755SWTK402-S</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://sudathi.com/products/9842414354719</id>
+      <title>M</title>
+      <s:price currency="INR">499.00</s:price>
+      <s:sku>755SWTK402-M</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://sudathi.com/products/9842414354719</id>
+      <title>L</title>
+      <s:price currency="INR">499.00</s:price>
+      <s:sku>755SWTK402-L</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://sudathi.com/products/9842414354719</id>
+      <title>XL</title>
+      <s:price currency="INR">499.00</s:price>
+      <s:sku>755SWTK402-XL</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://sudathi.com/products/9842414354719</id>
+      <title>XXL</title>
+      <s:price currency="INR">499.00</s:price>
+      <s:sku>755SWTK402-XXL</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://sudathi.com/products/9842414289183</id>
+    <published>2024-12-25T15:40:30+05:30</published>
+    <updated>2024-12-25T15:40:30+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://sudathi.com/products/dark-grey-lycra-plain-elastic-waist-shapewear-754swtk313"/>
+    <title>Dark Grey Lycra Plain Elastic Waist Shapewear</title>
+    <s:type>Shapewear</s:type>
+    <s:vendor>Sudathi</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0818/7107/7663/files/754SWTK313_5_2c038ca6-4c56-478d-adef-4993ee221a30.jpg?v=1754466259"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Sudathi<br>
+        <strong>Type: </strong>Shapewear<br>
+        <strong>Price: </strong>
+            499.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>Dark Grey Lycra Plain Elastic Waist Shapewear</p></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>Accessories</s:tag>
+    <s:tag>Shapewear</s:tag>
+    <s:variant>
+      <id>https://sudathi.com/products/9842414289183</id>
+      <title>S</title>
+      <s:price currency="INR">499.00</s:price>
+      <s:sku>754SWTK313-S</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://sudathi.com/products/9842414289183</id>
+      <title>M</title>
+      <s:price currency="INR">499.00</s:price>
+      <s:sku>754SWTK313-M</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://sudathi.com/products/9842414289183</id>
+      <title>L</title>
+      <s:price currency="INR">499.00</s:price>
+      <s:sku>754SWTK313-L</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://sudathi.com/products/9842414289183</id>
+      <title>XL</title>
+      <s:price currency="INR">499.00</s:price>
+      <s:sku>754SWTK313-XL</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://sudathi.com/products/9842414289183</id>
+      <title>XXL</title>
+      <s:price currency="INR">499.00</s:price>
+      <s:sku>754SWTK313-XXL</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://sudathi.com/products/9842413633823</id>
+    <published>2024-12-25T15:40:26+05:30</published>
+    <updated>2024-12-25T15:40:26+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://sudathi.com/products/navy-blue-lycra-plain-elastic-waist-shapewear-754swtk311"/>
+    <title>Navy Blue Lycra Plain Elastic Waist Shapewear</title>
+    <s:type>Shapewear</s:type>
+    <s:vendor>Sudathi</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0818/7107/7663/files/754SWTK311_5_186fe7bb-a376-4996-a84b-14cc61aac270.jpg?v=1754466255"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Sudathi<br>
+        <strong>Type: </strong>Shapewear<br>
+        <strong>Price: </strong>
+            499.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>Navy Blue Lycra Plain Elastic Waist Shapewear</p></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>Accessories</s:tag>
+    <s:tag>Shapewear</s:tag>
+    <s:variant>
+      <id>https://sudathi.com/products/9842413633823</id>
+      <title>S</title>
+      <s:price currency="INR">499.00</s:price>
+      <s:sku>754SWTK311-S</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://sudathi.com/products/9842413633823</id>
+      <title>M</title>
+      <s:price currency="INR">499.00</s:price>
+      <s:sku>754SWTK311-M</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://sudathi.com/products/9842413633823</id>
+      <title>L</title>
+      <s:price currency="INR">499.00</s:price>
+      <s:sku>754SWTK311-L</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://sudathi.com/products/9842413633823</id>
+      <title>XL</title>
+      <s:price currency="INR">499.00</s:price>
+      <s:sku>754SWTK311-XL</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://sudathi.com/products/9842413633823</id>
+      <title>XXL</title>
+      <s:price currency="INR">499.00</s:price>
+      <s:sku>754SWTK311-XXL</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://sudathi.com/products/9842413601055</id>
+    <published>2024-12-25T15:40:26+05:30</published>
+    <updated>2024-12-25T15:40:26+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://sudathi.com/products/black-lycra-plain-elastic-waist-shapewear-754swtk310"/>
+    <title>Black Lycra Plain Elastic Waist Shapewear</title>
+    <s:type>Shapewear</s:type>
+    <s:vendor>Sudathi</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0818/7107/7663/files/754SWTK310_5_abdd33c4-8c35-45df-bf3a-ea96f3491674.jpg?v=1754466318"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Sudathi<br>
+        <strong>Type: </strong>Shapewear<br>
+        <strong>Price: </strong>
+            499.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>Black Lycra Plain Elastic Waist Shapewear</p></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>Accessories</s:tag>
+    <s:tag>Shapewear</s:tag>
+    <s:variant>
+      <id>https://sudathi.com/products/9842413601055</id>
+      <title>S</title>
+      <s:price currency="INR">499.00</s:price>
+      <s:sku>754SWTK310-S</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://sudathi.com/products/9842413601055</id>
+      <title>M</title>
+      <s:price currency="INR">499.00</s:price>
+      <s:sku>754SWTK310-M</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://sudathi.com/products/9842413601055</id>
+      <title>L</title>
+      <s:price currency="INR">499.00</s:price>
+      <s:sku>754SWTK310-L</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://sudathi.com/products/9842413601055</id>
+      <title>XL</title>
+      <s:price currency="INR">499.00</s:price>
+      <s:sku>754SWTK310-XL</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://sudathi.com/products/9842413601055</id>
+      <title>XXL</title>
+      <s:price currency="INR">499.00</s:price>
+      <s:sku>754SWTK310-XXL</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://sudathi.com/products/9842413568287</id>
+    <published>2024-12-25T15:40:26+05:30</published>
+    <updated>2024-12-25T15:40:26+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://sudathi.com/products/dusty-pink-lycra-plain-elastic-waist-shapewear-754swtk309"/>
+    <title>Dusty Pink Lycra Plain Elastic Waist Shapewear</title>
+    <s:type>Shapewear</s:type>
+    <s:vendor>Sudathi</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0818/7107/7663/files/754SWTK309_5_9f5312e7-f3d0-4216-aabb-7f3785e15f27.jpg?v=1754466255"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Sudathi<br>
+        <strong>Type: </strong>Shapewear<br>
+        <strong>Price: </strong>
+            499.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>Dusty Pink Lycra Plain Elastic Waist Shapewear</p></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>Accessories</s:tag>
+    <s:tag>Shapewear</s:tag>
+    <s:variant>
+      <id>https://sudathi.com/products/9842413568287</id>
+      <title>S</title>
+      <s:price currency="INR">499.00</s:price>
+      <s:sku>754SWTK309-S</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://sudathi.com/products/9842413568287</id>
+      <title>M</title>
+      <s:price currency="INR">499.00</s:price>
+      <s:sku>754SWTK309-M</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://sudathi.com/products/9842413568287</id>
+      <title>L</title>
+      <s:price currency="INR">499.00</s:price>
+      <s:sku>754SWTK309-L</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://sudathi.com/products/9842413568287</id>
+      <title>XL</title>
+      <s:price currency="INR">499.00</s:price>
+      <s:sku>754SWTK309-XL</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://sudathi.com/products/9842413568287</id>
+      <title>XXL</title>
+      <s:price currency="INR">499.00</s:price>
+      <s:sku>754SWTK309-XXL</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://sudathi.com/products/9842412945695</id>
+    <published>2024-12-25T15:40:22+05:30</published>
+    <updated>2024-12-25T15:40:22+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://sudathi.com/products/dark-green-lycra-plain-elastic-waist-shapewear-754swtk308"/>
+    <title>Dark Green Lycra Plain Elastic Waist Shapewear</title>
+    <s:type>Shapewear</s:type>
+    <s:vendor>Sudathi</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0818/7107/7663/files/754SWTK308_4_37534bc7-7f18-40c2-9771-64dab6b8bd41.jpg?v=1754466251"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Sudathi<br>
+        <strong>Type: </strong>Shapewear<br>
+        <strong>Price: </strong>
+            499.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>Dark Green Lycra Plain Elastic Waist Shapewear</p></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>Accessories</s:tag>
+    <s:tag>Shapewear</s:tag>
+    <s:variant>
+      <id>https://sudathi.com/products/9842412945695</id>
+      <title>S</title>
+      <s:price currency="INR">499.00</s:price>
+      <s:sku>754SWTK308-S</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://sudathi.com/products/9842412945695</id>
+      <title>M</title>
+      <s:price currency="INR">499.00</s:price>
+      <s:sku>754SWTK308-M</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://sudathi.com/products/9842412945695</id>
+      <title>L</title>
+      <s:price currency="INR">499.00</s:price>
+      <s:sku>754SWTK308-L</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://sudathi.com/products/9842412945695</id>
+      <title>XL</title>
+      <s:price currency="INR">499.00</s:price>
+      <s:sku>754SWTK308-XL</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://sudathi.com/products/9842412945695</id>
+      <title>XXL</title>
+      <s:price currency="INR">499.00</s:price>
+      <s:sku>754SWTK308-XXL</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://sudathi.com/products/9842412880159</id>
+    <published>2024-12-25T15:40:22+05:30</published>
+    <updated>2024-12-25T15:40:22+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://sudathi.com/products/olive-green-lycra-plain-elastic-waist-shapewear-754swtk307"/>
+    <title>Olive Green Lycra Plain Elastic Waist Shapewear</title>
+    <s:type>Shapewear</s:type>
+    <s:vendor>Sudathi</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0818/7107/7663/files/754SWTK307_5_203baff5-7cfd-4366-a0c7-8e9c02bcf1a2.jpg?v=1754466251"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Sudathi<br>
+        <strong>Type: </strong>Shapewear<br>
+        <strong>Price: </strong>
+            499.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>Olive Green Lycra Plain Elastic Waist Shapewear</p></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>Accessories</s:tag>
+    <s:tag>Shapewear</s:tag>
+    <s:variant>
+      <id>https://sudathi.com/products/9842412880159</id>
+      <title>S</title>
+      <s:price currency="INR">499.00</s:price>
+      <s:sku>754SWTK307-S</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://sudathi.com/products/9842412880159</id>
+      <title>M</title>
+      <s:price currency="INR">499.00</s:price>
+      <s:sku>754SWTK307-M</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://sudathi.com/products/9842412880159</id>
+      <title>L</title>
+      <s:price currency="INR">499.00</s:price>
+      <s:sku>754SWTK307-L</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://sudathi.com/products/9842412880159</id>
+      <title>XL</title>
+      <s:price currency="INR">499.00</s:price>
+      <s:sku>754SWTK307-XL</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://sudathi.com/products/9842412880159</id>
+      <title>XXL</title>
+      <s:price currency="INR">499.00</s:price>
+      <s:sku>754SWTK307-XXL</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://sudathi.com/products/9842412224799</id>
+    <published>2024-12-25T15:40:18+05:30</published>
+    <updated>2024-12-25T15:40:18+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://sudathi.com/products/beige-lycra-plain-elastic-waist-shapewear-754swtk303"/>
+    <title>Cream Lycra Plain Elastic Waist Shapewear</title>
+    <s:type>Shapewear</s:type>
+    <s:vendor>Sudathi</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0818/7107/7663/files/754SWTK303_5_9c025f8d-a391-4500-a50a-682c613eb397.jpg?v=1754466247"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Sudathi<br>
+        <strong>Type: </strong>Shapewear<br>
+        <strong>Price: </strong>
+            499.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>Cream Lycra Plain Elastic Waist Shapewear</p></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>Accessories</s:tag>
+    <s:tag>Shapewear</s:tag>
+    <s:variant>
+      <id>https://sudathi.com/products/9842412224799</id>
+      <title>S</title>
+      <s:price currency="INR">499.00</s:price>
+      <s:sku>754SWTK303-S</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://sudathi.com/products/9842412224799</id>
+      <title>M</title>
+      <s:price currency="INR">499.00</s:price>
+      <s:sku>754SWTK303-M</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://sudathi.com/products/9842412224799</id>
+      <title>L</title>
+      <s:price currency="INR">499.00</s:price>
+      <s:sku>754SWTK303-L</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://sudathi.com/products/9842412224799</id>
+      <title>XL</title>
+      <s:price currency="INR">499.00</s:price>
+      <s:sku>754SWTK303-XL</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://sudathi.com/products/9842412224799</id>
+      <title>XXL</title>
+      <s:price currency="INR">499.00</s:price>
+      <s:sku>754SWTK303-XXL</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://sudathi.com/products/9842412159263</id>
+    <published>2024-12-25T15:40:18+05:30</published>
+    <updated>2024-12-25T15:40:18+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://sudathi.com/products/sky-blue-lycra-plain-elastic-waist-shapewear-754swtk304"/>
+    <title>Sky Blue Lycra Plain Elastic Waist Shapewear</title>
+    <s:type>Shapewear</s:type>
+    <s:vendor>Sudathi</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0818/7107/7663/files/754SWTK304_5_74901bb7-982b-41dc-bfef-f2ba7a72466f.jpg?v=1754466246"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Sudathi<br>
+        <strong>Type: </strong>Shapewear<br>
+        <strong>Price: </strong>
+            499.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>Sky Blue Lycra Plain Elastic Waist Shapewear</p></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>Accessories</s:tag>
+    <s:tag>Shapewear</s:tag>
+    <s:variant>
+      <id>https://sudathi.com/products/9842412159263</id>
+      <title>S</title>
+      <s:price currency="INR">499.00</s:price>
+      <s:sku>754SWTK304-S</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://sudathi.com/products/9842412159263</id>
+      <title>M</title>
+      <s:price currency="INR">499.00</s:price>
+      <s:sku>754SWTK304-M</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://sudathi.com/products/9842412159263</id>
+      <title>L</title>
+      <s:price currency="INR">499.00</s:price>
+      <s:sku>754SWTK304-L</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://sudathi.com/products/9842412159263</id>
+      <title>XL</title>
+      <s:price currency="INR">499.00</s:price>
+      <s:sku>754SWTK304-XL</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://sudathi.com/products/9842412159263</id>
+      <title>XXL</title>
+      <s:price currency="INR">499.00</s:price>
+      <s:sku>754SWTK304-XXL</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+  </entry>
+  <entry>
+    <id>https://sudathi.com/products/9842412126495</id>
+    <published>2024-12-25T15:40:18+05:30</published>
+    <updated>2024-12-25T15:40:18+05:30</updated>
+    <link rel="alternate" type="text/html" href="https://sudathi.com/products/pink-lycra-plain-elastic-waist-shapewear-754swtk301"/>
+    <title>Pink Lycra Plain Elastic Waist Shapewear</title>
+    <s:type>Shapewear</s:type>
+    <s:vendor>Sudathi</s:vendor>
+    <summary type="html">
+      <![CDATA[<table border="0">
+  <tr>
+    <td width="200"><img width="200" src="https://cdn.shopify.com/s/files/1/0818/7107/7663/files/754SWTK301_5_9a799ad4-b01f-4af1-8fcd-cb3ac8fd96bf.jpg?v=1754466246"></td>
+    <td valign="bottom">
+      <p>
+
+        <strong>Vendor: </strong>Sudathi<br>
+        <strong>Type: </strong>Shapewear<br>
+        <strong>Price: </strong>
+            499.00
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>Pink Lycra Plain Elastic Waist Shapewear</p></td>
+  </tr>
+</table>
+]]>
+    </summary>
+    <s:tag>Accessories</s:tag>
+    <s:tag>Shapewear</s:tag>
+    <s:variant>
+      <id>https://sudathi.com/products/9842412126495</id>
+      <title>S</title>
+      <s:price currency="INR">499.00</s:price>
+      <s:sku>754SWTK301-S</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://sudathi.com/products/9842412126495</id>
+      <title>M</title>
+      <s:price currency="INR">499.00</s:price>
+      <s:sku>754SWTK301-M</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://sudathi.com/products/9842412126495</id>
+      <title>L</title>
+      <s:price currency="INR">499.00</s:price>
+      <s:sku>754SWTK301-L</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://sudathi.com/products/9842412126495</id>
+      <title>XL</title>
+      <s:price currency="INR">499.00</s:price>
+      <s:sku>754SWTK301-XL</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+    <s:variant>
+      <id>https://sudathi.com/products/9842412126495</id>
+      <title>XXL</title>
+      <s:price currency="INR">499.00</s:price>
+      <s:sku>754SWTK301-XXL</s:sku>
+      <s:grams>0</s:grams>
+    </s:variant>
+  </entry>
+</feed>

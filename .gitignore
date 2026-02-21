@@ -1,0 +1,7 @@
+.env
+orders.json
+__pycache__/
+*.pyc
+venv/
+cdn/
+.DS_Store

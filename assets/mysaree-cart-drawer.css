@@ -1,0 +1,621 @@
+/* My Saree – Cart drawer: sidebar on desktop, full-screen on phone */
+
+/* Add to cart button animation (brief "Added ✓" state) */
+.mysaree-add-animate {
+  animation: mysaree-pulse 0.4s ease;
+}
+@keyframes mysaree-pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+add-to-cart.mysaree-add-animate,
+.mysaree-add-animate {
+  background: #0a7c42 !important;
+  color: #fff !important;
+}
+
+/* Header: show only cart icon, hide "Cart" text (single icon, no dual) */
+#cart-icon-bubble .visually-hidden,
+.header__icon--cart .visually-hidden,
+.cart-drawer-container .header__icon--cart .visually-hidden {
+  display: none !important;
+}
+
+#mysaree-cart-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+  z-index: 100002;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.25s, visibility 0.25s;
+  cursor: pointer;
+}
+#mysaree-cart-backdrop.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+#mysaree-cart-drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  max-width: 420px;
+  height: 100%;
+  background: #fff;
+  z-index: 100003;
+  display: flex;
+  flex-direction: column;
+  box-shadow: -4px 0 24px rgba(0,0,0,0.15);
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+  overflow: hidden;
+}
+#mysaree-cart-drawer.is-open {
+  transform: translateX(0);
+}
+
+@media (max-width: 749px) {
+  #mysaree-cart-drawer {
+    max-width: 92%;
+  }
+}
+
+/* Header */
+.mysaree-cart-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  border-bottom: 1px solid #eee;
+  flex-shrink: 0;
+  gap: 12px;
+}
+.mysaree-cart-title {
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin: 0;
+  color: #111;
+  flex: 1;
+}
+.mysaree-cart-close {
+  width: 40px;
+  height: 40px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  color: #333;
+  line-height: 1;
+  flex-shrink: 0;
+}
+.mysaree-cart-close:hover { color: #093174; }
+
+/* Scrollable body: ~70% cart (offer + items + summary), ~20–25% recommendations at bottom */
+.mysaree-cart-scroll {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+.mysaree-cart-scroll .mysaree-cart-offer,
+.mysaree-cart-scroll .mysaree-cart-items,
+.mysaree-cart-scroll .mysaree-cart-summary {
+  flex-shrink: 0;
+}
+.mysaree-cart-scroll .mysaree-cart-items {
+  flex: 1;
+  min-height: 70%;
+}
+.mysaree-cart-scroll .mysaree-cart-recommendations {
+  flex: 0 0 auto;
+  max-height: 22vh;
+}
+
+/* YOU MAY ALSO LIKE (at bottom, ~20–25% space; main focus stays on cart) */
+.mysaree-cart-recommendations {
+  padding: 16px 20px 20px;
+  border-top: 1px solid #eee;
+  margin-top: 8px;
+  display: none;
+  overflow: hidden;
+}
+.mysaree-recs-heading {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: #333;
+  margin: 0 0 12px 0;
+  text-transform: uppercase;
+}
+.mysaree-recs-inner {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+  -webkit-overflow-scrolling: touch;
+}
+.mysaree-recs-inner::-webkit-scrollbar { height: 4px; }
+.mysaree-recs-inner::-webkit-scrollbar-thumb { background: #ccc; border-radius: 2px; }
+.mysaree-rec-card {
+  flex: 0 0 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+.mysaree-rec-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  margin-bottom: 8px;
+}
+.mysaree-rec-link:hover { color: #093174; }
+.mysaree-rec-card img,
+.mysaree-rec-noimg {
+  width: 100%;
+  aspect-ratio: 3/4;
+  object-fit: cover;
+  border-radius: 6px;
+  background: #f5f5f5;
+  display: block;
+}
+.mysaree-rec-noimg { min-height: 100px; }
+.mysaree-rec-name {
+  display: block;
+  font-size: 12px;
+  font-weight: 500;
+  margin-top: 6px;
+  line-height: 1.3;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+.mysaree-rec-price {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: #093174;
+  margin-top: 4px;
+}
+.mysaree-rec-add {
+  width: 100%;
+  padding: 8px 10px;
+  background: #093174;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  letter-spacing: 0.02em;
+  margin-top: auto;
+}
+.mysaree-rec-add:hover { background: #072a5c; }
+
+/* Offer bar */
+.mysaree-cart-offer {
+  padding: 12px 20px;
+  background: #e8f0fe;
+  color: #093174;
+  font-size: 13px;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+.mysaree-cart-progress {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+}
+.mysaree-cart-progress-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #c5d8f6;
+  transition: background 0.2s;
+}
+.mysaree-cart-progress-dot.filled { background: #093174; }
+
+/* Cart items (part of .mysaree-cart-scroll) */
+.mysaree-cart-items {
+  flex: 1;
+  min-height: 0;
+  padding: 16px 20px;
+}
+.mysaree-cart-item {
+  display: flex;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+.mysaree-cart-item:last-child { border-bottom: none; }
+.mysaree-cart-item-img {
+  width: 80px;
+  height: 80px;
+  min-width: 80px;
+  object-fit: cover;
+  background: #f5f5f5;
+  border-radius: 4px;
+}
+.mysaree-cart-item-details {
+  flex: 1;
+  min-width: 0;
+}
+.mysaree-cart-item-name {
+  font-size: 14px;
+  font-weight: 500;
+  color: #111;
+  margin: 0 0 4px 0;
+  line-height: 1.3;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.mysaree-cart-item-tag {
+  font-size: 11px;
+  color: #666;
+  margin-bottom: 8px;
+}
+.mysaree-cart-item-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.mysaree-cart-qty {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  overflow: hidden;
+}
+.mysaree-cart-qty button {
+  width: 32px;
+  height: 28px;
+  border: none;
+  background: #f5f5f5;
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 1;
+  color: #333;
+}
+.mysaree-cart-qty button:hover { background: #eee; }
+.mysaree-cart-qty span {
+  min-width: 32px;
+  text-align: center;
+  font-size: 14px;
+}
+.mysaree-cart-item-price {
+  font-size: 15px;
+  font-weight: 600;
+  color: #111;
+}
+.mysaree-cart-item-price s {
+  font-size: 12px;
+  font-weight: 400;
+  color: #999;
+  margin-right: 4px;
+}
+.mysaree-cart-item-free {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 600;
+  color: #0a7c42;
+  margin-left: 4px;
+}
+.mysaree-cart-remove {
+  background: none;
+  border: none;
+  padding: 4px;
+  cursor: pointer;
+  color: #999;
+  margin-left: auto;
+}
+.mysaree-cart-remove:hover { color: #c00; }
+
+/* Empty */
+.mysaree-cart-empty {
+  padding: 40px 20px;
+  text-align: center;
+  color: #666;
+  font-size: 15px;
+}
+.mysaree-cart-empty a {
+  color: #093174;
+  text-decoration: none;
+  font-weight: 500;
+}
+.mysaree-cart-empty a:hover { text-decoration: underline; }
+.mysaree-cart-empty-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 0 20px 24px;
+}
+.mysaree-cart-empty-btn {
+  display: block;
+  padding: 14px 20px;
+  background: #f0f0f0;
+  color: #111;
+  text-align: center;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-decoration: none;
+  border-radius: 4px;
+  border: 1px solid #e0e0e0;
+}
+.mysaree-cart-empty-btn:hover {
+  background: #e8f0fe;
+  color: #093174;
+  border-color: #093174;
+}
+
+/* Summary */
+.mysaree-cart-summary {
+  padding: 16px 20px;
+  border-top: 1px solid #eee;
+  flex-shrink: 0;
+  background: #fff;
+}
+.mysaree-cart-subtotal {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+.mysaree-cart-note {
+  font-size: 12px;
+  color: #666;
+  margin-bottom: 14px;
+}
+.mysaree-cart-place-order {
+  display: block;
+  width: 100%;
+  padding: 14px 20px;
+  background: #093174;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+}
+.mysaree-cart-place-order:hover { background: #072a5c; color: #fff; }
+.mysaree-cart-payment-note {
+  font-size: 12px;
+  color: #666;
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Checkout popup (same window: delivery + offers + pay → gateway → order placed) */
+.mysaree-checkout-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s, visibility 0.25s;
+}
+.mysaree-checkout-backdrop.is-open {
+  opacity: 1;
+  visibility: visible;
+}
+.mysaree-checkout-popup {
+  background: #fff;
+  border-radius: 14px;
+  max-width: 480px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 24px 64px rgba(0,0,0,0.22);
+  transform: scale(0.96);
+  transition: transform 0.25s ease;
+}
+.mysaree-checkout-backdrop.is-open .mysaree-checkout-popup {
+  transform: scale(1);
+}
+.mysaree-checkout-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  background: #093174;
+  color: #fff;
+  border-radius: 12px 12px 0 0;
+}
+.mysaree-checkout-brand {
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+.mysaree-checkout-close {
+  width: 36px;
+  height: 36px;
+  border: none;
+  background: rgba(255,255,255,0.2);
+  color: #fff;
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+  border-radius: 6px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.mysaree-checkout-close:hover { background: rgba(255,255,255,0.3); }
+.mysaree-checkout-body {
+  padding: 20px;
+}
+.mysaree-checkout-trust {
+  text-align: center;
+  background: #e8f0fe;
+  color: #093174;
+  padding: 10px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+.mysaree-checkout-section {
+  margin-bottom: 24px;
+}
+.mysaree-checkout-section-title {
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: #1a1a1a;
+  margin: 0 0 14px 0;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #eee;
+}
+.mysaree-checkout-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.mysaree-checkout-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+.mysaree-checkout-field {
+  margin-bottom: 14px;
+}
+.mysaree-checkout-row .mysaree-checkout-field {
+  margin-bottom: 14px;
+}
+.mysaree-checkout-form label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 6px;
+}
+.mysaree-checkout-form label .req {
+  color: #c00;
+  font-weight: 700;
+}
+.mysaree-checkout-form label .opt {
+  font-size: 11px;
+  font-weight: 500;
+  color: #888;
+  margin-left: 4px;
+}
+.mysaree-checkout-form input {
+  width: 100%;
+  padding: 11px 12px;
+  border: 1px solid #d0d0d0;
+  border-radius: 8px;
+  font-size: 14px;
+  color: #1a1a1a;
+  background: #fff;
+  box-sizing: border-box;
+}
+.mysaree-checkout-form input::placeholder {
+  color: #999;
+}
+.mysaree-checkout-form input:focus {
+  outline: none;
+  border-color: #093174;
+  box-shadow: 0 0 0 3px rgba(9,49,116,0.15);
+}
+.mysaree-checkout-field--pincode input {
+  max-width: 140px;
+}
+.mysaree-checkout-error {
+  color: #c00;
+  font-size: 13px;
+  margin-top: 8px;
+}
+.mysaree-checkout-offers-note {
+  font-size: 13px;
+  color: #555;
+  margin: 0 0 6px 0;
+  line-height: 1.45;
+}
+.mysaree-checkout-offers-note:last-child {
+  margin-bottom: 0;
+}
+.mysaree-checkout-pay {
+  width: 100%;
+  padding: 16px 20px;
+  background: #093174;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  cursor: pointer;
+  margin-top: 12px;
+}
+.mysaree-checkout-pay:hover { background: #072a5c; }
+.mysaree-checkout-pay:disabled { opacity: 0.7; cursor: not-allowed; }
+.mysaree-checkout-success {
+  padding: 32px 20px;
+  text-align: center;
+}
+.mysaree-checkout-success-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #0a7c42;
+  color: #fff;
+  font-size: 28px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px;
+}
+.mysaree-checkout-success h3 {
+  font-size: 18px;
+  color: #111;
+  margin: 0 0 8px 0;
+}
+.mysaree-checkout-success p {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 20px;
+}
+.mysaree-checkout-close-btn {
+  padding: 12px 24px;
+  background: #093174;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.mysaree-checkout-close-btn:hover { background: #072a5c; }

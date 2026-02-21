@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Order Placed – My Saree</title>
+  <style>
+    body { font-family: system-ui, sans-serif; margin: 0; padding: 40px 20px; text-align: center; max-width: 500px; margin-left: auto; margin-right: auto; }
+    h1 { color: #0a6b2d; font-size: 1.75rem; }
+    .icon { font-size: 4rem; margin-bottom: 16px; }
+    p { color: #333; line-height: 1.6; }
+    a { color: #093174; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <div class="icon">✓</div>
+  <h1>Order placed successfully</h1>
+  <p id="msg">Thank you for your order. We will process it shortly.</p>
+  <p><a href="/">Continue shopping</a></p>
+  <script>
+    var params = new URLSearchParams(window.location.search);
+    var orderId = params.get('order_id');
+    if (orderId) {
+      var msg = document.getElementById('msg');
+      msg.textContent = 'Thank you for your order. Your order ID is: ' + orderId + '. We will process it shortly.';
+      try { localStorage.removeItem('mysaree_cart'); } catch (e) {}
+    }
+  </script>
+</body>
+</html>
