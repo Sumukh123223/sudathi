@@ -452,6 +452,17 @@ def collections(subpath):
     return _send_html_from_root("index.html"), 404
 
 
+# Optional: redirect /cdn/* to external CDN (e.g. Cloudflare R2) when cdn folder not in deploy
+CDN_BASE_URL = os.environ.get("CDN_BASE_URL", "").rstrip("/")
+
+
+@app.route("/cdn/<path:subpath>")
+def cdn_redirect(subpath):
+    if CDN_BASE_URL:
+        return redirect(f"{CDN_BASE_URL}/cdn/{subpath}", code=302)
+    return send_from_directory(os.path.join(ROOT, "cdn"), subpath)
+
+
 @app.route("/<path:path>")
 def static_file(path):
     if path == "index.html":
