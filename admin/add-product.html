@@ -16,12 +16,45 @@
     .msg.success { background: #d4edda; color: #155724; }
     .msg.error { background: #f8d7da; color: #721c24; }
     a { color: #093174; }
+    .drop-zone {
+      border: 2px dashed #093174;
+      border-radius: 8px;
+      padding: 2rem;
+      text-align: center;
+      cursor: pointer;
+      background: #f8fafc;
+      margin-top: 0.25rem;
+    }
+    .drop-zone:hover, .drop-zone.dragover { background: #e8f0fe; }
+    .drop-text { color: #64748b; }
+    .image-list {
+      list-style: none;
+      padding: 0;
+      margin: 0.5rem 0 0;
+    }
+    .image-list li {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem;
+      background: #f1f5f9;
+      border-radius: 6px;
+      margin-bottom: 0.25rem;
+      cursor: grab;
+    }
+    .image-list li:active { cursor: grabbing; }
+    .image-list li img { width: 48px; height: 48px; object-fit: cover; border-radius: 4px; }
+    .image-list li .num { font-weight: 600; color: #093174; min-width: 1.5rem; }
+    .image-list li .path { flex: 1; font-size: 0.85rem; color: #475569; overflow: hidden; text-overflow: ellipsis; }
+    .image-list li .remove { color: #dc2626; cursor: pointer; padding: 0.25rem; }
+    .image-list li .remove:hover { text-decoration: underline; }
+    .image-list li.uploading .path { color: #64748b; }
   </style>
 </head>
 <body>
   <h1>Add Product</h1>
   <p><a href="/collections/saree">← Back to Saree Collection</a></p>
-  <p><strong>Image upload:</strong> Put image files in the <code>cdn/</code> folder (e.g. <code>cdn/shop/files/black-saree.jpg</code>), then use path <code>/cdn/shop/files/black-saree.jpg</code> in the form.</p>
+  <p><strong>Images:</strong> Drag & drop images below (or click to select). They upload automatically and appear in order 1, 2, 3, 4… Drag to reorder.</p>
 
   <form id="addForm">
     <label>Product ID (optional, auto-generated if empty)</label>
@@ -30,8 +63,12 @@
     <label>Title *</label>
     <input type="text" name="title" required placeholder="e.g. Black Cotton Printed Saree">
 
-    <label>Image URL *</label>
-    <input type="text" name="image" required placeholder="e.g. /cdn/shop/files/black1.jpg">
+    <label>Images * (drag & drop or click)</label>
+    <div id="dropZone" class="drop-zone">
+      <span class="drop-text">Drop images here or click to browse</span>
+      <input type="file" id="fileInput" accept="image/*" multiple hidden>
+    </div>
+    <ul id="imageList" class="image-list"></ul>
 
     <label>Price (₹)</label>
     <input type="number" name="price" min="0" step="1" placeholder="999" value="0">
@@ -188,42 +225,142 @@
   <div id="msg" class="msg" style="display:none;"></div>
 
   <script>
-    document.getElementById('addForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      var form = e.target;
-      var product = {
-        id: (form.id.value || '').trim() || undefined,
-        title: (form.title.value || '').trim(),
-        image: (form.image.value || '').trim(),
-        price: parseFloat(form.price.value) || 0,
-        category: (form.category.value || '').trim() || undefined,
-        color: (form.color.value || '').trim() || undefined,
-        fabric: (form.fabric.value || '').trim() || undefined,
-        type: (form.type.value || '').trim() || undefined,
-        work: (form.work.value || '').trim() || undefined
+    (function() {
+      var imagePaths = [];
+      var listEl = document.getElementById('imageList');
+      var dropZone = document.getElementById('dropZone');
+      var fileInput = document.getElementById('fileInput');
+
+      function renderList() {
+        listEl.innerHTML = '';
+        imagePaths.forEach(function(path, i) {
+          var li = document.createElement('li');
+          li.dataset.index = i;
+          li.draggable = true;
+          li.innerHTML = '<span class="num">' + (i + 1) + '</span>' +
+            '<img src="' + path + '" alt="">' +
+            '<span class="path">' + path + '</span>' +
+            '<span class="remove" data-index="' + i + '">Remove</span>';
+          listEl.appendChild(li);
+        });
+        bindListEvents();
+      }
+
+      function bindListEvents() {
+        listEl.querySelectorAll('li').forEach(function(li) {
+          li.querySelector('.remove').onclick = function() {
+            var idx = parseInt(li.dataset.index, 10);
+            imagePaths.splice(idx, 1);
+            renderList();
+          };
+          li.ondragstart = function(e) {
+            e.dataTransfer.setData('index', li.dataset.index);
+            li.classList.add('dragging');
+          };
+          li.ondragend = function() { li.classList.remove('dragging'); };
+          li.ondragover = function(e) { e.preventDefault(); };
+          li.ondrop = function(e) {
+            e.preventDefault();
+            var from = parseInt(e.dataTransfer.getData('index'), 10);
+            var to = parseInt(li.dataset.index, 10);
+            if (from === to) return;
+            var item = imagePaths.splice(from, 1)[0];
+            imagePaths.splice(to, 0, item);
+            renderList();
+          };
+        });
+      }
+
+      function uploadFile(file) {
+        var fd = new FormData();
+        fd.append('file', file);
+        return fetch('/api/upload-image', { method: 'POST', body: fd })
+          .then(function(r) { return r.json(); })
+          .then(function(data) {
+            if (data.error) throw new Error(data.error);
+            return data.path;
+          });
+      }
+
+      function addFiles(files) {
+        var toUpload = [];
+        for (var i = 0; i < files.length; i++) {
+          var f = files[i];
+          if (!f.type || f.type.indexOf('image/') !== 0) continue;
+          toUpload.push(f);
+        }
+        if (toUpload.length === 0) return;
+        var loading = document.createElement('li');
+        loading.className = 'uploading';
+        loading.innerHTML = '<span class="num">…</span><span class="path">Uploading ' + toUpload.length + ' image(s)…</span>';
+        listEl.appendChild(loading);
+        Promise.all(toUpload.map(function(f) { return uploadFile(f); }))
+          .then(function(paths) {
+            imagePaths = imagePaths.concat(paths);
+            renderList();
+          })
+          .catch(function(err) {
+            loading.remove();
+            alert(err.message || 'Upload failed');
+          });
+      }
+
+      dropZone.onclick = function() { fileInput.click(); };
+      dropZone.ondragover = function(e) { e.preventDefault(); dropZone.classList.add('dragover'); };
+      dropZone.ondragleave = function() { dropZone.classList.remove('dragover'); };
+      dropZone.ondrop = function(e) {
+        e.preventDefault();
+        dropZone.classList.remove('dragover');
+        addFiles(e.dataTransfer.files || []);
       };
-      var msg = document.getElementById('msg');
-      msg.style.display = 'none';
-      fetch('/api/products-catalog', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(product)
-      })
-      .then(function(r) { return r.json(); })
-      .then(function(data) {
-        if (data.error) throw new Error(data.error);
-        msg.textContent = 'Product added! ID: ' + (data.id || product.id || '');
-        msg.className = 'msg success';
-        msg.style.display = 'block';
-        form.title.value = '';
-        form.title.focus();
-      })
-      .catch(function(err) {
-        msg.textContent = err.message || 'Failed to add product';
-        msg.className = 'msg error';
-        msg.style.display = 'block';
+      fileInput.onchange = function() {
+        addFiles(fileInput.files || []);
+        fileInput.value = '';
+      };
+
+      document.getElementById('addForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        var form = e.target;
+        if (imagePaths.length === 0) {
+          alert('Add at least one image (drag & drop or click)');
+          return;
+        }
+        var product = {
+          id: (form.id.value || '').trim() || undefined,
+          title: (form.title.value || '').trim(),
+          images: imagePaths.slice(),
+          price: parseFloat(form.price.value) || 0,
+          category: (form.category.value || '').trim() || undefined,
+          color: (form.color.value || '').trim() || undefined,
+          fabric: (form.fabric.value || '').trim() || undefined,
+          type: (form.type.value || '').trim() || undefined,
+          work: (form.work.value || '').trim() || undefined
+        };
+        var msg = document.getElementById('msg');
+        msg.style.display = 'none';
+        fetch('/api/products-catalog', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(product)
+        })
+        .then(function(r) { return r.json(); })
+        .then(function(data) {
+          if (data.error) throw new Error(data.error);
+          msg.textContent = 'Product added! ID: ' + (data.id || product.id || '');
+          msg.className = 'msg success';
+          msg.style.display = 'block';
+          form.title.value = '';
+          imagePaths = [];
+          renderList();
+          form.title.focus();
+        })
+        .catch(function(err) {
+          msg.textContent = err.message || 'Failed to add product';
+          msg.className = 'msg error';
+          msg.style.display = 'block';
+        });
       });
-    });
+    })();
   </script>
 </body>
 </html>

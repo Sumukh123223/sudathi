@@ -334,6 +334,33 @@ def products_filter_data():
     return jsonify(_product_filter_data())
 
 
+UPLOAD_DIR = os.path.join(ROOT, "cdn", "shop", "files")
+
+
+@app.route("/api/upload-image", methods=["POST"])
+def upload_image():
+    """Upload image file; save to cdn/shop/files/; return path like /cdn/shop/files/filename.jpg"""
+    if "file" not in request.files and "image" not in request.files:
+        return jsonify({"error": "No file in request"}), 400
+    f = request.files.get("file") or request.files.get("image")
+    if not f or not f.filename:
+        return jsonify({"error": "No file selected"}), 400
+    ext = os.path.splitext(f.filename)[1].lower() or ".jpg"
+    if ext not in (".jpg", ".jpeg", ".png", ".webp", ".gif"):
+        return jsonify({"error": "Only image files allowed (jpg, png, webp, gif)"}), 400
+    os.makedirs(UPLOAD_DIR, exist_ok=True)
+    safe_name = str(uuid.uuid4())[:8] + "_" + "".join(c for c in f.filename if c.isalnum() or c in ".-_")[:40]
+    if not safe_name.endswith(ext):
+        safe_name += ext
+    dest = os.path.join(UPLOAD_DIR, safe_name)
+    try:
+        f.save(dest)
+        path = "/cdn/shop/files/" + safe_name
+        return jsonify({"path": path, "filename": safe_name})
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+
 @app.route("/api/products-catalog", methods=["GET", "POST"])
 def products_catalog():
     """GET: return products-catalog.json. POST: append one product and save."""
@@ -358,6 +385,12 @@ def products_catalog():
         if not isinstance(products, list):
             products = []
         product.setdefault("id", "p" + str(int(__import__("time").time() * 1000)))
+        # Support images array: use first as image for backward compat
+        imgs = product.get("images")
+        if isinstance(imgs, list) and imgs:
+            product["image"] = imgs[0] if isinstance(imgs[0], str) else str(imgs[0])
+        elif not product.get("image") and imgs:
+            product["image"] = imgs[0] if isinstance(imgs[0], str) else str(imgs[0])
         products.append(product)
         with open(PRODUCTS_CATALOG_FILE, "w", encoding="utf-8") as f:
             json.dump(products, f, indent=2)

@@ -2,22 +2,17 @@
 
 ## How to add products
 
-1. **Start your server** (Flask or `python serve.py`)
+1. **Start your server** – use `python app.py` (Flask) for image upload; `python serve.py` is static-only and won't support uploads
 2. **Open the admin page:** [http://localhost:8080/admin/add-product.html](http://localhost:8080/admin/add-product.html)
 3. **Fill the form** with product details
 4. **Click "Add Product"** – the product is saved to `products-catalog.json` and appears on the collection page
 
-## Image upload
+## Images
 
-1. Put image files in the `cdn/` folder, e.g.:
-   ```
-   my-saree-store/
-   └── cdn/
-       └── shop/
-           └── files/
-               └── black-saree.jpg
-   ```
-2. In the form, use the path: `/cdn/shop/files/black-saree.jpg`
+- **Drag & drop** images onto the form (or click to browse)
+- Images upload automatically to `cdn/shop/files/`
+- They appear in order **1, 2, 3, 4** – drag to reorder
+- At least one image is required
 
 ## Categories (all included in the form)
 

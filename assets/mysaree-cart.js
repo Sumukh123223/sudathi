@@ -794,7 +794,7 @@
     var productUrl = '/collections/' + slug + '/products/' + handle;
     var price = Number(p.price) || 0;
     var pricePaise = Math.round(price * 100);
-    var imgSrc = (p.image || '').replace(/&amp;/g, '&');
+    var imgSrc = ((p.images && p.images[0]) || p.image || '').replace(/&amp;/g, '&');
     var title = (p.title || '').replace(/</g, '&lt;').replace(/>/g, '&gt;');
     return '<li class="grid__item"><div class="card-wrapper" data-product-id="' + (p.id || '') + '">' +
       '<div class="card card--product">' +
@@ -815,9 +815,13 @@
     var keepHtml = '';
     keep.forEach(function (el) { keepHtml += el.outerHTML; });
     grid.innerHTML = '';
-    products.forEach(function (p) {
-      grid.insertAdjacentHTML('beforeend', buildProductCard(p));
-    });
+    if (products.length === 0) {
+      grid.insertAdjacentHTML('beforeend', '<li class="grid__item" style="grid-column:1/-1;text-align:center;padding:3rem;color:#64748b;"><p>No products yet. Add products via <a href="/admin/add-product.html">Admin</a>.</p></li>');
+    } else {
+      products.forEach(function (p) {
+        grid.insertAdjacentHTML('beforeend', buildProductCard(p));
+      });
+    }
     if (keepHtml) grid.insertAdjacentHTML('beforeend', keepHtml);
     var countEl = document.getElementById('ProductCount');
     var countMobile = document.getElementById('ProductCountMobile');
@@ -883,6 +887,8 @@
   function initCollectionFilters() {
     var path = (typeof window !== 'undefined' && window.location && window.location.pathname) || '';
     if (path.indexOf('/collections/') !== 0 || path.indexOf('/products/') !== -1) return;
+    var grid = document.getElementById('product-grid') || (document.getElementById('ProductGridContainer') && document.getElementById('ProductGridContainer').querySelector('.product-grid, ul[role="list"]'));
+    if (grid) grid.innerHTML = '';
     loadProductsCatalog(function () { applyFilters(); });
     var style = document.getElementById('mysaree-hide-loading');
     if (!style) {
