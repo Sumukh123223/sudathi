@@ -564,6 +564,20 @@ def collections(subpath):
     return _send_html_from_root("index.html"), 404
 
 
+# Cache headers so reload/refresh is faster (browser can reuse cached assets and short-cache HTML)
+@app.after_request
+def add_cache_headers(response):
+    path = (request.path or "").lower()
+    if path.startswith("/assets/") or path.startswith("/cdn/") or path.endswith(".js") or path.endswith(".css"):
+        if response.status_code == 200:
+            response.cache_control.max_age = 86400 * 7  # 1 week for static assets
+            response.cache_control.public = True
+    elif path.endswith(".html") and response.status_code == 200:
+        response.cache_control.max_age = 60   # 1 min for HTML so refresh feels faster
+        response.cache_control.public = True
+    return response
+
+
 # Optional: redirect /cdn/* to external CDN (e.g. Cloudflare R2) when cdn folder not in deploy
 CDN_BASE_URL = os.environ.get("CDN_BASE_URL", "").rstrip("/")
 
