@@ -890,15 +890,26 @@
     return true;
   }
 
-  function applyCollectionFilters() {
-    var path = typeof window.location !== 'undefined' ? window.location.pathname || '' : '';
-    if (path.indexOf('/collections/') !== 0 || path.indexOf('/products/') !== -1) return;
+  function hideCollectionLoadingState() {
     var container = document.getElementById('ProductGridContainer');
+    if (container) {
+      var collection = container.querySelector('.collection');
+      if (collection) collection.classList.remove('loading');
+    }
+    document.querySelectorAll('.product-count__text').forEach(function (el) { el.classList.remove('loading'); });
     document.querySelectorAll('#ProductGridContainer .loading-overlay, .product-grid-container .loading-overlay').forEach(function (el) { el.style.display = 'none'; });
+    document.querySelectorAll('#ProductGridContainer .loading-overlay__spinner, .product-grid-container .loading-overlay__spinner, .product-count .loading-overlay__spinner, .product-count .icon-spinner').forEach(function (el) { el.style.display = 'none'; if (el.parentElement && el.parentElement.classList.contains('loading-overlay__spinner')) el.parentElement.style.display = 'none'; });
     if (container) {
       var lo = container.querySelector('.loading-overlay');
       if (lo) lo.style.display = 'none';
+      container.querySelectorAll('.loading-overlay__spinner').forEach(function (el) { el.style.display = 'none'; });
     }
+  }
+
+  function applyCollectionFilters() {
+    var path = typeof window.location !== 'undefined' ? window.location.pathname || '' : '';
+    if (path.indexOf('/collections/') !== 0 || path.indexOf('/products/') !== -1) return;
+    hideCollectionLoadingState();
     var urlState = getCollectionUrlState();
     var filterParams = urlState.filterParams;
     var priceGte = urlState.priceGte;
@@ -997,9 +1008,7 @@
     } else if (noResults) {
       noResults.style.display = 'none';
     }
-    var loadingOverlay = (container && container.querySelector('.loading-overlay')) || document.querySelector('#ProductGridContainer .loading-overlay') || document.querySelector('.product-grid-container .loading-overlay');
-    if (loadingOverlay) loadingOverlay.style.display = 'none';
-    document.querySelectorAll('#ProductGridContainer .loading-overlay, .product-grid-container .loading-overlay, .product-grid + .loading-overlay').forEach(function (el) { el.style.display = 'none'; });
+    hideCollectionLoadingState();
   }
 
   var quickFilterMap = {
@@ -1016,12 +1025,24 @@
   function initCollectionFilters() {
     var path = typeof window.location !== 'undefined' ? window.location.pathname || '' : '';
     if (path.indexOf('/collections/') !== 0 || path.indexOf('/products/') !== -1) return;
+    var style = document.getElementById('mysaree-hide-loading');
+    if (!style) {
+      style = document.createElement('style');
+      style.id = 'mysaree-hide-loading';
+      style.textContent = '#ProductGridContainer .loading-overlay,.product-grid-container .loading-overlay,.product-count .loading-overlay__spinner,.collection.loading .loading-overlay{display:none!important}.product-count__text.loading+.loading-overlay__spinner{display:none!important}';
+      (document.head || document.documentElement).appendChild(style);
+    }
     function runFilter() { applyCollectionFilters(); }
     runFilter();
     setTimeout(runFilter, 50);
     setTimeout(runFilter, 200);
     setTimeout(runFilter, 500);
     setTimeout(runFilter, 1000);
+    var hideCount = 0;
+    var hideInterval = setInterval(function () {
+      hideCollectionLoadingState();
+      if (++hideCount >= 15) clearInterval(hideInterval);
+    }, 200);
     if (window.addEventListener) window.addEventListener('load', runFilter);
     fetch('/api/products-filter-data')
       .then(function (r) { return r.json(); })
