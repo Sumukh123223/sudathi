@@ -733,38 +733,34 @@
   // Category / colour / fabric / type filters on collection pages – use /api/products-filter-data for real attributes
   var collectionFilterData = null;
 
-  function getCollectionFilterParams() {
-    var params = {};
-    var search = typeof window.location !== 'undefined' && window.location.search ? window.location.search.slice(1) : '';
-    if (!search) return params;
-    search.split('&').forEach(function (pair) {
-      var i = pair.indexOf('=');
-      if (i === -1) return;
-      var key = decodeURIComponent(pair.slice(0, i)).trim();
-      var val = decodeURIComponent(pair.slice(i + 1)).trim();
-      if (key.indexOf('filter.p.m.global.') !== 0 || !val) return;
-      if (params[key] === undefined) params[key] = val;
-      else {
-        if (!Array.isArray(params[key])) params[key] = [params[key]];
-        if (params[key].indexOf(val) === -1) params[key].push(val);
-      }
-    });
-    return params;
-  }
+  var collectionActiveFilters = { filterParams: {}, priceGte: null, priceLte: null, sortBy: '' };
 
-  function getCollectionUrlState() {
-    var state = { filterParams: getCollectionFilterParams(), priceGte: null, priceLte: null, sortBy: '' };
-    var search = typeof window.location !== 'undefined' && window.location.search ? window.location.search.slice(1) : '';
-    if (!search) return state;
-    search.split('&').forEach(function (pair) {
-      var i = pair.indexOf('=');
-      if (i === -1) return;
-      var key = decodeURIComponent(pair.slice(0, i)).trim();
-      var val = decodeURIComponent(pair.slice(i + 1)).trim();
-      if (key === 'filter.v.price.gte') state.priceGte = (val !== '' && !isNaN(parseInt(val, 10))) ? parseInt(val, 10) : null;
-      else if (key === 'filter.v.price.lte') state.priceLte = (val !== '' && !isNaN(parseInt(val, 10))) ? parseInt(val, 10) : null;
-      else if (key === 'sort_by') state.sortBy = val || '';
+  function getActiveFiltersFromForm(form) {
+    var state = { filterParams: {}, priceGte: null, priceLte: null, sortBy: '' };
+    if (!form) return state;
+    var colorAdded = false;
+    form.querySelectorAll('input[name^="filter.p.m.global"]:checked').forEach(function (inp) {
+      var n = inp.getAttribute('name');
+      var v = (inp.value || '').trim();
+      if (!n || !v) return;
+      if (n.indexOf('filter.p.m.global.color') !== -1) {
+        if (colorAdded) return;
+        colorAdded = true;
+      }
+      state.filterParams[n] = v;
     });
+    var gteInp = form.querySelector('input[name="filter.v.price.gte"]');
+    var lteInp = form.querySelector('input[name="filter.v.price.lte"]');
+    if (gteInp && gteInp.value) {
+      var gte = Math.round(parseFloat(gteInp.value) * 100);
+      if (!isNaN(gte)) state.priceGte = gte;
+    }
+    if (lteInp && lteInp.value) {
+      var lte = Math.round(parseFloat(lteInp.value) * 100);
+      if (!isNaN(lte)) state.priceLte = lte;
+    }
+    var sortSelect = form.querySelector('select[name="sort_by"]');
+    if (sortSelect && sortSelect.value) state.sortBy = sortSelect.value;
     return state;
   }
 
@@ -904,12 +900,11 @@
     var path = typeof window.location !== 'undefined' ? window.location.pathname || '' : '';
     if (path.indexOf('/collections/') !== 0 || path.indexOf('/products/') !== -1) return;
     hideCollectionLoadingState();
-    var urlState = getCollectionUrlState();
-    var filterParams = urlState.filterParams;
-    var priceGte = urlState.priceGte;
-    var priceLte = urlState.priceLte;
-    var sortBy = (urlState.sortBy || '').toLowerCase();
-    function syncFacetFormToUrl(form) {
+    var filterParams = collectionActiveFilters.filterParams;
+    var priceGte = collectionActiveFilters.priceGte;
+    var priceLte = collectionActiveFilters.priceLte;
+    var sortBy = (collectionActiveFilters.sortBy || '').toLowerCase();
+    function syncFacetFormToState(form) {
       if (!form) return;
       form.querySelectorAll('input[name^="filter.p.m.global"]').forEach(function (inp) {
         var key = inp.getAttribute('name');
@@ -925,10 +920,10 @@
       if (gteInp) gteInp.value = priceGte != null ? (priceGte / 100) : '';
       if (lteInp) lteInp.value = priceLte != null ? (priceLte / 100) : '';
       var sortSelect = form.querySelector('select[name="sort_by"]');
-      if (sortSelect) sortSelect.value = urlState.sortBy || (sortSelect.options[0] && sortSelect.options[0].value) || '';
+      if (sortSelect) sortSelect.value = collectionActiveFilters.sortBy || (sortSelect.options[0] && sortSelect.options[0].value) || '';
     }
-    syncFacetFormToUrl(document.getElementById('FacetFiltersForm'));
-    syncFacetFormToUrl(document.getElementById('FacetFiltersFormMobile'));
+    syncFacetFormToState(document.getElementById('FacetFiltersForm'));
+    syncFacetFormToState(document.getElementById('FacetFiltersFormMobile'));
     var container = document.getElementById('ProductGridContainer');
     var gridEl = document.getElementById('product-grid') || (container && container.querySelector('.product-grid'));
     if (!gridEl && container) gridEl = container.querySelector('ul[role="list"]');
@@ -1044,6 +1039,7 @@
       if (++hideCount >= 15) clearInterval(hideInterval);
     }, 200);
     if (window.addEventListener) window.addEventListener('load', runFilter);
+    window.addEventListener('unhandledrejection', function () { hideCollectionLoadingState(); });
     fetch('/api/products-filter-data')
       .then(function (r) { return r.ok ? r.json() : Promise.resolve({}); })
       .then(function (data) {
@@ -1064,12 +1060,10 @@
       var link = e.target && (e.target.closest ? e.target.closest('a') : null);
       if (link && link.tagName === 'A') {
         var href = (link.getAttribute('href') || '').split('?')[0];
-        if (path.indexOf('/collections/') === 0 && path.indexOf('/products/') === -1 && (link.classList.contains('facets__reset') || link.closest('.facet-remove') || (href === path && window.location.search))) {
+        if (path.indexOf('/collections/') === 0 && path.indexOf('/products/') === -1 && (link.classList.contains('facets__reset') || link.closest('.facet-remove') || href === path)) {
           e.preventDefault();
           e.stopPropagation();
-          if (window.history && window.history.replaceState) {
-            window.history.replaceState({}, '', path);
-          }
+          collectionActiveFilters = { filterParams: {}, priceGte: null, priceLte: null, sortBy: '' };
           applyCollectionFilters();
           return;
         }
@@ -1079,15 +1073,7 @@
         if (dataParam && dataValue) {
           e.preventDefault();
           e.stopPropagation();
-          var basePath = path.split('?')[0];
-          var current = getCollectionFilterParams();
-          current[dataParam] = dataValue;
-          var parts = [];
-          for (var k in current) { if (current[k]) parts.push(encodeURIComponent(k) + '=' + encodeURIComponent(current[k])); }
-          var q = parts.join('&');
-          if (window.history && window.history.replaceState) {
-            window.history.replaceState({}, '', basePath + (q ? '?' + q : ''));
-          }
+          collectionActiveFilters.filterParams[dataParam] = dataValue;
           applyCollectionFilters();
           return;
         }
@@ -1099,14 +1085,7 @@
             if (p && v) {
               e.preventDefault();
               e.stopPropagation();
-              var current = getCollectionFilterParams();
-              current[p] = v;
-              var parts = [];
-              for (var k in current) { if (current[k]) parts.push(encodeURIComponent(k) + '=' + encodeURIComponent(current[k])); }
-              var q = parts.join('&');
-              if (window.history && window.history.replaceState) {
-                window.history.replaceState({}, '', path.split('?')[0] + (q ? '?' + q : ''));
-              }
+              collectionActiveFilters.filterParams[p] = v;
               applyCollectionFilters();
               return;
             }
@@ -1118,14 +1097,7 @@
           if (mapped) {
             e.preventDefault();
             e.stopPropagation();
-            var current = getCollectionFilterParams();
-            current[mapped.param] = mapped.value;
-            var parts = [];
-            for (var k in current) { if (current[k]) parts.push(encodeURIComponent(k) + '=' + encodeURIComponent(current[k])); }
-            var query = parts.join('&');
-            if (window.history && window.history.replaceState) {
-              window.history.replaceState({}, '', path.split('?')[0] + (query ? '?' + query : ''));
-            }
+            collectionActiveFilters.filterParams[mapped.param] = mapped.value;
             applyCollectionFilters();
             return;
           }
@@ -1139,69 +1111,25 @@
       if (!isFilter) return;
       e.preventDefault();
       e.stopPropagation();
-      var base = (href.split('?')[0] || window.location.pathname).trim() || window.location.pathname;
       var linkQuery = href.indexOf('?') !== -1 ? href.slice(href.indexOf('?') + 1) : '';
-      var isColorLink = linkQuery.indexOf('filter.p.m.global.color=') !== -1;
-      var query = linkQuery;
-      if (isColorLink && window.location.search) {
-        var currentParts = window.location.search.slice(1).split('&');
-        var out = [];
-        var colorVal = null;
-        var linkParams = linkQuery.split('&');
-        for (var qi = 0; qi < linkParams.length; qi++) {
-          if (linkParams[qi].indexOf('filter.p.m.global.color=') === 0) {
-            colorVal = linkParams[qi];
-            break;
-          }
-        }
-        for (var pi = 0; pi < currentParts.length; pi++) {
-          if (currentParts[pi].indexOf('filter.p.m.global.color=') === 0) continue;
-          out.push(currentParts[pi]);
-        }
-        if (colorVal) out.push(colorVal);
-        query = out.join('&');
-      }
-      if (typeof window.history !== 'undefined' && window.history.replaceState) {
-        window.history.replaceState({}, '', base + (query ? '?' + query : ''));
-      }
+      linkQuery.split('&').forEach(function (pair) {
+        var i = pair.indexOf('=');
+        if (i === -1) return;
+        var key = decodeURIComponent(pair.slice(0, i)).trim();
+        var val = decodeURIComponent(pair.slice(i + 1)).trim();
+        if (!key || !val) return;
+        if (key.indexOf('filter.p.m.global.') === 0) collectionActiveFilters.filterParams[key] = val;
+        else if (key === 'filter.v.price.gte') collectionActiveFilters.priceGte = parseInt(val, 10) || null;
+        else if (key === 'filter.v.price.lte') collectionActiveFilters.priceLte = parseInt(val, 10) || null;
+        else if (key === 'sort_by') collectionActiveFilters.sortBy = val;
+      });
       applyCollectionFilters();
     }, true);
-    function buildCollectionQueryFromForm(form) {
-      if (!form) return '';
-      var parts = [];
-      var colorAdded = false;
-      form.querySelectorAll('input[name^="filter.p.m.global"]:checked').forEach(function (inp) {
-        var n = inp.getAttribute('name');
-        var v = inp.value;
-        if (!n || !v) return;
-        if (n.indexOf('filter.p.m.global.color') !== -1) {
-          if (colorAdded) return;
-          colorAdded = true;
-        }
-        parts.push(encodeURIComponent(n) + '=' + encodeURIComponent(v));
-      });
-      var gteInp = form.querySelector('input[name="filter.v.price.gte"]');
-      var lteInp = form.querySelector('input[name="filter.v.price.lte"]');
-      if (gteInp && gteInp.value) {
-        var gte = Math.round(parseFloat(gteInp.value) * 100);
-        if (!isNaN(gte)) parts.push('filter.v.price.gte=' + gte);
-      }
-      if (lteInp && lteInp.value) {
-        var lte = Math.round(parseFloat(lteInp.value) * 100);
-        if (!isNaN(lte)) parts.push('filter.v.price.lte=' + lte);
-      }
-      var sortSelect = form.querySelector('select[name="sort_by"]');
-      if (sortSelect && sortSelect.value) parts.push('sort_by=' + encodeURIComponent(sortSelect.value));
-      return parts.join('&');
-    }
     function onFacetFormChange(updatedForm) {
       var path = window.location.pathname || '';
       if (path.indexOf('/collections/') !== 0 || path.indexOf('/products/') !== -1) return;
       var form = updatedForm || document.getElementById('FacetFiltersForm') || document.getElementById('FacetFiltersFormMobile');
-      var query = form ? buildCollectionQueryFromForm(form) : '';
-      if (window.history && window.history.replaceState) {
-        window.history.replaceState({}, '', path.split('?')[0] + (query ? '?' + query : ''));
-      }
+      collectionActiveFilters = form ? getActiveFiltersFromForm(form) : { filterParams: {}, priceGte: null, priceLte: null, sortBy: '' };
       applyCollectionFilters();
     }
     document.addEventListener('change', function (e) {
@@ -1233,7 +1161,6 @@
         });
       }
     }
-    window.addEventListener('popstate', applyCollectionFilters);
   }
 
   if (document.readyState === 'loading') {
