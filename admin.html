@@ -26,6 +26,10 @@
     .card select { width: 100%; padding: 0.35rem; margin-bottom: 0.4rem; font-size: 0.8rem; }
     .card label { display: block; font-size: 0.7rem; color: #666; margin-bottom: 0.2rem; text-transform: uppercase; }
     .card .handle { font-size: 0.7rem; color: #999; word-break: break-all; margin-top: 0.25rem; }
+    .card .btn-save { width: 100%; margin-top: 0.5rem; padding: 0.5rem; background: #093174; color: #fff; border: none; border-radius: 4px; cursor: pointer; font-size: 0.85rem; }
+    .card .btn-save:hover { opacity: 0.9; }
+    .card .btn-save:disabled { opacity: 0.6; cursor: not-allowed; }
+    .multi-hint { font-size: 0.7rem; color: #888; margin-bottom: 0.5rem; }
     .error { background: #fee; color: #c00; padding: 1rem; border-radius: 4px; margin-bottom: 1rem; }
     .success { background: #efe; color: #060; padding: 0.5rem; border-radius: 4px; margin-bottom: 1rem; }
   </style>
@@ -40,7 +44,7 @@
     </div>
     <div id="admin-screen" style="display: none;">
       <h1>Product categories (admin)</h1>
-      <p>Assign Category, Color, Fabric and Type to each product. Only products that match the selected filters will show on the storefront when customers filter.</p>
+      <p>Assign Category, Color, Fabric and Type to each product. You can select <strong>multiple</strong> options per product (e.g. Office Wear + Festive). Hold <strong>Ctrl</strong> (Windows) or <strong>Cmd</strong> (Mac) to select multiple. Products will appear on the main site only under the categories/filters you choose here.</p>
       <div id="message"></div>
       <div class="toolbar">
         <input type="text" class="search" id="search" placeholder="Search by title or handle…">
@@ -101,6 +105,7 @@
       '<img class="card-img" src="' + (imgSrc || '') + '" alt="" onerror="this.style.background=\'#ddd\';this.alt=\'No image\'">' +
       '<div class="card-body">' +
       '<div class="card-title">' + (p.title || p.handle) + '</div>' +
+      '<div class="multi-hint">Ctrl/Cmd + click to select multiple</div>' +
       '<label>Category</label><select multiple data-field="category">' +
       options.category.map(function (v) { return '<option value="' + v + '"' + (cat.indexOf(v) !== -1 ? ' selected' : '') + '>' + v + '</option>'; }).join('') +
       '</select>' +
@@ -113,27 +118,57 @@
       '<label>Type</label><select multiple data-field="type">' +
       options.type.map(function (v) { return '<option value="' + v + '"' + (typ.indexOf(v) !== -1 ? ' selected' : '') + '>' + v + '</option>'; }).join('') +
       '</select>' +
+      '<button type="button" class="btn-save" data-handle="' + (p.handle || '').replace(/"/g, '&quot;') + '">Save this product</button>' +
       '<div class="handle">' + p.handle + '</div></div>';
     return card;
+  }
+
+  function collectAttributesFromCard(card) {
+    var handle = card.dataset.handle;
+    if (!handle) return null;
+    var out = {};
+    out[handle] = {};
+    ['category', 'color', 'fabric', 'type'].forEach(function (field) {
+      var sel = card.querySelector('select[data-field="' + field + '"]');
+      if (!sel) return;
+      var val = [];
+      for (var i = 0; i < sel.options.length; i++) {
+        if (sel.options[i].selected) val.push(sel.options[i].value);
+      }
+      out[handle][field] = val;
+    });
+    return out;
   }
 
   function collectAttributes() {
     var out = {};
     productGrid.querySelectorAll('.card').forEach(function (card) {
-      var handle = card.dataset.handle;
-      if (!handle) return;
-      out[handle] = {};
-      ['category', 'color', 'fabric', 'type'].forEach(function (field) {
-        var sel = card.querySelector('select[data-field="' + field + '"]');
-        if (!sel) return;
-        var val = [];
-        for (var i = 0; i < sel.options.length; i++) {
-          if (sel.options[i].selected) val.push(sel.options[i].value);
-        }
-        out[handle][field] = val;
-      });
+      var one = collectAttributesFromCard(card);
+      if (one) Object.assign(out, one);
     });
     return out;
+  }
+
+  function saveOneProduct(card, btn) {
+    var payload = collectAttributesFromCard(card);
+    if (!payload) return;
+    btn.disabled = true;
+    fetch('/api/admin/product-attributes?key=' + encodeURIComponent(key), {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    }).then(function (r) {
+      if (r.status === 401) throw new Error('Invalid admin key');
+      return r.json();
+    }).then(function () {
+      var handle = card.dataset.handle;
+      if (handle) attributes[handle] = payload[handle];
+      showMessage('Product saved. It will show on the main site under the selected categories.');
+    }).catch(function (e) {
+      showMessage(e.message || 'Save failed', true);
+    }).finally(function () {
+      btn.disabled = false;
+    });
   }
 
   function filterGrid() {
@@ -207,6 +242,13 @@
 
   reloadBtn.addEventListener('click', load);
   searchInput.addEventListener('input', filterGrid);
+
+  productGrid.addEventListener('click', function (e) {
+    var btn = e.target.closest('.btn-save');
+    if (!btn) return;
+    var card = btn.closest('.card');
+    if (card) saveOneProduct(card, btn);
+  });
 
   if (getKey()) load();
 })();
