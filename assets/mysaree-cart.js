@@ -825,8 +825,10 @@
     var title = '';
     var flits = card.querySelector('[data-flits-product-handle]');
     if (flits) title = (flits.getAttribute('data-flits-product-title') || '').toLowerCase();
-    var titleEl = card.querySelector('.card-information__text, .card__title');
+    var titleEl = card.querySelector('.card-information__text, .card__title, .card-information__text h4');
     if (titleEl && !title) title = titleEl.textContent.trim().toLowerCase();
+    var extra = card.querySelector('.card-information .full-unstyled-link [class*="visually-hidden"]');
+    if (extra && extra.textContent) title = title + ' ' + extra.textContent.trim().toLowerCase();
     var text = (handle + ' ' + title).toLowerCase().replace(/-/g, ' ');
     for (var key in filterParams) {
       var val = (filterParams[key] || '').toLowerCase().replace(/\s+/g, ' ');
@@ -844,20 +846,22 @@
     var priceGte = urlState.priceGte;
     var priceLte = urlState.priceLte;
     var sortBy = (urlState.sortBy || '').toLowerCase();
-    var facetForm = document.getElementById('FacetFiltersForm');
-    if (facetForm) {
-      facetForm.querySelectorAll('input[name^="filter.p.m.global"]').forEach(function (inp) {
+    function syncFacetFormToUrl(form) {
+      if (!form) return;
+      form.querySelectorAll('input[name^="filter.p.m.global"]').forEach(function (inp) {
         var key = inp.getAttribute('name');
         var val = (inp.value || '').trim();
         inp.checked = !!(key && filterParams[key] && filterParams[key].toLowerCase() === val.toLowerCase());
       });
-      var gteInp = facetForm.querySelector('input[name="filter.v.price.gte"]');
-      var lteInp = facetForm.querySelector('input[name="filter.v.price.lte"]');
+      var gteInp = form.querySelector('input[name="filter.v.price.gte"]');
+      var lteInp = form.querySelector('input[name="filter.v.price.lte"]');
       if (gteInp) gteInp.value = priceGte != null ? (priceGte / 100) : '';
       if (lteInp) lteInp.value = priceLte != null ? (priceLte / 100) : '';
-      var sortSelect = facetForm.querySelector('select[name="sort_by"]');
-      if (sortSelect) sortSelect.value = urlState.sortBy || sortSelect.options[0] && sortSelect.options[0].value || '';
+      var sortSelect = form.querySelector('select[name="sort_by"]');
+      if (sortSelect) sortSelect.value = urlState.sortBy || (sortSelect.options[0] && sortSelect.options[0].value) || '';
     }
+    syncFacetFormToUrl(document.getElementById('FacetFiltersForm'));
+    syncFacetFormToUrl(document.getElementById('FacetFiltersFormMobile'));
     var cards = document.querySelectorAll('.grid__item');
     if (!cards.length) cards = document.querySelectorAll('.card-wrapper[data-product-id], [data-flits-product-handle]');
     var visible = [];
@@ -928,6 +932,16 @@
       var path = window.location.pathname || '';
       var link = e.target && (e.target.closest ? e.target.closest('a') : null);
       if (link && link.tagName === 'A') {
+        var href = (link.getAttribute('href') || '').split('?')[0];
+        if (path.indexOf('/collections/') === 0 && path.indexOf('/products/') === -1 && (link.classList.contains('facets__reset') || link.closest('.facet-remove') || (href === path && window.location.search))) {
+          e.preventDefault();
+          e.stopPropagation();
+          if (window.history && window.history.replaceState) {
+            window.history.replaceState({}, '', path);
+          }
+          applyCollectionFilters();
+          return;
+        }
         var dataParam = link.getAttribute('data-filter-param');
         var dataValue = link.getAttribute('data-filter-value');
         var dataFilter = link.getAttribute('data-collection-filter');
@@ -989,45 +1003,64 @@
       }
       applyCollectionFilters();
     }, true);
-    var facetForm = document.getElementById('FacetFiltersForm');
-    if (facetForm) {
-      function buildCollectionQuery() {
-        var parts = [];
-        facetForm.querySelectorAll('input[name^="filter.p.m.global"]:checked').forEach(function (inp) {
-          var n = inp.getAttribute('name');
-          var v = inp.value;
-          if (n && v) parts.push(encodeURIComponent(n) + '=' + encodeURIComponent(v));
-        });
-        var gteInp = facetForm.querySelector('input[name="filter.v.price.gte"]');
-        var lteInp = facetForm.querySelector('input[name="filter.v.price.lte"]');
-        if (gteInp && gteInp.value) {
-          var gte = Math.round(parseFloat(gteInp.value) * 100);
-          if (!isNaN(gte)) parts.push('filter.v.price.gte=' + gte);
-        }
-        if (lteInp && lteInp.value) {
-          var lte = Math.round(parseFloat(lteInp.value) * 100);
-          if (!isNaN(lte)) parts.push('filter.v.price.lte=' + lte);
-        }
-        var sortSelect = facetForm.querySelector('select[name="sort_by"]');
-        if (sortSelect && sortSelect.value) parts.push('sort_by=' + encodeURIComponent(sortSelect.value));
-        return parts.join('&');
-      }
-      facetForm.addEventListener('change', function () {
-        var query = buildCollectionQuery();
-        if (typeof window.history !== 'undefined' && window.history.replaceState) {
-          window.history.replaceState({}, '', path + (query ? '?' + query : ''));
-        }
-        applyCollectionFilters();
+    function buildCollectionQueryFromForm(form) {
+      if (!form) return '';
+      var parts = [];
+      form.querySelectorAll('input[name^="filter.p.m.global"]:checked').forEach(function (inp) {
+        var n = inp.getAttribute('name');
+        var v = inp.value;
+        if (n && v) parts.push(encodeURIComponent(n) + '=' + encodeURIComponent(v));
       });
+      var gteInp = form.querySelector('input[name="filter.v.price.gte"]');
+      var lteInp = form.querySelector('input[name="filter.v.price.lte"]');
+      if (gteInp && gteInp.value) {
+        var gte = Math.round(parseFloat(gteInp.value) * 100);
+        if (!isNaN(gte)) parts.push('filter.v.price.gte=' + gte);
+      }
+      if (lteInp && lteInp.value) {
+        var lte = Math.round(parseFloat(lteInp.value) * 100);
+        if (!isNaN(lte)) parts.push('filter.v.price.lte=' + lte);
+      }
+      var sortSelect = form.querySelector('select[name="sort_by"]');
+      if (sortSelect && sortSelect.value) parts.push('sort_by=' + encodeURIComponent(sortSelect.value));
+      return parts.join('&');
+    }
+    function onFacetFormChange(updatedForm) {
+      var path = window.location.pathname || '';
+      if (path.indexOf('/collections/') !== 0 || path.indexOf('/products/') !== -1) return;
+      var form = updatedForm || document.getElementById('FacetFiltersForm') || document.getElementById('FacetFiltersFormMobile');
+      var query = form ? buildCollectionQueryFromForm(form) : '';
+      if (window.history && window.history.replaceState) {
+        window.history.replaceState({}, '', path.split('?')[0] + (query ? '?' + query : ''));
+      }
+      applyCollectionFilters();
+    }
+    document.addEventListener('change', function (e) {
+      var t = e.target;
+      if (!t || !t.form) return;
+      var name = (t.getAttribute && t.getAttribute('name')) || '';
+      if (name.indexOf('filter.p.m.global') === 0 || name === 'filter.v.price.gte' || name === 'filter.v.price.lte' || name === 'sort_by') {
+        var path = window.location.pathname || '';
+        if (path.indexOf('/collections/') === 0 && path.indexOf('/products/') === -1) onFacetFormChange(t.form);
+      }
+    }, true);
+    var facetForm = document.getElementById('FacetFiltersForm');
+    var mobileForm = document.getElementById('FacetFiltersFormMobile');
+    if (facetForm) {
       var applyBtn = facetForm.querySelector('button[type="submit"], .facets__form button, [name="filter-apply"]');
       if (applyBtn) {
         applyBtn.addEventListener('click', function (e) {
           e.preventDefault();
-          var query = buildCollectionQuery();
-          if (typeof window.history !== 'undefined' && window.history.replaceState) {
-            window.history.replaceState({}, '', path + (query ? '?' + query : ''));
-          }
-          applyCollectionFilters();
+          onFacetFormChange(facetForm);
+        });
+      }
+    }
+    if (mobileForm) {
+      var mobileApply = mobileForm.querySelector('button[type="submit"], .facets__form button, [name="filter-apply"]');
+      if (mobileApply) {
+        mobileApply.addEventListener('click', function (e) {
+          e.preventDefault();
+          onFacetFormChange(mobileForm);
         });
       }
     }
