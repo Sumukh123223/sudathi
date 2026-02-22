@@ -742,7 +742,12 @@
       if (i === -1) return;
       var key = decodeURIComponent(pair.slice(0, i)).trim();
       var val = decodeURIComponent(pair.slice(i + 1)).trim();
-      if (key.indexOf('filter.p.m.global.') === 0) params[key] = val;
+      if (key.indexOf('filter.p.m.global.') !== 0 || !val) return;
+      if (params[key] === undefined) params[key] = val;
+      else {
+        if (!Array.isArray(params[key])) params[key] = [params[key]];
+        if (params[key].indexOf(val) === -1) params[key].push(val);
+      }
     });
     return params;
   }
@@ -797,28 +802,35 @@
   function productCardMatchesFilters(card, filterParams, filterData) {
     var handle = getHandleFromCard(card);
     if (!handle) return Object.keys(filterParams).length === 0;
+    var vals = function (v) { return Array.isArray(v) ? v : (v ? [String(v).trim()] : []); };
     if (filterData && filterData[handle]) {
       var att = filterData[handle];
       for (var key in filterParams) {
-        var val = (filterParams[key] || '').trim();
-        if (!val) continue;
+        var filterVals = vals(filterParams[key]).filter(Boolean);
+        if (!filterVals.length) continue;
+        var match = false;
         if (key.indexOf('filter.p.m.global.fabric') !== -1) {
           if (!att.fabric || !att.fabric.length) return false;
-          var match = att.fabric.some(function (f) { return f.toLowerCase() === val.toLowerCase(); });
-          if (!match) return false;
+          match = filterVals.some(function (val) {
+            return att.fabric.some(function (f) { return f.toLowerCase() === val.toLowerCase(); });
+          });
         } else if (key.indexOf('filter.p.m.global.color') !== -1) {
           if (!att.color || !att.color.length) return false;
-          match = att.color.some(function (c) { return c.toLowerCase() === val.toLowerCase(); });
-          if (!match) return false;
+          match = filterVals.some(function (val) {
+            return att.color.some(function (c) { return c.toLowerCase() === val.toLowerCase(); });
+          });
         } else if (key.indexOf('filter.p.m.global.type') !== -1 || key.indexOf('filter.p.m.global.work') !== -1) {
           if (!att.type || !att.type.length) return false;
-          match = att.type.some(function (t) { return t.toLowerCase() === val.toLowerCase(); });
-          if (!match) return false;
+          match = filterVals.some(function (val) {
+            return att.type.some(function (t) { return t.toLowerCase() === val.toLowerCase(); });
+          });
         } else if (key.indexOf('filter.p.m.global.category') !== -1) {
           if (!att.category || !att.category.length) return false;
-          match = att.category.some(function (c) { return c.toLowerCase() === val.toLowerCase(); });
-          if (!match) return false;
+          match = filterVals.some(function (val) {
+            return att.category.some(function (c) { return c.toLowerCase() === val.toLowerCase(); });
+          });
         }
+        if (!match) return false;
       }
       return true;
     }
@@ -831,14 +843,15 @@
     if (extra && extra.textContent) title = title + ' ' + extra.textContent.trim().toLowerCase();
     var text = (handle + ' ' + title).toLowerCase().replace(/-/g, ' ');
     for (var key in filterParams) {
-      var val = (filterParams[key] || '').toLowerCase().replace(/\s+/g, ' ').trim();
-      if (!val) continue;
-      if (val.indexOf(' ') !== -1) {
-        if (text.indexOf(val) === -1) return false;
-      } else {
+      var filterVals = Array.isArray(filterParams[key]) ? filterParams[key] : [filterParams[key]];
+      var anyMatch = filterVals.some(function (val) {
+        val = (val || '').toLowerCase().replace(/\s+/g, ' ').trim();
+        if (!val) return true;
+        if (val.indexOf(' ') !== -1) return text.indexOf(val) !== -1;
         var escaped = val.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-        if (!new RegExp('(^|\\s)' + escaped + '(\\s|$)', 'i').test(text)) return false;
-      }
+        return new RegExp('(^|\\s)' + escaped + '(\\s|$)', 'i').test(text);
+      });
+      if (!anyMatch) return false;
     }
     return true;
   }
@@ -855,8 +868,12 @@
       if (!form) return;
       form.querySelectorAll('input[name^="filter.p.m.global"]').forEach(function (inp) {
         var key = inp.getAttribute('name');
-        var val = (inp.value || '').trim();
-        inp.checked = !!(key && filterParams[key] && filterParams[key].toLowerCase() === val.toLowerCase());
+        var val = (inp.value || '').trim().toLowerCase();
+        var paramVal = filterParams[key];
+        var match = key && paramVal && (Array.isArray(paramVal)
+          ? paramVal.some(function (v) { return (v || '').toLowerCase() === val; })
+          : (paramVal || '').toLowerCase() === val);
+        inp.checked = !!match;
       });
       var gteInp = form.querySelector('input[name="filter.v.price.gte"]');
       var lteInp = form.querySelector('input[name="filter.v.price.lte"]');
