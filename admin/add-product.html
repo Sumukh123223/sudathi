@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Add Product – My Saree Admin</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { font-family: system-ui, sans-serif; max-width: 600px; margin: 2rem auto; padding: 0 1rem; }
+    h1 { color: #093174; }
+    label { display: block; margin-top: 1rem; font-weight: 500; }
+    input, select { width: 100%; padding: 0.5rem; margin-top: 0.25rem; }
+    button { margin-top: 1.5rem; padding: 0.6rem 1.5rem; background: #093174; color: #fff; border: none; cursor: pointer; font-size: 1rem; }
+    button:hover { background: #072a5c; }
+    .msg { margin-top: 1rem; padding: 0.5rem; border-radius: 4px; }
+    .msg.success { background: #d4edda; color: #155724; }
+    .msg.error { background: #f8d7da; color: #721c24; }
+    a { color: #093174; }
+  </style>
+</head>
+<body>
+  <h1>Add Product</h1>
+  <p><a href="/collections/saree">← Back to Saree Collection</a></p>
+  <p><strong>Image upload:</strong> Put image files in the <code>cdn/</code> folder (e.g. <code>cdn/shop/files/black-saree.jpg</code>), then use path <code>/cdn/shop/files/black-saree.jpg</code> in the form.</p>
+
+  <form id="addForm">
+    <label>Product ID (optional, auto-generated if empty)</label>
+    <input type="text" name="id" placeholder="e.g. p1 or leave blank">
+
+    <label>Title *</label>
+    <input type="text" name="title" required placeholder="e.g. Black Cotton Printed Saree">
+
+    <label>Image URL *</label>
+    <input type="text" name="image" required placeholder="e.g. /cdn/shop/files/black1.jpg">
+
+    <label>Price (₹)</label>
+    <input type="number" name="price" min="0" step="1" placeholder="999" value="0">
+
+    <label>Category</label>
+    <select name="category">
+      <option value="">-- Select --</option>
+      <option value="Sarees">Sarees</option>
+      <option value="Essentials">Essentials</option>
+      <option value="Ready To Wear Sarees">Ready To Wear Sarees</option>
+      <option value="Handsfree Sarees">Handsfree Sarees</option>
+      <option value="Ready To Wear Sarees With Pocket">Ready To Wear Sarees With Pocket</option>
+      <option value="Sudathi Gold">Sudathi Gold</option>
+      <option value="Silk Saree Sale">Silk Saree Sale</option>
+      <option value="Indian Heritage">Indian Heritage</option>
+      <option value="Sarees Saturday">Sarees Saturday</option>
+      <option value="Celebrity Sarees">Celebrity Sarees</option>
+      <option value="Sale">Sale</option>
+      <option value="Blouse">Blouse</option>
+      <option value="Shapewear">Shapewear</option>
+      <option value="Daily Wear">Daily Wear</option>
+      <option value="Office Wear">Office Wear</option>
+      <option value="Party Wear">Party Wear</option>
+      <option value="Festive">Festive</option>
+    </select>
+
+    <label>Color</label>
+    <select name="color">
+      <option value="">-- Select --</option>
+      <option value="Beige">Beige</option>
+      <option value="Black">Black</option>
+      <option value="Blue">Blue</option>
+      <option value="Brown">Brown</option>
+      <option value="Copper">Copper</option>
+      <option value="Cream">Cream</option>
+      <option value="Golden">Golden</option>
+      <option value="Green">Green</option>
+      <option value="Grey">Grey</option>
+      <option value="Indigo">Indigo</option>
+      <option value="Khaki">Khaki</option>
+      <option value="Lavender">Lavender</option>
+      <option value="Magenta">Magenta</option>
+      <option value="Maroon">Maroon</option>
+      <option value="Mauve">Mauve</option>
+      <option value="Multicoloured">Multicoloured</option>
+      <option value="Mustard">Mustard</option>
+      <option value="Orange">Orange</option>
+      <option value="Peach">Peach</option>
+      <option value="Pink">Pink</option>
+      <option value="Purple">Purple</option>
+      <option value="Red">Red</option>
+      <option value="Rust">Rust</option>
+      <option value="Turquoise">Turquoise</option>
+      <option value="Violet">Violet</option>
+      <option value="White">White</option>
+      <option value="Wine">Wine</option>
+      <option value="Yellow">Yellow</option>
+    </select>
+
+    <label>Fabric</label>
+    <select name="fabric">
+      <option value="">-- Select --</option>
+      <option value="Chanderi">Chanderi</option>
+      <option value="Chanderi Cotton">Chanderi Cotton</option>
+      <option value="Chiffon">Chiffon</option>
+      <option value="Chinnon">Chinnon</option>
+      <option value="Cotton">Cotton</option>
+      <option value="Cotton Blend">Cotton Blend</option>
+      <option value="Cotton Linen">Cotton Linen</option>
+      <option value="Cotton Silk">Cotton Silk</option>
+      <option value="Crepe">Crepe</option>
+      <option value="Crepe Silk">Crepe Silk</option>
+      <option value="Crush Silk">Crush Silk</option>
+      <option value="Crush Tissue">Crush Tissue</option>
+      <option value="Dola Silk">Dola Silk</option>
+      <option value="Georgette">Georgette</option>
+      <option value="Khadi">Khadi</option>
+      <option value="Linen">Linen</option>
+      <option value="Net">Net</option>
+      <option value="Organza">Organza</option>
+      <option value="Satin">Satin</option>
+      <option value="Shimmer">Shimmer</option>
+      <option value="Silk">Silk</option>
+      <option value="Silk Blend">Silk Blend</option>
+      <option value="Tissue Silk">Tissue Silk</option>
+      <option value="Tussar Silk">Tussar Silk</option>
+      <option value="Vichitra Silk">Vichitra Silk</option>
+    </select>
+
+    <label>Type</label>
+    <select name="type">
+      <option value="">-- Select --</option>
+      <option value="Baluchari">Baluchari</option>
+      <option value="Banarasi">Banarasi</option>
+      <option value="Bandhani">Bandhani</option>
+      <option value="Embellished">Embellished</option>
+      <option value="Embroidery">Embroidery</option>
+      <option value="Floral Printed">Floral Printed</option>
+      <option value="Foil Printed">Foil Printed</option>
+      <option value="Geometric Printed">Geometric Printed</option>
+      <option value="Ikkat">Ikkat</option>
+      <option value="Jamdani">Jamdani</option>
+      <option value="Kalamkari">Kalamkari</option>
+      <option value="Kanjivaram">Kanjivaram</option>
+      <option value="Lace">Lace</option>
+      <option value="Laheriya">Laheriya</option>
+      <option value="Paithani">Paithani</option>
+      <option value="Patola">Patola</option>
+      <option value="Plain">Plain</option>
+      <option value="Printed">Printed</option>
+      <option value="Sequence">Sequence</option>
+      <option value="Solid">Solid</option>
+      <option value="Swarovski">Swarovski</option>
+      <option value="Woven">Woven</option>
+      <option value="Zari Stripe">Zari Stripe</option>
+    </select>
+
+    <label>Work</label>
+    <select name="work">
+      <option value="">-- Select --</option>
+      <option value="Bandhani">Bandhani</option>
+      <option value="Dyed">Dyed</option>
+      <option value="Embroidery">Embroidery</option>
+      <option value="Floral Printed">Floral Printed</option>
+      <option value="Foil Printed">Foil Printed</option>
+      <option value="Gota Lace">Gota Lace</option>
+      <option value="Hand Work">Hand Work</option>
+      <option value="Ikkat">Ikkat</option>
+      <option value="Kalamkari">Kalamkari</option>
+      <option value="Lace">Lace</option>
+      <option value="Laheriya">Laheriya</option>
+      <option value="Madhubani">Madhubani</option>
+      <option value="Mirror Work">Mirror Work</option>
+      <option value="Patch Work">Patch Work</option>
+      <option value="Pearl Work">Pearl Work</option>
+      <option value="Plain">Plain</option>
+      <option value="Printed">Printed</option>
+      <option value="Sequence">Sequence</option>
+      <option value="Stone Work">Stone Work</option>
+      <option value="Tassels">Tassels</option>
+      <option value="Top Dyed">Top Dyed</option>
+      <option value="Warli Printed">Warli Printed</option>
+      <option value="Woven">Woven</option>
+      <option value="Woven (Dual Tone)">Woven (Dual Tone)</option>
+      <option value="Woven Border">Woven Border</option>
+      <option value="Zari">Zari</option>
+      <option value="Zari Border">Zari Border</option>
+      <option value="Zari Stripe">Zari Stripe</option>
+    </select>
+
+    <button type="submit">Add Product</button>
+  </form>
+
+  <div id="msg" class="msg" style="display:none;"></div>
+
+  <script>
+    document.getElementById('addForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      var form = e.target;
+      var product = {
+        id: (form.id.value || '').trim() || undefined,
+        title: (form.title.value || '').trim(),
+        image: (form.image.value || '').trim(),
+        price: parseFloat(form.price.value) || 0,
+        category: (form.category.value || '').trim() || undefined,
+        color: (form.color.value || '').trim() || undefined,
+        fabric: (form.fabric.value || '').trim() || undefined,
+        type: (form.type.value || '').trim() || undefined,
+        work: (form.work.value || '').trim() || undefined
+      };
+      var msg = document.getElementById('msg');
+      msg.style.display = 'none';
+      fetch('/api/products-catalog', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(product)
+      })
+      .then(function(r) { return r.json(); })
+      .then(function(data) {
+        if (data.error) throw new Error(data.error);
+        msg.textContent = 'Product added! ID: ' + (data.id || product.id || '');
+        msg.className = 'msg success';
+        msg.style.display = 'block';
+        form.title.value = '';
+        form.title.focus();
+      })
+      .catch(function(err) {
+        msg.textContent = err.message || 'Failed to add product';
+        msg.className = 'msg error';
+        msg.style.display = 'block';
+      });
+    });
+  </script>
+</body>
+</html>

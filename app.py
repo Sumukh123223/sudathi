@@ -29,6 +29,7 @@ ANALYTICS_STUB = b'''<script>(function(){var n=function(){};var noop={track:n,pa
 FACET_BLOCKER = b'''<script>(function(){var u=function(url){return(url||"").indexOf("filter.p.m.global")!==-1||(url||"").indexOf("filter.v.price")!==-1;};var r=history.replaceState;var p=history.pushState;history.replaceState=function(){if(arguments[2]&&u(arguments[2]))return;return r.apply(history,arguments);};history.pushState=function(){if(arguments[2]&&u(arguments[2]))return;return p.apply(history,arguments);};var f=window.fetch;if(f){window.fetch=function(url,opts){var s=typeof url==="string"?url:(opts&&opts.url)||"";if(u(s))return Promise.reject(new Error("mysaree:filter-blocked"));return f.apply(this,arguments);};}})();</script>'''
 ORDERS_FILE = os.path.join(ROOT, "orders.json")
 PRODUCTS_FILE = os.path.join(ROOT, "products.json")
+PRODUCTS_CATALOG_FILE = os.path.join(ROOT, "products-catalog.json")
 ADMIN_ATTRIBUTES_FILE = os.path.join(ROOT, "product_attributes_admin.json")
 app = Flask(__name__, static_folder=ROOT, static_url_path="")
 
@@ -331,6 +332,38 @@ def product_price():
 def products_filter_data():
     """Return { handle: { fabric: [], color: [], type: [], category: [] } } for collection filtering."""
     return jsonify(_product_filter_data())
+
+
+@app.route("/api/products-catalog", methods=["GET", "POST"])
+def products_catalog():
+    """GET: return products-catalog.json. POST: append one product and save."""
+    if request.method == "GET":
+        if not os.path.isfile(PRODUCTS_CATALOG_FILE):
+            return jsonify([])
+        try:
+            with open(PRODUCTS_CATALOG_FILE, "r", encoding="utf-8") as f:
+                data = json.load(f)
+            return jsonify(data if isinstance(data, list) else [])
+        except Exception:
+            return jsonify([])
+    # POST
+    try:
+        product = request.get_json() or {}
+        if not product.get("title"):
+            return jsonify({"error": "title is required"}), 400
+        products = []
+        if os.path.isfile(PRODUCTS_CATALOG_FILE):
+            with open(PRODUCTS_CATALOG_FILE, "r", encoding="utf-8") as f:
+                products = json.load(f)
+        if not isinstance(products, list):
+            products = []
+        product.setdefault("id", "p" + str(int(__import__("time").time() * 1000)))
+        products.append(product)
+        with open(PRODUCTS_CATALOG_FILE, "w", encoding="utf-8") as f:
+            json.dump(products, f, indent=2)
+        return jsonify({"ok": True, "id": product.get("id")})
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
 
 
 @app.route("/api/create-order", methods=["POST"])

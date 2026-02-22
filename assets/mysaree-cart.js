@@ -626,7 +626,19 @@
     if (d) d.remove();
   }
 
+  function clearOldProductSections() {
+    var path = (typeof window !== 'undefined' && window.location && window.location.pathname) || '';
+    if (path.indexOf('/collections/') === 0 && path.indexOf('/products/') === -1) return;
+    document.querySelectorAll('section .product-grid, section .slider, ul.product-grid').forEach(function (el) {
+      if (!el.querySelector('.card--product, .card-wrapper')) return;
+      var section = el.closest('section');
+      if (section) section.style.display = 'none';
+      else el.innerHTML = '';
+    });
+  }
+
   function init() {
+    clearOldProductSections();
     ensureCartFallback();
     updateCartCount();
     setTimeout(updateCartCount, 500);
@@ -730,7 +742,7 @@
     initCollectionFilters();
   }
 
-  // Manual product catalog – static site, client-side only, no URL/fetch
+  // Manual product catalog – loads from /api/products-catalog, no URL/fetch for filters
   var PRODUCTS = [];
   var activeFilters = { category: null, color: null, fabric: null, type: null, work: null };
 
@@ -858,9 +870,20 @@
     syncFormToFilters(document.getElementById('FacetFiltersFormMobile'));
   }
 
+  function loadProductsCatalog(cb) {
+    fetch('/api/products-catalog')
+      .then(function (r) { return r.ok ? r.json() : []; })
+      .then(function (list) {
+        if (Array.isArray(list)) list.forEach(function (p) { PRODUCTS.push(p); });
+        if (typeof cb === 'function') cb();
+      })
+      .catch(function () { if (typeof cb === 'function') cb(); });
+  }
+
   function initCollectionFilters() {
     var path = (typeof window !== 'undefined' && window.location && window.location.pathname) || '';
     if (path.indexOf('/collections/') !== 0 || path.indexOf('/products/') !== -1) return;
+    loadProductsCatalog(function () { applyFilters(); });
     var style = document.getElementById('mysaree-hide-loading');
     if (!style) {
       style = document.createElement('style');
