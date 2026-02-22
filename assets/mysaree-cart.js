@@ -822,7 +822,13 @@
             return att.fabric.some(function (f) { return f.toLowerCase() === val.toLowerCase(); });
           });
         } else if (key.indexOf('filter.p.m.global.color') !== -1) {
-          match = filterVals.some(function (val) { return colorStartsWith(startText, val); });
+          if (att.color && att.color.length) {
+            match = filterVals.some(function (val) {
+              return att.color.some(function (c) { return c.toLowerCase() === (val || '').toLowerCase(); });
+            });
+          } else {
+            match = filterVals.some(function (val) { return colorStartsWith(startText, val); });
+          }
         } else if (key.indexOf('filter.p.m.global.type') !== -1 || key.indexOf('filter.p.m.global.work') !== -1) {
           if (!att.type || !att.type.length) return false;
           match = filterVals.some(function (val) {
