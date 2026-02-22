@@ -1141,11 +1141,26 @@
       var name = (t.getAttribute && t.getAttribute('name')) || '';
       if (name.indexOf('filter.p.m.global') === 0 || name === 'filter.v.price.gte' || name === 'filter.v.price.lte' || name === 'sort_by') {
         var path = window.location.pathname || '';
-        if (path.indexOf('/collections/') === 0 && path.indexOf('/products/') === -1) onFacetFormChange(t.form);
+        if (path.indexOf('/collections/') === 0 && path.indexOf('/products/') === -1) {
+          e.preventDefault();
+          e.stopPropagation();
+          e.stopImmediatePropagation();
+          onFacetFormChange(t.form);
+        }
       }
     }, true);
     var facetForm = document.getElementById('FacetFiltersForm');
     var mobileForm = document.getElementById('FacetFiltersFormMobile');
+    [facetForm, mobileForm].forEach(function (form) {
+      if (!form) return;
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        e.stopImmediatePropagation();
+        onFacetFormChange(form);
+        return false;
+      }, true);
+    });
     if (facetForm) {
       var applyBtn = facetForm.querySelector('button[type="submit"], .facets__form button, [name="filter-apply"]');
       if (applyBtn) {

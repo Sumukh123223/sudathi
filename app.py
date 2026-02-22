@@ -25,6 +25,8 @@ ROOT = os.path.dirname(os.path.abspath(__file__))
 CART_SCRIPT = b'<script src="/assets/mysaree-cart.js"></script>'
 # Stub Shopify analytics so it never fetches sudathi.com/api/collect (avoids CORS errors on static clone)
 ANALYTICS_STUB = b'''<script>(function(){var n=function(){};var noop={track:n,page:n,ready:function(f){if(typeof f==="function")f();}};window.ShopifyAnalytics=window.ShopifyAnalytics||{};try{Object.defineProperty(window.ShopifyAnalytics,"lib",{get:function(){return noop;},set:function(){},configurable:true});}catch(e){window.ShopifyAnalytics.lib=noop;}window.Shopify=window.Shopify||{};window.Shopify.analytics={replayQueue:[]};})();</script>'''
+# Block Shopify-style URL filtering: static site uses client-side filters only. Prevents facets.js from updating URL or fetching.
+FACET_BLOCKER = b'''<script>(function(){var u=function(url){return(url||"").indexOf("filter.p.m.global")!==-1||(url||"").indexOf("filter.v.price")!==-1;};var r=history.replaceState;var p=history.pushState;history.replaceState=function(){if(arguments[2]&&u(arguments[2]))return;return r.apply(history,arguments);};history.pushState=function(){if(arguments[2]&&u(arguments[2]))return;return p.apply(history,arguments);};var f=window.fetch;if(f){window.fetch=function(url,opts){var s=typeof url==="string"?url:(opts&&opts.url)||"";if(u(s))return Promise.reject(new Error("mysaree:filter-blocked"));return f.apply(this,arguments);};}})();</script>'''
 ORDERS_FILE = os.path.join(ROOT, "orders.json")
 PRODUCTS_FILE = os.path.join(ROOT, "products.json")
 ADMIN_ATTRIBUTES_FILE = os.path.join(ROOT, "product_attributes_admin.json")
@@ -227,6 +229,8 @@ def _html_with_cart_from_path(file_path):
         body = body.replace(b"</body>", CART_SCRIPT + b"\n</body>")
     if b"</head>" in body and ANALYTICS_STUB not in body:
         body = body.replace(b"</head>", ANALYTICS_STUB + b"\n</head>", 1)
+    if b"</head>" in body and FACET_BLOCKER not in body:
+        body = body.replace(b"</head>", FACET_BLOCKER + b"\n</head>", 1)
     return Response(body, mimetype="text/html")
 
 
