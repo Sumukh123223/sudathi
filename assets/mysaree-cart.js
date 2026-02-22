@@ -811,7 +811,7 @@
     var container = document.getElementById('ProductGridContainer');
     if (!grid && container) grid = container.querySelector('.product-grid, ul[role="list"]');
     if (!grid) { hideLoader(); return; }
-    var keep = grid.querySelectorAll('.multicolumn-list__item, .featured-collection-container');
+    var keep = grid.querySelectorAll('.multicolumn-list__item');
     var keepHtml = '';
     keep.forEach(function (el) { keepHtml += el.outerHTML; });
     grid.innerHTML = '';
