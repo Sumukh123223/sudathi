@@ -742,9 +742,8 @@
     initCollectionFilters();
   }
 
-  // Manual product catalog – loads from /api/products-catalog, no URL/fetch for filters
+  // Product catalog – loads from /api/products-catalog, filters from URL (original site style)
   var PRODUCTS = [];
-  var activeFilters = { category: null, color: null, fabric: null, type: null, work: null };
 
   function addProduct(product) {
     PRODUCTS.push(product);
@@ -753,19 +752,40 @@
 
   function normalize(v) { return (v == null ? '' : String(v)).toLowerCase().trim(); }
 
-  function productMatchesFilters(p) {
-    if (!activeFilters.category && !activeFilters.color && !activeFilters.fabric && !activeFilters.type && !activeFilters.work) return true;
+  function getFiltersFromUrl() {
+    var params = new URLSearchParams(window.location.search || '');
+    return {
+      category: params.get('filter.p.m.global.category') || null,
+      color: params.get('filter.p.m.global.color') || null,
+      fabric: params.get('filter.p.m.global.fabric') || null,
+      type: params.get('filter.p.m.global.type') || null,
+      work: params.get('filter.p.m.global.work') || null,
+      priceMin: params.get('filter.v.price.gte') ? parseFloat(params.get('filter.v.price.gte')) : null,
+      priceMax: params.get('filter.v.price.lte') ? parseFloat(params.get('filter.v.price.lte')) : null
+    };
+  }
+
+  function productMatchesFilters(p, filters) {
+    if (!filters.category && !filters.color && !filters.fabric && !filters.type && !filters.work && !filters.priceMin && !filters.priceMax) return true;
     var cat = normalize(p.category);
     var col = normalize(p.color);
     var fab = normalize(p.fabric);
     var typ = normalize(p.type);
     var wrk = normalize(p.work);
-    if (activeFilters.category && !cat.includes(normalize(activeFilters.category))) return false;
-    if (activeFilters.color && !col.includes(normalize(activeFilters.color))) return false;
-    if (activeFilters.fabric && !fab.includes(normalize(activeFilters.fabric))) return false;
-    if (activeFilters.type && !typ.includes(normalize(activeFilters.type))) return false;
-    if (activeFilters.work && !wrk.includes(normalize(activeFilters.work))) return false;
+    var price = Number(p.price) || 0;
+    if (filters.category && !cat.includes(normalize(filters.category))) return false;
+    if (filters.color && !col.includes(normalize(filters.color))) return false;
+    if (filters.fabric && !fab.includes(normalize(filters.fabric))) return false;
+    if (filters.type && !typ.includes(normalize(filters.type))) return false;
+    if (filters.work && !wrk.includes(normalize(filters.work))) return false;
+    if (filters.priceMin != null && price < filters.priceMin) return false;
+    if (filters.priceMax != null && price > filters.priceMax) return false;
     return true;
+  }
+
+  function getSortFromUrl() {
+    var params = new URLSearchParams(window.location.search || '');
+    return params.get('sort_by') || '';
   }
 
   function showLoader() {
@@ -793,16 +813,31 @@
     var slug = getCollectionSlug();
     var productUrl = '/collections/' + slug + '/products/' + handle;
     var price = Number(p.price) || 0;
+    var compareAt = Number(p.compare_at_price) || 0;
     var pricePaise = Math.round(price * 100);
-    var imgSrc = ((p.images && p.images[0]) || p.image || '').replace(/&amp;/g, '&');
+    var imgs = p.images || (p.image ? [p.image] : []);
+    var imgSrc = (imgs[0] || p.image || '').replace(/&amp;/g, '&');
+    var imgSrc2 = (imgs[1] || '').replace(/&amp;/g, '&');
     var title = (p.title || '').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-    return '<li class="grid__item"><div class="card-wrapper" data-product-id="' + (p.id || '') + '">' +
+    var pctOff = (compareAt > price && compareAt > 0) ? Math.round((1 - price / compareAt) * 100) : 0;
+    var priceHtml = '';
+    if (compareAt > price && compareAt > 0) {
+      priceHtml = '<span class="price-item price-item--regular" style="text-decoration:line-through;color:#64748b;margin-right:6px;">₹ ' + Math.round(compareAt) + '</span>' +
+        '<span class="price-item price-item--sale" data-price="' + pricePaise + '"><bdi>₹ ' + (price > 0 ? Math.round(price) : '0') + '</bdi></span>' +
+        (pctOff > 0 ? ' <span style="color:#dc2626;font-weight:600;">-' + pctOff + '%</span>' : '');
+    } else {
+      priceHtml = '<span class="price-item price-item--sale" data-price="' + pricePaise + '"><bdi>₹ ' + (price > 0 ? Math.round(price) : '0') + '</bdi></span>';
+    }
+    var imgHtml = '<div class="media media--adapt" style="position:relative;aspect-ratio:4/5;">' +
+      '<img src="' + imgSrc + '" alt="' + title + '" loading="lazy" width="400" height="500" style="width:100%;height:100%;object-fit:cover;">' +
+      (imgSrc2 ? '<img src="' + imgSrc2 + '" alt="" class="mysaree-card-hover-img" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 0.3s;">' : '') +
+      '</div>';
+    return '<li class="grid__item"><div class="card-wrapper mysaree-catalog-card" data-product-id="' + (p.id || '') + '">' +
       '<div class="card card--product">' +
-      '<a href="' + productUrl + '" class="card__media media-wrapper">' +
-      '<div class="media media--adapt"><img src="' + imgSrc + '" alt="' + title + '" loading="lazy" width="400" height="500"></div></a>' +
-      '<div class="card-information__button"><add-to-cart class="button button--small" data-variant-id="' + (p.id || '') + '" data-product-url="' + productUrl + '">Add to cart</add-to-cart></div>' +
+      '<a href="' + productUrl + '" class="card__media media-wrapper" style="display:block;">' + imgHtml + '</a>' +
+      '<div class="card-information__button" style="margin-top:-40px;position:relative;z-index:2;padding:0 8px 8px;"><add-to-cart class="button button--small" style="width:100%;justify-content:center;" data-variant-id="' + (p.id || '') + '" data-product-url="' + productUrl + '">Add to cart</add-to-cart></div>' +
       '<div class="card-information"><a href="' + productUrl + '" class="card-information__text h4">' + title + '</a>' +
-      '<div class="price"><span class="price-item price-item--sale" data-price="' + pricePaise + '"><price-money><bdi>₹ ' + (price > 0 ? Math.round(price) : '0') + '</bdi></price-money></span></div></div></div></li>';
+      '<div class="price" style="display:flex;flex-wrap:wrap;align-items:center;gap:4px;">' + priceHtml + '</div></div></div></li>';
   }
 
   function renderProducts(products) {
@@ -834,44 +869,18 @@
     hideLoader();
   }
 
-  function getActiveFiltersFromForm(form) {
-    var f = { category: null, color: null, fabric: null, type: null, work: null };
-    if (!form) return f;
-    form.querySelectorAll('input[name^="filter.p.m.global"]:checked').forEach(function (inp) {
-      var n = inp.getAttribute('name');
-      var v = (inp.value || '').trim();
-      if (!n || !v) return;
-      if (n.indexOf('filter.p.m.global.color') !== -1) f.color = v;
-      else if (n.indexOf('filter.p.m.global.fabric') !== -1) f.fabric = v;
-      else if (n.indexOf('filter.p.m.global.type') !== -1) f.type = v;
-      else if (n.indexOf('filter.p.m.global.work') !== -1) f.work = v;
-      else if (n.indexOf('filter.p.m.global.category') !== -1) f.category = v;
-    });
-    return f;
-  }
-
-  function syncFormToFilters(form) {
-    if (!form) return;
-    form.querySelectorAll('input[name^="filter.p.m.global"]').forEach(function (inp) {
-      var n = inp.getAttribute('name');
-      var v = (inp.value || '').trim().toLowerCase();
-      var match = false;
-      if (n.indexOf('filter.p.m.global.color') !== -1) match = activeFilters.color && normalize(activeFilters.color) === v;
-      else if (n.indexOf('filter.p.m.global.fabric') !== -1) match = activeFilters.fabric && normalize(activeFilters.fabric) === v;
-      else if (n.indexOf('filter.p.m.global.type') !== -1) match = activeFilters.type && normalize(activeFilters.type) === v;
-      else if (n.indexOf('filter.p.m.global.work') !== -1) match = activeFilters.work && normalize(activeFilters.work) === v;
-      else if (n.indexOf('filter.p.m.global.category') !== -1) match = activeFilters.category && normalize(activeFilters.category) === v;
-      inp.checked = !!match;
-    });
-  }
-
   function applyFilters() {
     var path = (typeof window !== 'undefined' && window.location && window.location.pathname) || '';
     if (path.indexOf('/collections/') !== 0 || path.indexOf('/products/') !== -1) return;
-    var filtered = PRODUCTS.filter(productMatchesFilters);
+    var filters = getFiltersFromUrl();
+    var filtered = PRODUCTS.filter(function (p) { return productMatchesFilters(p, filters); });
+    var sortBy = getSortFromUrl();
+    if (sortBy === 'price-ascending') filtered.sort(function (a, b) { return (Number(a.price) || 0) - (Number(b.price) || 0); });
+    else if (sortBy === 'price-descending') filtered.sort(function (a, b) { return (Number(b.price) || 0) - (Number(a.price) || 0); });
+    else if (sortBy === 'title-ascending') filtered.sort(function (a, b) { return String(a.title || '').localeCompare(String(b.title || '')); });
+    else if (sortBy === 'title-descending') filtered.sort(function (a, b) { return String(b.title || '').localeCompare(String(a.title || '')); });
+    else if (sortBy === 'created-descending') filtered.reverse();
     renderProducts(filtered);
-    syncFormToFilters(document.getElementById('FacetFiltersForm'));
-    syncFormToFilters(document.getElementById('FacetFiltersFormMobile'));
   }
 
   function loadProductsCatalog(cb) {
@@ -889,48 +898,62 @@
     if (path.indexOf('/collections/') !== 0 || path.indexOf('/products/') !== -1) return;
     var grid = document.getElementById('product-grid') || (document.getElementById('ProductGridContainer') && document.getElementById('ProductGridContainer').querySelector('.product-grid, ul[role="list"]'));
     if (grid) grid.innerHTML = '';
-    loadProductsCatalog(function () { applyFilters(); });
+    loadProductsCatalog(function () {
+      var sortBy = getSortFromUrl();
+      if (sortBy) {
+        document.querySelectorAll('select[name="sort_by"]').forEach(function (s) { s.value = sortBy; });
+        document.querySelectorAll('input[name="sort_by"]').forEach(function (r) { r.checked = (r.value === sortBy); });
+      }
+      var filters = getFiltersFromUrl();
+      ['category', 'color', 'fabric', 'type', 'work'].forEach(function (key) {
+        var val = filters[key];
+        if (!val) return;
+        var paramName = 'filter.p.m.global.' + key;
+        document.querySelectorAll('input[name="' + paramName + '"]').forEach(function (inp) {
+          if ((inp.value || '').trim() === (val || '').trim()) inp.checked = true;
+        });
+      });
+      applyFilters();
+    });
     var style = document.getElementById('mysaree-hide-loading');
     if (!style) {
       style = document.createElement('style');
       style.id = 'mysaree-hide-loading';
-      style.textContent = '#ProductGridContainer .loading-overlay,.product-grid-container .loading-overlay,.product-count .loading-overlay__spinner,.collection.loading .loading-overlay{display:none!important}';
+      style.textContent = '#ProductGridContainer .loading-overlay,.product-grid-container .loading-overlay,.product-count .loading-overlay__spinner,.collection.loading .loading-overlay{display:none!important}.mysaree-catalog-card:hover .mysaree-card-hover-img{opacity:1!important}';
       (document.head || document.documentElement).appendChild(style);
     }
     applyFilters();
-    document.addEventListener('change', function (e) {
-      var t = e.target;
-      if (!t || !t.form) return;
-      var name = (t.getAttribute && t.getAttribute('name')) || '';
-      if (name.indexOf('filter.p.m.global') === 0) {
+    // Sort: when user changes sort dropdown/radio, update URL and re-apply (preserve filter params)
+    document.querySelectorAll('select[name="sort_by"], input[name="sort_by"]').forEach(function (el) {
+      el.addEventListener('change', function (e) {
         e.preventDefault();
-        e.stopPropagation();
-        activeFilters = getActiveFiltersFromForm(t.form);
+        var val = (el.value || '').trim();
+        var params = new URLSearchParams(window.location.search || '');
+        if (val) params.set('sort_by', val); else params.delete('sort_by');
+        var newUrl = window.location.pathname + (params.toString() ? '?' + params.toString() : '');
+        history.replaceState({}, '', newUrl);
         applyFilters();
-      }
-    }, true);
-    [document.getElementById('FacetFiltersForm'), document.getElementById('FacetFiltersFormMobile')].forEach(function (form) {
-      if (!form) return;
-      form.addEventListener('submit', function (e) {
-        e.preventDefault();
-        e.stopPropagation();
-        activeFilters = getActiveFiltersFromForm(form);
-        applyFilters();
-        return false;
-      }, true);
+      });
     });
-    document.addEventListener('click', function (e) {
-      var link = e.target && e.target.closest ? e.target.closest('a') : null;
-      if (!link || link.tagName !== 'A') return;
-      if (path.indexOf('/collections/') !== 0 || path.indexOf('/products/') !== -1) return;
-      var href = (link.getAttribute('href') || '').split('?')[0];
-      if ((link.classList.contains('facets__reset') || link.closest('.facet-remove')) && (href === path || href.indexOf('/collections/') === 0)) {
-        e.preventDefault();
-        e.stopPropagation();
-        activeFilters = { category: null, color: null, fabric: null, type: null, work: null };
+    document.querySelectorAll('form[id*="Sort"], form[action*="sort"]').forEach(function (form) {
+      form.addEventListener('submit', function (e) { e.preventDefault(); });
+    });
+    document.querySelectorAll('#FacetFiltersForm, #FacetFiltersFormMobile').forEach(function (form) {
+      if (form) form.addEventListener('submit', function (e) { e.preventDefault(); });
+    });
+    // Filter checkboxes: when user checks/unchecks, update URL and re-apply
+    document.querySelectorAll('input[name^="filter.p.m.global"], input[name^="filter.v.price"]').forEach(function (inp) {
+      inp.addEventListener('change', function () {
+        var params = new URLSearchParams(window.location.search || '');
+        var name = (inp.name || '').trim();
+        var val = (inp.value || '').trim();
+        if (inp.checked && name && val) params.set(name, val);
+        else if (!inp.checked && name) params.delete(name);
+        var newUrl = window.location.pathname + (params.toString() ? '?' + params.toString() : '');
+        history.replaceState({}, '', newUrl);
         applyFilters();
-      }
-    }, true);
+      });
+    });
   }
 
 

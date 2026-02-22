@@ -70,8 +70,11 @@
     </div>
     <ul id="imageList" class="image-list"></ul>
 
-    <label>Price (₹)</label>
-    <input type="number" name="price" min="0" step="1" placeholder="999" value="0">
+    <label>Price (₹) *</label>
+    <input type="number" name="price" min="0" step="1" placeholder="899" value="0">
+
+    <label>Compare at price / Original (₹) – optional, for showing discount %</label>
+    <input type="number" name="compare_at_price" min="0" step="1" placeholder="2391" value="0">
 
     <label>Category</label>
     <select name="category">
@@ -330,6 +333,7 @@
           title: (form.title.value || '').trim(),
           images: imagePaths.slice(),
           price: parseFloat(form.price.value) || 0,
+          compare_at_price: parseFloat(form.compare_at_price.value) || undefined,
           category: (form.category.value || '').trim() || undefined,
           color: (form.color.value || '').trim() || undefined,
           fabric: (form.fabric.value || '').trim() || undefined,

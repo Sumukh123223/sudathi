@@ -325,7 +325,12 @@ def product_price():
     if not handle:
         return jsonify({"price_inr": 0}), 200
     prices = _product_prices_by_handle()
-    return jsonify({"price_inr": prices.get(handle, 0)}), 200
+    price = prices.get(handle, 0)
+    if price <= 0:
+        p = _get_catalog_product_by_handle(handle)
+        if p:
+            price = float(p.get("price") or 0)
+    return jsonify({"price_inr": price}), 200
 
 
 @app.route("/api/products-filter-data")
@@ -359,6 +364,39 @@ def upload_image():
         return jsonify({"path": path, "filename": safe_name})
     except Exception as e:
         return jsonify({"error": str(e)}), 500
+
+
+def _get_catalog_product_by_handle(handle):
+    """Return product from catalog where handle or id matches."""
+    if not handle or not os.path.isfile(PRODUCTS_CATALOG_FILE):
+        return None
+    try:
+        with open(PRODUCTS_CATALOG_FILE, "r", encoding="utf-8") as f:
+            products = json.load(f)
+    except Exception:
+        return None
+    if not isinstance(products, list):
+        return None
+    handle_lower = handle.lower().strip()
+    for p in products:
+        h = (p.get("handle") or "").lower()
+        id_str = str(p.get("id") or "").lower()
+        if h == handle_lower or id_str == handle_lower:
+            return p
+        # Handle from id: p1 -> p1, p123 -> p123
+        if id_str and id_str == handle_lower:
+            return p
+    return None
+
+
+@app.route("/api/product-by-handle")
+def product_by_handle():
+    """Return single product from catalog by handle."""
+    handle = request.args.get("handle", "").strip()
+    p = _get_catalog_product_by_handle(handle)
+    if not p:
+        return jsonify({"error": "not found"}), 404
+    return jsonify(p)
 
 
 @app.route("/api/products-catalog", methods=["GET", "POST"])
@@ -426,6 +464,10 @@ def create_order():
         p = float(i.get("price") or 0)
         if p <= 0 and i.get("handle"):
             p = prices_by_handle.get(i.get("handle"), 0)
+            if p <= 0:
+                cp = _get_catalog_product_by_handle(i.get("handle"))
+                if cp:
+                    p = float(cp.get("price") or 0)
             i["price"] = p
     # Buy 2 Get 1 Free: for every 3 units, cheapest is free. Expand to units, sort ascending, pay for units[free_count:]
     units = []
@@ -544,6 +586,13 @@ def collections(subpath):
                 if resp is not None:
                     return resp
                 return send_from_directory(d, f)
+            # Catalog product fallback: no static HTML, check catalog
+            catalog_product = _get_catalog_product_by_handle(name)
+            if catalog_product:
+                catalog_path = os.path.join(ROOT, "catalog-product.html")
+                if os.path.isfile(catalog_path):
+                    resp = _html_with_cart_from_path(catalog_path)
+                    return resp if resp is not None else send_from_directory(ROOT, "catalog-product.html")
     # Collection list page (e.g. /collections/saree) – serve with cart script so card "Add to cart" works
     path = os.path.join(ROOT, "collections", subpath.rstrip("/") + ".html")
     if os.path.isfile(path):

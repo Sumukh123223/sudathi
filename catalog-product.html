@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Product – Sudathi</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { font-family: Poppins, system-ui, sans-serif; margin: 0; background: #fff; color: #1a1b18; }
+    .mysaree-catalog-header {
+      padding: 1rem 2rem;
+      border-bottom: 1px solid #e5e7eb;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .mysaree-catalog-header a { color: #093174; text-decoration: none; font-weight: 600; }
+    .mysaree-catalog-header a:hover { text-decoration: underline; }
+    .mysaree-catalog-product {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+    @media (max-width: 768px) {
+      .mysaree-catalog-product { grid-template-columns: 1fr; padding: 1rem; }
+    }
+    .mysaree-catalog-gallery {
+      position: sticky;
+      top: 1rem;
+    }
+    .mysaree-catalog-main-img {
+      width: 100%;
+      aspect-ratio: 4/5;
+      object-fit: cover;
+      border-radius: 8px;
+      background: #f1f5f9;
+    }
+    .mysaree-catalog-thumbs {
+      display: flex;
+      gap: 0.5rem;
+      margin-top: 0.75rem;
+      flex-wrap: wrap;
+    }
+    .mysaree-catalog-thumbs img {
+      width: 64px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 6px;
+      cursor: pointer;
+      border: 2px solid transparent;
+    }
+    .mysaree-catalog-thumbs img:hover,
+    .mysaree-catalog-thumbs img.active { border-color: #093174; }
+    .mysaree-catalog-title { font-size: 1.75rem; font-weight: 600; margin: 0 0 1rem; line-height: 1.3; }
+    .mysaree-catalog-price {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .mysaree-catalog-price .original { text-decoration: line-through; color: #64748b; font-size: 1.1rem; }
+    .mysaree-catalog-price .sale { font-size: 1.5rem; font-weight: 700; color: #1a1b18; }
+    .mysaree-catalog-price .pct { color: #dc2626; font-weight: 600; }
+    .mysaree-catalog-buttons { display: flex; flex-direction: column; gap: 0.75rem; }
+    .mysaree-catalog-buttons button,
+    .mysaree-catalog-buttons add-to-cart {
+      padding: 14px 24px;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      border: none;
+      cursor: pointer;
+      background: #093174;
+      color: #fff;
+      width: 100%;
+      max-width: 400px;
+      border-radius: 0;
+    }
+    .mysaree-catalog-buttons button:hover,
+    .mysaree-catalog-buttons add-to-cart:hover { background: #072a5c; }
+    .mysaree-catalog-loading { padding: 3rem; text-align: center; color: #64748b; }
+    .mysaree-catalog-error { padding: 3rem; text-align: center; color: #dc2626; }
+    .mysaree-catalog-tax { font-size: 0.9rem; color: #64748b; margin-top: 0.5rem; }
+  </style>
+</head>
+<body>
+  <header class="mysaree-catalog-header">
+    <a href="/">Sudathi</a>
+    <a href="/collections/saree" id="mysaree-back-link">← Back to Saree</a>
+  </header>
+
+  <main id="mysaree-catalog-product" class="mysaree-catalog-product">
+    <div class="mysaree-catalog-loading">Loading product…</div>
+  </main>
+
+  <script>
+    (function() {
+      var path = (window.location.pathname || '');
+      var m = path.match(/\/products\/([^/?]+)/);
+      var handle = m ? decodeURIComponent(m[1]).replace(/\.html$/, '') : '';
+      if (!handle) {
+        document.getElementById('mysaree-catalog-product').innerHTML = '<div class="mysaree-catalog-error">Product not found.</div>';
+        return;
+      }
+      var backLink = document.getElementById('mysaree-back-link');
+      var slug = (path.match(/\/collections\/([^/]+)/) || [])[1] || 'saree';
+      if (backLink) backLink.href = '/collections/' + slug;
+
+      fetch('/api/product-by-handle?handle=' + encodeURIComponent(handle))
+        .then(function(r) { return r.ok ? r.json() : Promise.reject(new Error('Not found')); })
+        .then(function(p) {
+          var imgs = p.images || (p.image ? [p.image] : []);
+          var img0 = (imgs[0] || p.image || '').replace(/&amp;/g, '&');
+          var price = Number(p.price) || 0;
+          var compareAt = Number(p.compare_at_price) || 0;
+          var pctOff = (compareAt > price && compareAt > 0) ? Math.round((1 - price / compareAt) * 100) : 0;
+          var title = (p.title || '').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+          var id = p.id || handle;
+          var productUrl = '/collections/' + slug + '/products/' + handle;
+
+          var priceHtml = '';
+          if (compareAt > price && compareAt > 0) {
+            priceHtml = '<span class="original">₹ ' + Math.round(compareAt) + '</span>' +
+              '<span class="sale">₹ ' + Math.round(price) + '</span>' +
+              (pctOff > 0 ? '<span class="pct">' + pctOff + '% OFF</span>' : '');
+          } else {
+            priceHtml = '<span class="sale">₹ ' + Math.round(price) + '</span>';
+          }
+
+          var thumbsHtml = '';
+          if (imgs.length > 1) {
+            thumbsHtml = '<div class="mysaree-catalog-thumbs">';
+            imgs.forEach(function(src, i) {
+              var s = (src || '').replace(/&amp;/g, '&');
+              thumbsHtml += '<img src="' + s + '" alt="" data-index="' + i + '"' + (i === 0 ? ' class="active"' : '') + '>';
+            });
+            thumbsHtml += '</div>';
+          }
+
+          var html = '<div class="mysaree-catalog-gallery">' +
+            '<img src="' + img0 + '" alt="' + title + '" class="mysaree-catalog-main-img" id="mysaree-main-img">' +
+            thumbsHtml +
+            '</div>' +
+            '<div class="mysaree-catalog-details">' +
+            '<h1 class="mysaree-catalog-title">' + title + '</h1>' +
+            '<div class="mysaree-catalog-price">' + priceHtml + '</div>' +
+            '<p class="mysaree-catalog-tax">Inclusive of all taxes.</p>' +
+            '<div class="mysaree-catalog-buttons">' +
+            '<add-to-cart class="button" data-variant-id="' + id + '" data-product-url="' + productUrl + '">ADD TO CART</add-to-cart>' +
+            '<button type="button" class="mysaree-buy-now button" data-id="' + id + '" data-handle="' + (handle || '').replace(/"/g, '&quot;') + '" data-title="' + title.replace(/"/g, '&quot;') + '" data-price="' + price + '" data-image="' + (img0 || '').replace(/"/g, '&quot;') + '">BUY IT NOW</button>' +
+            '</div></div>';
+
+          var el = document.getElementById('mysaree-catalog-product');
+          el.innerHTML = html;
+          el.classList.remove('mysaree-catalog-loading');
+
+          var mainImg = document.getElementById('mysaree-main-img');
+          document.querySelectorAll('.mysaree-catalog-thumbs img').forEach(function(thumb) {
+            thumb.addEventListener('click', function() {
+              var idx = parseInt(thumb.getAttribute('data-index'), 10);
+              var src = (imgs[idx] || '').replace(/&amp;/g, '&');
+              if (mainImg && src) {
+                mainImg.src = src;
+                document.querySelectorAll('.mysaree-catalog-thumbs img').forEach(function(t) { t.classList.remove('active'); });
+                thumb.classList.add('active');
+              }
+            });
+          });
+          var buyNow = el.querySelector('.mysaree-buy-now');
+          if (buyNow) {
+            buyNow.addEventListener('click', function() {
+              var cart = [];
+              try { cart = JSON.parse(localStorage.getItem('mysaree_cart') || '[]'); } catch (e) {}
+              var existing = cart.find(function(x) { return (x.variant_id || x.product_id + '') === (id + ''); });
+              if (existing) existing.quantity = (existing.quantity || 1) + 1;
+              else cart.push({ product_id: id, variant_id: id, handle: handle, title: p.title, price: price, quantity: 1, image: img0 });
+              localStorage.setItem('mysaree_cart', JSON.stringify(cart));
+              if (window.mysareeCart && window.mysareeCart.updateCartCount) window.mysareeCart.updateCartCount();
+              window.location.href = '/checkout.html';
+            });
+          }
+        })
+        .catch(function() {
+          document.getElementById('mysaree-catalog-product').innerHTML = '<div class="mysaree-catalog-error">Product not found.</div>';
+        });
+    })();
+  </script>
+  <script src="/assets/mysaree-cart.js"></script>
+</body>
+</html>
