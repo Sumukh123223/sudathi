@@ -824,12 +824,11 @@
       }
       return false;
     }
+    function normalize(v) { return (v == null ? '' : String(v)).toLowerCase().replace(/\s+/g, ' ').trim(); }
     function textMatchesFilter(text, filterVal) {
-      var val = (filterVal || '').toLowerCase().replace(/\s+/g, ' ').trim();
+      var val = normalize(filterVal);
       if (!val) return true;
-      if (val.indexOf(' ') !== -1) return text.indexOf(val) !== -1;
-      var escaped = val.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-      return new RegExp('(^|\\s)' + escaped + '(\\s|$)', 'i').test(text);
+      return text.indexOf(val) !== -1;
     }
     var att = filterData && filterData[handle] ? filterData[handle] : null;
     for (var key in filterParams) {
@@ -839,7 +838,8 @@
       if (key.indexOf('filter.p.m.global.fabric') !== -1) {
         if (att && att.fabric && att.fabric.length) {
           match = filterVals.some(function (val) {
-            return att.fabric.some(function (f) { return f.toLowerCase() === val.toLowerCase(); });
+            var v = normalize(val);
+            return att.fabric.some(function (f) { var fn = normalize(f); return fn.indexOf(v) !== -1 || v.indexOf(fn) !== -1; });
           });
         } else {
           match = filterVals.some(function (val) { return textMatchesFilter(text, val); });
@@ -847,7 +847,8 @@
       } else if (key.indexOf('filter.p.m.global.color') !== -1) {
         if (att && att.color && att.color.length) {
           match = filterVals.some(function (val) {
-            return att.color.some(function (c) { return c.toLowerCase() === (val || '').toLowerCase(); });
+            var v = normalize(val);
+            return att.color.some(function (c) { var cn = normalize(c); return cn === v || cn.indexOf(v) !== -1 || v.indexOf(cn) !== -1; });
           });
         } else {
           match = filterVals.some(function (val) { return colorStartsWith(startText, val); });
@@ -859,7 +860,8 @@
       } else if (key.indexOf('filter.p.m.global.type') !== -1 || key.indexOf('filter.p.m.global.work') !== -1) {
         if (att && att.type && att.type.length) {
           match = filterVals.some(function (val) {
-            return att.type.some(function (t) { return t.toLowerCase() === val.toLowerCase(); });
+            var v = normalize(val);
+            return att.type.some(function (t) { var tn = normalize(t); return tn.indexOf(v) !== -1 || v.indexOf(tn) !== -1; });
           });
         } else {
           match = filterVals.some(function (val) { return textMatchesFilter(text, val); });
@@ -867,7 +869,8 @@
       } else if (key.indexOf('filter.p.m.global.category') !== -1) {
         if (att && att.category && att.category.length) {
           match = filterVals.some(function (val) {
-            return att.category.some(function (c) { return c.toLowerCase() === val.toLowerCase(); });
+            var v = normalize(val);
+            return att.category.some(function (c) { var cn = normalize(c); return cn === v || cn.indexOf(v) !== -1 || v.indexOf(cn) !== -1; });
           });
         } else {
           match = filterVals.some(function (val) { return textMatchesFilter(text, val); });
