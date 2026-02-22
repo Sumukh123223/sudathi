@@ -26,7 +26,6 @@ CART_SCRIPT = b'<script src="/assets/mysaree-cart.js"></script>'
 ORDERS_FILE = os.path.join(ROOT, "orders.json")
 PRODUCTS_FILE = os.path.join(ROOT, "products.json")
 ADMIN_ATTRIBUTES_FILE = os.path.join(ROOT, "product_attributes_admin.json")
-ADMIN_SECRET = (os.environ.get("ADMIN_SECRET_KEY") or os.environ.get("ADMIN_SECRET") or "").strip()
 app = Flask(__name__, static_folder=ROOT, static_url_path="")
 
 
@@ -326,85 +325,6 @@ def products_filter_data():
     return jsonify(_product_filter_data())
 
 
-def _admin_required():
-    """Return (None, None) if admin key is valid, else (error_response, status_code)."""
-    key = (request.args.get("key") or request.headers.get("X-Admin-Key") or "").strip()
-    if not ADMIN_SECRET or key != ADMIN_SECRET:
-        return jsonify({"error": "Unauthorized"}), 401
-    return None, None
-
-
-@app.route("/api/admin/filter-options")
-def admin_filter_options():
-    """Return list of Category, Color, Fabric, Type options for admin dropdowns."""
-    err, code = _admin_required()
-    if err is not None:
-        return err, code
-    return jsonify({
-        "category": list(_CATEGORIES),
-        "color": list(_COLORS),
-        "fabric": list(_FABRICS),
-        "type": list(_TYPES),
-    })
-
-
-@app.route("/api/admin/products")
-def admin_products():
-    """Return all products for admin UI (id, handle, title, image)."""
-    err, code = _admin_required()
-    if err is not None:
-        return err, code
-    if not os.path.isfile(PRODUCTS_FILE):
-        return jsonify([])
-    try:
-        with open(PRODUCTS_FILE, "r", encoding="utf-8") as f:
-            products = json.load(f)
-    except Exception:
-        return jsonify([])
-    out = []
-    for p in products:
-        out.append({
-            "id": p.get("id"),
-            "handle": p.get("handle"),
-            "title": (p.get("title") or "").strip(),
-            "image": (p.get("image") or "").strip(),
-        })
-    return jsonify(out)
-
-
-@app.route("/api/admin/product-attributes", methods=["GET", "POST"])
-def admin_product_attributes():
-    """GET: return current admin-assigned attributes. POST: save { handle: { category, color, fabric, type } }."""
-    err, code = _admin_required()
-    if err is not None:
-        return err, code
-    if request.method == "GET":
-        return jsonify(_load_admin_attributes())
-    try:
-        data = request.get_json() or {}
-    except Exception:
-        return jsonify({"error": "Invalid JSON"}), 400
-    if not isinstance(data, dict):
-        return jsonify({"error": "Body must be an object"}), 400
-    current = _load_admin_attributes()
-    for handle, attrs in data.items():
-        if not isinstance(attrs, dict):
-            continue
-        out = {}
-        for key in ("category", "color", "fabric", "type"):
-            val = attrs.get(key)
-            if val is None:
-                continue
-            if isinstance(val, list):
-                out[key] = [str(x).strip() for x in val if str(x).strip()]
-            else:
-                out[key] = [str(val).strip()] if str(val).strip() else []
-        if out:
-            current[str(handle)] = out
-    _save_admin_attributes(current)
-    return jsonify({"ok": True})
-
-
 @app.route("/api/create-order", methods=["POST"])
 def create_order():
     try:
@@ -519,12 +439,6 @@ def checkout():
 @app.route("/order-placed.html")
 def order_placed():
     return _send_html_from_root("order-placed.html")
-
-
-@app.route("/admin")
-def admin_page():
-    """Admin-only page: assign category/color/fabric/type per product. Use ?key=YOUR_ADMIN_SECRET_KEY."""
-    return send_from_directory(ROOT, "admin.html")
 
 
 @app.route("/collections/<path:subpath>")

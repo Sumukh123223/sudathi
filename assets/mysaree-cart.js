@@ -802,7 +802,14 @@
   function productCardMatchesFilters(card, filterParams, filterData) {
     var handle = getHandleFromCard(card);
     if (!handle) return Object.keys(filterParams).length === 0;
+    var title = getTitleFromCard(card) || '';
+    var startText = (title + ' ' + (handle || '')).replace(/-/g, ' ').toLowerCase().trim();
     var vals = function (v) { return Array.isArray(v) ? v : (v ? [String(v).trim()] : []); };
+    function colorStartsWith(productStartText, selectedColor) {
+      var c = (selectedColor || '').toLowerCase().trim();
+      if (!c) return true;
+      return productStartText === c || productStartText.startsWith(c + ' ') || productStartText.startsWith(c + '-');
+    }
     if (filterData && filterData[handle]) {
       var att = filterData[handle];
       for (var key in filterParams) {
@@ -815,10 +822,7 @@
             return att.fabric.some(function (f) { return f.toLowerCase() === val.toLowerCase(); });
           });
         } else if (key.indexOf('filter.p.m.global.color') !== -1) {
-          if (!att.color || !att.color.length) return false;
-          match = filterVals.some(function (val) {
-            return att.color.some(function (c) { return c.toLowerCase() === val.toLowerCase(); });
-          });
+          match = filterVals.some(function (val) { return colorStartsWith(startText, val); });
         } else if (key.indexOf('filter.p.m.global.type') !== -1 || key.indexOf('filter.p.m.global.work') !== -1) {
           if (!att.type || !att.type.length) return false;
           match = filterVals.some(function (val) {
@@ -834,23 +838,28 @@
       }
       return true;
     }
-    var title = '';
     var flits = card.querySelector('[data-flits-product-handle]');
     if (flits) title = (flits.getAttribute('data-flits-product-title') || '').toLowerCase();
     var titleEl = card.querySelector('.card-information__text, .card__title, .card-information__text h4');
     if (titleEl && !title) title = titleEl.textContent.trim().toLowerCase();
     var extra = card.querySelector('.card-information .full-unstyled-link [class*="visually-hidden"]');
     if (extra && extra.textContent) title = title + ' ' + extra.textContent.trim().toLowerCase();
+    startText = (title + ' ' + (handle || '')).replace(/-/g, ' ').toLowerCase().trim();
     var text = (handle + ' ' + title).toLowerCase().replace(/-/g, ' ');
     for (var key in filterParams) {
       var filterVals = Array.isArray(filterParams[key]) ? filterParams[key] : [filterParams[key]];
-      var anyMatch = filterVals.some(function (val) {
-        val = (val || '').toLowerCase().replace(/\s+/g, ' ').trim();
-        if (!val) return true;
-        if (val.indexOf(' ') !== -1) return text.indexOf(val) !== -1;
-        var escaped = val.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-        return new RegExp('(^|\\s)' + escaped + '(\\s|$)', 'i').test(text);
-      });
+      var anyMatch;
+      if (key.indexOf('filter.p.m.global.color') !== -1) {
+        anyMatch = filterVals.some(function (val) { return colorStartsWith(startText, val); });
+      } else {
+        anyMatch = filterVals.some(function (val) {
+          val = (val || '').toLowerCase().replace(/\s+/g, ' ').trim();
+          if (!val) return true;
+          if (val.indexOf(' ') !== -1) return text.indexOf(val) !== -1;
+          var escaped = val.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+          return new RegExp('(^|\\s)' + escaped + '(\\s|$)', 'i').test(text);
+        });
+      }
       if (!anyMatch) return false;
     }
     return true;
