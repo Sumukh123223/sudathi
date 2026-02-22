@@ -926,6 +926,7 @@
     if (!cards.length) cards = document.querySelectorAll('#product-grid .grid__item, #ProductGridContainer .grid__item');
     if (!cards.length) cards = document.querySelectorAll('.product-grid .grid__item');
     var visible = [];
+    var seenHandles = {};
     cards.forEach(function (el) {
       var card = el.classList && el.classList.contains('grid__item') ? el : (el.closest && el.closest('.grid__item')) || el;
       if (!card) return;
@@ -935,6 +936,9 @@
         if (priceGte != null && price < priceGte) show = false;
         if (priceLte != null && price > priceLte) show = false;
       }
+      var handle = getHandleFromCard(card);
+      if (show && handle && seenHandles[handle]) show = false;
+      if (show && handle) seenHandles[handle] = true;
       card.style.display = show ? '' : 'none';
       if (show) visible.push(card);
     });
