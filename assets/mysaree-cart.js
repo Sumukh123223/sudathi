@@ -893,6 +893,12 @@
   function applyCollectionFilters() {
     var path = typeof window.location !== 'undefined' ? window.location.pathname || '' : '';
     if (path.indexOf('/collections/') !== 0 || path.indexOf('/products/') !== -1) return;
+    var container = document.getElementById('ProductGridContainer');
+    document.querySelectorAll('#ProductGridContainer .loading-overlay, .product-grid-container .loading-overlay').forEach(function (el) { el.style.display = 'none'; });
+    if (container) {
+      var lo = container.querySelector('.loading-overlay');
+      if (lo) lo.style.display = 'none';
+    }
     var urlState = getCollectionUrlState();
     var filterParams = urlState.filterParams;
     var priceGte = urlState.priceGte;
@@ -925,8 +931,10 @@
     if (!cards.length && container) cards = container.querySelectorAll('.grid__item');
     if (!cards.length) cards = document.querySelectorAll('#product-grid .grid__item, #ProductGridContainer .grid__item');
     if (!cards.length) cards = document.querySelectorAll('.product-grid .grid__item');
+    if (!cards.length) cards = document.querySelectorAll('.collection .grid__item, main .grid__item');
     var visible = [];
     var seenHandles = {};
+    var seenTitles = {};
     cards.forEach(function (el) {
       var card = el.classList && el.classList.contains('grid__item') ? el : (el.closest && el.closest('.grid__item')) || el;
       if (!card) return;
@@ -937,8 +945,11 @@
         if (priceLte != null && price > priceLte) show = false;
       }
       var handle = getHandleFromCard(card);
+      var titleKey = (getTitleFromCard(card) || '').toLowerCase().replace(/\s+/g, ' ').trim();
       if (show && handle && seenHandles[handle]) show = false;
       if (show && handle) seenHandles[handle] = true;
+      if (show && !handle && titleKey && seenTitles[titleKey]) show = false;
+      if (show && !handle && titleKey) seenTitles[titleKey] = true;
       card.style.display = show ? '' : 'none';
       if (show) visible.push(card);
     });
@@ -986,6 +997,9 @@
     } else if (noResults) {
       noResults.style.display = 'none';
     }
+    var loadingOverlay = (container && container.querySelector('.loading-overlay')) || document.querySelector('#ProductGridContainer .loading-overlay') || document.querySelector('.product-grid-container .loading-overlay');
+    if (loadingOverlay) loadingOverlay.style.display = 'none';
+    document.querySelectorAll('#ProductGridContainer .loading-overlay, .product-grid-container .loading-overlay, .product-grid + .loading-overlay').forEach(function (el) { el.style.display = 'none'; });
   }
 
   var quickFilterMap = {
