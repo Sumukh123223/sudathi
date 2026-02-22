@@ -23,6 +23,8 @@ except ImportError:
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 CART_SCRIPT = b'<script src="/assets/mysaree-cart.js"></script>'
+# Stub Shopify analytics so it never fetches sudathi.com/api/collect (avoids CORS errors on static clone)
+ANALYTICS_STUB = b'''<script>(function(){var n=function(){};var noop={track:n,page:n,ready:function(f){if(typeof f==="function")f();}};window.ShopifyAnalytics=window.ShopifyAnalytics||{};try{Object.defineProperty(window.ShopifyAnalytics,"lib",{get:function(){return noop;},set:function(){},configurable:true});}catch(e){window.ShopifyAnalytics.lib=noop;}window.Shopify=window.Shopify||{};window.Shopify.analytics={replayQueue:[]};})();</script>'''
 ORDERS_FILE = os.path.join(ROOT, "orders.json")
 PRODUCTS_FILE = os.path.join(ROOT, "products.json")
 ADMIN_ATTRIBUTES_FILE = os.path.join(ROOT, "product_attributes_admin.json")
@@ -216,13 +218,15 @@ def _find_product_html(handle):
 
 
 def _html_with_cart_from_path(file_path):
-    """Read HTML file and inject cart script before </body> if not present. file_path is absolute."""
+    """Read HTML file and inject cart script + analytics stub. file_path is absolute."""
     if not os.path.isfile(file_path):
         return None
     with open(file_path, "rb") as f:
         body = f.read()
     if b"mysaree-cart.js" not in body and b"</body>" in body:
         body = body.replace(b"</body>", CART_SCRIPT + b"\n</body>")
+    if b"</head>" in body and ANALYTICS_STUB not in body:
+        body = body.replace(b"</head>", ANALYTICS_STUB + b"\n</head>", 1)
     return Response(body, mimetype="text/html")
 
 
