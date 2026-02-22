@@ -899,11 +899,13 @@
     }
     syncFacetFormToUrl(document.getElementById('FacetFiltersForm'));
     syncFacetFormToUrl(document.getElementById('FacetFiltersFormMobile'));
-    var gridEl = document.getElementById('product-grid') || document.querySelector('#ProductGridContainer .product-grid');
+    var container = document.getElementById('ProductGridContainer');
+    var gridEl = document.getElementById('product-grid') || (container && container.querySelector('.product-grid'));
+    if (!gridEl && container) gridEl = container.querySelector('ul[role="list"]');
     var cards = gridEl ? gridEl.querySelectorAll('.grid__item') : [];
+    if (!cards.length && container) cards = container.querySelectorAll('.grid__item');
     if (!cards.length) cards = document.querySelectorAll('#product-grid .grid__item, #ProductGridContainer .grid__item');
     if (!cards.length) cards = document.querySelectorAll('.product-grid .grid__item');
-    if (!cards.length) cards = document.querySelectorAll('.grid__item');
     var visible = [];
     cards.forEach(function (el) {
       var card = el.classList && el.classList.contains('grid__item') ? el : (el.closest && el.closest('.grid__item')) || el;
@@ -979,11 +981,14 @@
     if (path.indexOf('/collections/') !== 0 || path.indexOf('/products/') !== -1) return;
     applyCollectionFilters();
     setTimeout(applyCollectionFilters, 50);
+    setTimeout(applyCollectionFilters, 200);
+    setTimeout(applyCollectionFilters, 500);
     fetch('/api/products-filter-data')
       .then(function (r) { return r.json(); })
       .then(function (data) {
         collectionFilterData = data && typeof data === 'object' ? data : null;
         applyCollectionFilters();
+        setTimeout(applyCollectionFilters, 100);
       })
       .catch(function () { collectionFilterData = {}; applyCollectionFilters(); });
     document.addEventListener('click', function (e) {
