@@ -796,7 +796,7 @@
 
   function productCardMatchesFilters(card, filterParams, filterData) {
     var handle = getHandleFromCard(card);
-    if (!handle) return true;
+    if (!handle) return Object.keys(filterParams).length === 0;
     if (filterData && filterData[handle]) {
       var att = filterData[handle];
       for (var key in filterParams) {
@@ -946,6 +946,7 @@
     var path = typeof window.location !== 'undefined' ? window.location.pathname || '' : '';
     if (path.indexOf('/collections/') !== 0 || path.indexOf('/products/') !== -1) return;
     applyCollectionFilters();
+    setTimeout(applyCollectionFilters, 50);
     fetch('/api/products-filter-data')
       .then(function (r) { return r.json(); })
       .then(function (data) {
@@ -974,9 +975,13 @@
           e.preventDefault();
           e.stopPropagation();
           var basePath = path.split('?')[0];
-          var q = encodeURIComponent(dataParam) + '=' + encodeURIComponent(dataValue);
+          var current = getCollectionFilterParams();
+          current[dataParam] = dataValue;
+          var parts = [];
+          for (var k in current) { if (current[k]) parts.push(encodeURIComponent(k) + '=' + encodeURIComponent(current[k])); }
+          var q = parts.join('&');
           if (window.history && window.history.replaceState) {
-            window.history.replaceState({}, '', basePath + '?' + q);
+            window.history.replaceState({}, '', basePath + (q ? '?' + q : ''));
           }
           applyCollectionFilters();
           return;
@@ -989,9 +994,13 @@
             if (p && v) {
               e.preventDefault();
               e.stopPropagation();
-              var q = encodeURIComponent(p) + '=' + encodeURIComponent(v);
+              var current = getCollectionFilterParams();
+              current[p] = v;
+              var parts = [];
+              for (var k in current) { if (current[k]) parts.push(encodeURIComponent(k) + '=' + encodeURIComponent(current[k])); }
+              var q = parts.join('&');
               if (window.history && window.history.replaceState) {
-                window.history.replaceState({}, '', path.split('?')[0] + '?' + q);
+                window.history.replaceState({}, '', path.split('?')[0] + (q ? '?' + q : ''));
               }
               applyCollectionFilters();
               return;
@@ -1004,9 +1013,13 @@
           if (mapped) {
             e.preventDefault();
             e.stopPropagation();
-            var query = encodeURIComponent(mapped.param) + '=' + encodeURIComponent(mapped.value);
+            var current = getCollectionFilterParams();
+            current[mapped.param] = mapped.value;
+            var parts = [];
+            for (var k in current) { if (current[k]) parts.push(encodeURIComponent(k) + '=' + encodeURIComponent(current[k])); }
+            var query = parts.join('&');
             if (window.history && window.history.replaceState) {
-              window.history.replaceState({}, '', path.split('?')[0] + '?' + query);
+              window.history.replaceState({}, '', path.split('?')[0] + (query ? '?' + query : ''));
             }
             applyCollectionFilters();
             return;

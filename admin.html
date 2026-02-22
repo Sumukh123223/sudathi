@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Admin – Product categories</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { font-family: system-ui, sans-serif; margin: 0; padding: 1rem; background: #f5f5f5; }
+    .container { max-width: 1400px; margin: 0 auto; }
+    h1 { margin: 0 0 1rem; color: #1a1a1a; }
+    .key-prompt { background: #fff; padding: 2rem; border-radius: 8px; max-width: 400px; }
+    .key-prompt input { width: 100%; padding: 0.5rem; margin-bottom: 0.5rem; }
+    .key-prompt button { padding: 0.5rem 1rem; background: #093174; color: #fff; border: none; border-radius: 4px; cursor: pointer; }
+    .key-prompt button:hover { opacity: 0.9; }
+    .toolbar { display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; flex-wrap: wrap; }
+    .toolbar .search { padding: 0.5rem; width: 220px; }
+    .toolbar button { padding: 0.5rem 1rem; background: #093174; color: #fff; border: none; border-radius: 4px; cursor: pointer; }
+    .toolbar button.secondary { background: #555; }
+    .toolbar .status { color: #666; font-size: 0.9rem; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; }
+    .card { background: #fff; border-radius: 8px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+    .card-img { width: 100%; aspect-ratio: 3/4; object-fit: cover; background: #eee; }
+    .card-body { padding: 0.75rem; }
+    .card-title { font-weight: 600; font-size: 0.9rem; margin: 0 0 0.5rem; line-height: 1.3; }
+    .card select { width: 100%; padding: 0.35rem; margin-bottom: 0.4rem; font-size: 0.8rem; }
+    .card label { display: block; font-size: 0.7rem; color: #666; margin-bottom: 0.2rem; text-transform: uppercase; }
+    .card .handle { font-size: 0.7rem; color: #999; word-break: break-all; margin-top: 0.25rem; }
+    .error { background: #fee; color: #c00; padding: 1rem; border-radius: 4px; margin-bottom: 1rem; }
+    .success { background: #efe; color: #060; padding: 0.5rem; border-radius: 4px; margin-bottom: 1rem; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div id="key-screen" class="key-prompt">
+      <h2>Admin login</h2>
+      <p>Enter your admin key to manage product categories.</p>
+      <input type="password" id="key-input" placeholder="Admin key" autocomplete="off">
+      <button type="button" id="key-go">Continue</button>
+    </div>
+    <div id="admin-screen" style="display: none;">
+      <h1>Product categories (admin)</h1>
+      <p>Assign Category, Color, Fabric and Type to each product. Only products that match the selected filters will show on the storefront when customers filter.</p>
+      <div id="message"></div>
+      <div class="toolbar">
+        <input type="text" class="search" id="search" placeholder="Search by title or handle…">
+        <button type="button" id="save-btn">Save all changes</button>
+        <button type="button" id="reload-btn" class="secondary">Reload</button>
+        <span class="status" id="status"></span>
+      </div>
+      <div class="grid" id="product-grid"></div>
+    </div>
+  </div>
+  <script>
+(function () {
+  var key = '';
+  var options = { category: [], color: [], fabric: [], type: [] };
+  var products = [];
+  var attributes = {};
+  var keyScreen = document.getElementById('key-screen');
+  var adminScreen = document.getElementById('admin-screen');
+  var keyInput = document.getElementById('key-input');
+  var keyGo = document.getElementById('key-go');
+  var productGrid = document.getElementById('product-grid');
+  var saveBtn = document.getElementById('save-btn');
+  var reloadBtn = document.getElementById('reload-btn');
+  var searchInput = document.getElementById('search');
+  var statusEl = document.getElementById('status');
+  var messageEl = document.getElementById('message');
+
+  function getKey() {
+    var params = new URLSearchParams(window.location.search);
+    return (params.get('key') || '').trim();
+  }
+
+  function api(path, opts) {
+    opts = opts || {};
+    var url = path + (path.indexOf('?') !== -1 ? '&' : '?') + 'key=' + encodeURIComponent(key);
+    return fetch(url, opts).then(function (r) {
+      if (r.status === 401) throw new Error('Invalid admin key');
+      return r.json();
+    });
+  }
+
+  function showMessage(text, isError) {
+    messageEl.innerHTML = '<div class="' + (isError ? 'error' : 'success') + '">' + text + '</div>';
+    setTimeout(function () { messageEl.innerHTML = ''; }, 4000);
+  }
+
+  function renderProduct(p) {
+    var att = attributes[p.handle] || {};
+    var cat = att.category || [];
+    var col = att.color || [];
+    var fab = att.fabric || [];
+    var typ = att.type || [];
+    var imgSrc = (p.image && p.image.indexOf('http') !== 0) ? (window.location.origin + p.image) : (p.image || '');
+    var card = document.createElement('div');
+    card.className = 'card';
+    card.dataset.handle = p.handle;
+    card.innerHTML =
+      '<img class="card-img" src="' + (imgSrc || '') + '" alt="" onerror="this.style.background=\'#ddd\';this.alt=\'No image\'">' +
+      '<div class="card-body">' +
+      '<div class="card-title">' + (p.title || p.handle) + '</div>' +
+      '<label>Category</label><select multiple data-field="category">' +
+      options.category.map(function (v) { return '<option value="' + v + '"' + (cat.indexOf(v) !== -1 ? ' selected' : '') + '>' + v + '</option>'; }).join('') +
+      '</select>' +
+      '<label>Color</label><select multiple data-field="color">' +
+      options.color.map(function (v) { return '<option value="' + v + '"' + (col.indexOf(v) !== -1 ? ' selected' : '') + '>' + v + '</option>'; }).join('') +
+      '</select>' +
+      '<label>Fabric</label><select multiple data-field="fabric">' +
+      options.fabric.map(function (v) { return '<option value="' + v + '"' + (fab.indexOf(v) !== -1 ? ' selected' : '') + '>' + v + '</option>'; }).join('') +
+      '</select>' +
+      '<label>Type</label><select multiple data-field="type">' +
+      options.type.map(function (v) { return '<option value="' + v + '"' + (typ.indexOf(v) !== -1 ? ' selected' : '') + '>' + v + '</option>'; }).join('') +
+      '</select>' +
+      '<div class="handle">' + p.handle + '</div></div>';
+    return card;
+  }
+
+  function collectAttributes() {
+    var out = {};
+    productGrid.querySelectorAll('.card').forEach(function (card) {
+      var handle = card.dataset.handle;
+      if (!handle) return;
+      out[handle] = {};
+      ['category', 'color', 'fabric', 'type'].forEach(function (field) {
+        var sel = card.querySelector('select[data-field="' + field + '"]');
+        if (!sel) return;
+        var val = [];
+        for (var i = 0; i < sel.options.length; i++) {
+          if (sel.options[i].selected) val.push(sel.options[i].value);
+        }
+        out[handle][field] = val;
+      });
+    });
+    return out;
+  }
+
+  function filterGrid() {
+    var q = (searchInput.value || '').toLowerCase().trim();
+    productGrid.querySelectorAll('.card').forEach(function (card) {
+      var title = (card.querySelector('.card-title') || {}).textContent || '';
+      var handle = (card.dataset.handle || '');
+      var show = !q || title.toLowerCase().indexOf(q) !== -1 || handle.toLowerCase().indexOf(q) !== -1;
+      card.style.display = show ? '' : 'none';
+    });
+  }
+
+  function load() {
+    key = getKey();
+    if (!key) {
+      keyScreen.style.display = '';
+      adminScreen.style.display = 'none';
+      return;
+    }
+    keyScreen.style.display = 'none';
+    adminScreen.style.display = '';
+    statusEl.textContent = 'Loading…';
+    Promise.all([
+      api('/api/admin/filter-options'),
+      api('/api/admin/products'),
+      api('/api/admin/product-attributes')
+    ]).then(function (results) {
+      options = results[0];
+      products = results[1];
+      attributes = results[2] || {};
+      productGrid.innerHTML = '';
+      products.forEach(function (p) {
+        productGrid.appendChild(renderProduct(p));
+      });
+      statusEl.textContent = products.length + ' products';
+    }).catch(function (e) {
+      statusEl.textContent = '';
+      showMessage(e.message || 'Failed to load', true);
+    });
+  }
+
+  keyGo.addEventListener('click', function () {
+    key = (keyInput.value || '').trim();
+    if (!key) { showMessage('Enter admin key', true); return; }
+    window.history.replaceState({}, '', window.location.pathname + '?key=' + encodeURIComponent(key));
+    load();
+  });
+
+  saveBtn.addEventListener('click', function () {
+    var payload = collectAttributes();
+    saveBtn.disabled = true;
+    statusEl.textContent = 'Saving…';
+    fetch('/api/admin/product-attributes?key=' + encodeURIComponent(key), {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    }).then(function (r) {
+      if (r.status === 401) throw new Error('Invalid admin key');
+      return r.json();
+    }).then(function () {
+      attributes = payload;
+      showMessage('Saved. Storefront filters will use these categories.');
+      statusEl.textContent = products.length + ' products';
+    }).catch(function (e) {
+      showMessage(e.message || 'Save failed', true);
+      statusEl.textContent = products.length + ' products';
+    }).finally(function () {
+      saveBtn.disabled = false;
+    });
+  });
+
+  reloadBtn.addEventListener('click', load);
+  searchInput.addEventListener('input', filterGrid);
+
+  if (getKey()) load();
+})();
+  </script>
+</body>
+</html>
