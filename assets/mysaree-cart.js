@@ -747,6 +747,42 @@
     return params;
   }
 
+  function getCollectionUrlState() {
+    var state = { filterParams: getCollectionFilterParams(), priceGte: null, priceLte: null, sortBy: '' };
+    var search = typeof window.location !== 'undefined' && window.location.search ? window.location.search.slice(1) : '';
+    if (!search) return state;
+    search.split('&').forEach(function (pair) {
+      var i = pair.indexOf('=');
+      if (i === -1) return;
+      var key = decodeURIComponent(pair.slice(0, i)).trim();
+      var val = decodeURIComponent(pair.slice(i + 1)).trim();
+      if (key === 'filter.v.price.gte') state.priceGte = parseInt(val, 10) || null;
+      else if (key === 'filter.v.price.lte') state.priceLte = parseInt(val, 10) || null;
+      else if (key === 'sort_by') state.sortBy = val;
+    });
+    return state;
+  }
+
+  function getPriceFromCard(card) {
+    var sale = card.querySelector('.price-item--sale[data-price]');
+    if (sale) return parseInt(sale.getAttribute('data-price'), 10) || 0;
+    var money = card.querySelector('.price-item .price-item--sale price-money bdi, .price-item--sale price-money bdi, [data-price]');
+    if (money && money.getAttribute('data-price')) return parseInt(money.getAttribute('data-price'), 10) || 0;
+    var bdi = card.querySelector('.price-item--sale bdi, .price-item bdi');
+    if (bdi) {
+      var text = bdi.textContent.replace(/[^\d]/g, '');
+      return parseInt(text, 10) * 100 || 0;
+    }
+    return 0;
+  }
+
+  function getTitleFromCard(card) {
+    var flits = card.querySelector('[data-flits-product-title]');
+    if (flits) return (flits.getAttribute('data-flits-product-title') || '').trim();
+    var el = card.querySelector('.card-information__text, .card__title');
+    return el ? el.textContent.trim() : '';
+  }
+
   function getHandleFromCard(card) {
     var flits = card.querySelector('[data-flits-product-handle]');
     if (flits) return (flits.getAttribute('data-flits-product-handle') || '').trim();
@@ -803,7 +839,11 @@
   function applyCollectionFilters() {
     var path = typeof window.location !== 'undefined' ? window.location.pathname || '' : '';
     if (path.indexOf('/collections/') !== 0 || path.indexOf('/products/') !== -1) return;
-    var filterParams = getCollectionFilterParams();
+    var urlState = getCollectionUrlState();
+    var filterParams = urlState.filterParams;
+    var priceGte = urlState.priceGte;
+    var priceLte = urlState.priceLte;
+    var sortBy = (urlState.sortBy || '').toLowerCase();
     var facetForm = document.getElementById('FacetFiltersForm');
     if (facetForm) {
       facetForm.querySelectorAll('input[name^="filter.p.m.global"]').forEach(function (inp) {
@@ -811,16 +851,67 @@
         var val = (inp.value || '').trim();
         inp.checked = !!(key && filterParams[key] && filterParams[key].toLowerCase() === val.toLowerCase());
       });
+      var gteInp = facetForm.querySelector('input[name="filter.v.price.gte"]');
+      var lteInp = facetForm.querySelector('input[name="filter.v.price.lte"]');
+      if (gteInp) gteInp.value = priceGte != null ? (priceGte / 100) : '';
+      if (lteInp) lteInp.value = priceLte != null ? (priceLte / 100) : '';
+      var sortSelect = facetForm.querySelector('select[name="sort_by"]');
+      if (sortSelect) sortSelect.value = urlState.sortBy || sortSelect.options[0] && sortSelect.options[0].value || '';
     }
     var cards = document.querySelectorAll('.grid__item');
     if (!cards.length) cards = document.querySelectorAll('.card-wrapper[data-product-id], [data-flits-product-handle]');
+    var visible = [];
     cards.forEach(function (el) {
       var card = el.classList && el.classList.contains('grid__item') ? el : (el.closest && el.closest('.grid__item')) || el;
       if (!card) return;
-      var show = Object.keys(filterParams).length === 0 || productCardMatchesFilters(card, filterParams, collectionFilterData);
+      var show = (Object.keys(filterParams).length === 0 || productCardMatchesFilters(card, filterParams, collectionFilterData));
+      if (show && (priceGte != null || priceLte != null)) {
+        var price = getPriceFromCard(card);
+        if (priceGte != null && price < priceGte) show = false;
+        if (priceLte != null && price > priceLte) show = false;
+      }
       card.style.display = show ? '' : 'none';
+      if (show) visible.push(card);
     });
+    if (sortBy && visible.length) {
+      var grid = visible[0].parentNode;
+      if (grid) {
+        visible.sort(function (a, b) {
+          var priceA = getPriceFromCard(a);
+          var priceB = getPriceFromCard(b);
+          var titleA = getTitleFromCard(a).toLowerCase();
+          var titleB = getTitleFromCard(b).toLowerCase();
+          if (sortBy === 'price-ascending') return priceA - priceB;
+          if (sortBy === 'price-descending') return priceB - priceA;
+          if (sortBy === 'title-ascending') return titleA < titleB ? -1 : titleA > titleB ? 1 : 0;
+          if (sortBy === 'title-descending') return titleB < titleA ? -1 : titleB > titleA ? 1 : 0;
+          if (sortBy === 'created-descending' || sortBy === 'created-ascending') {
+            var idxA = Array.prototype.indexOf.call(cards, a);
+            var idxB = Array.prototype.indexOf.call(cards, b);
+            return sortBy === 'created-descending' ? idxA - idxB : idxB - idxA;
+          }
+          return 0;
+        });
+        visible.forEach(function (node) { grid.appendChild(node); });
+      }
+    }
+    var countEl = document.getElementById('ProductCount');
+    var countMobile = document.getElementById('ProductCountMobile');
+    var countStr = visible.length === 1 ? '1 product' : visible.length + ' products';
+    if (countEl) countEl.textContent = countStr;
+    if (countMobile) countMobile.textContent = countStr;
   }
+
+  var quickFilterMap = {
+    'silk sarees': { param: 'filter.p.m.global.fabric', value: 'Silk' },
+    'cotton sarees': { param: 'filter.p.m.global.fabric', value: 'Cotton' },
+    'linen sarees': { param: 'filter.p.m.global.fabric', value: 'Linen' },
+    'green sarees': { param: 'filter.p.m.global.color', value: 'Green' },
+    'blue sarees': { param: 'filter.p.m.global.color', value: 'Blue' },
+    'pink sarees': { param: 'filter.p.m.global.color', value: 'Pink' },
+    'plain sarees': { param: 'filter.p.m.global.type', value: 'Plain' },
+    'printed sarees': { param: 'filter.p.m.global.type', value: 'Printed' }
+  };
 
   function initCollectionFilters() {
     var path = typeof window.location !== 'undefined' ? window.location.pathname || '' : '';
@@ -834,10 +925,61 @@
       })
       .catch(function () { collectionFilterData = {}; applyCollectionFilters(); });
     document.addEventListener('click', function (e) {
-      var a = e.target && (e.target.closest ? e.target.closest('a[href*="filter.p.m.global"]') : null);
+      var path = window.location.pathname || '';
+      var link = e.target && (e.target.closest ? e.target.closest('a') : null);
+      if (link && link.tagName === 'A') {
+        var dataParam = link.getAttribute('data-filter-param');
+        var dataValue = link.getAttribute('data-filter-value');
+        var dataFilter = link.getAttribute('data-collection-filter');
+        if (dataParam && dataValue) {
+          e.preventDefault();
+          e.stopPropagation();
+          var basePath = path.split('?')[0];
+          var q = encodeURIComponent(dataParam) + '=' + encodeURIComponent(dataValue);
+          if (window.history && window.history.replaceState) {
+            window.history.replaceState({}, '', basePath + '?' + q);
+          }
+          applyCollectionFilters();
+          return;
+        }
+        if (dataFilter && typeof dataFilter === 'string') {
+          var eq = dataFilter.indexOf('=');
+          if (eq !== -1) {
+            var p = 'filter.p.m.global.' + dataFilter.slice(0, eq).trim();
+            var v = dataFilter.slice(eq + 1).trim();
+            if (p && v) {
+              e.preventDefault();
+              e.stopPropagation();
+              var q = encodeURIComponent(p) + '=' + encodeURIComponent(v);
+              if (window.history && window.history.replaceState) {
+                window.history.replaceState({}, '', path.split('?')[0] + '?' + q);
+              }
+              applyCollectionFilters();
+              return;
+            }
+          }
+        }
+        if (path.indexOf('/collections/') === 0 && path.indexOf('/products/') === -1) {
+          var label = (link.textContent || '').trim().toLowerCase().replace(/\s+/g, ' ');
+          var mapped = quickFilterMap[label];
+          if (mapped) {
+            e.preventDefault();
+            e.stopPropagation();
+            var query = encodeURIComponent(mapped.param) + '=' + encodeURIComponent(mapped.value);
+            if (window.history && window.history.replaceState) {
+              window.history.replaceState({}, '', path.split('?')[0] + '?' + query);
+            }
+            applyCollectionFilters();
+            return;
+          }
+        }
+      }
+      var a = e.target && (e.target.closest ? e.target.closest('a[href*="filter."]') : null) || e.target.closest('a[href*="sort_by="]');
       if (!a || a.tagName !== 'A') return;
       var href = a.getAttribute('href');
-      if (!href || href.indexOf('filter.p.m.global') === -1) return;
+      if (!href) return;
+      var isFilter = href.indexOf('filter.p.m.global') !== -1 || href.indexOf('filter.v.price') !== -1 || href.indexOf('sort_by=') !== -1;
+      if (!isFilter) return;
       e.preventDefault();
       e.stopPropagation();
       var base = href.split('?')[0];
@@ -849,21 +991,45 @@
     }, true);
     var facetForm = document.getElementById('FacetFiltersForm');
     if (facetForm) {
-      facetForm.addEventListener('change', function () {
-        var base = path;
-        var inputs = facetForm.querySelectorAll('input[name^="filter.p.m.global"]:checked');
+      function buildCollectionQuery() {
         var parts = [];
-        inputs.forEach(function (inp) {
+        facetForm.querySelectorAll('input[name^="filter.p.m.global"]:checked').forEach(function (inp) {
           var n = inp.getAttribute('name');
           var v = inp.value;
           if (n && v) parts.push(encodeURIComponent(n) + '=' + encodeURIComponent(v));
         });
-        var query = parts.join('&');
+        var gteInp = facetForm.querySelector('input[name="filter.v.price.gte"]');
+        var lteInp = facetForm.querySelector('input[name="filter.v.price.lte"]');
+        if (gteInp && gteInp.value) {
+          var gte = Math.round(parseFloat(gteInp.value) * 100);
+          if (!isNaN(gte)) parts.push('filter.v.price.gte=' + gte);
+        }
+        if (lteInp && lteInp.value) {
+          var lte = Math.round(parseFloat(lteInp.value) * 100);
+          if (!isNaN(lte)) parts.push('filter.v.price.lte=' + lte);
+        }
+        var sortSelect = facetForm.querySelector('select[name="sort_by"]');
+        if (sortSelect && sortSelect.value) parts.push('sort_by=' + encodeURIComponent(sortSelect.value));
+        return parts.join('&');
+      }
+      facetForm.addEventListener('change', function () {
+        var query = buildCollectionQuery();
         if (typeof window.history !== 'undefined' && window.history.replaceState) {
-          window.history.replaceState({}, '', base + (query ? '?' + query : ''));
+          window.history.replaceState({}, '', path + (query ? '?' + query : ''));
         }
         applyCollectionFilters();
       });
+      var applyBtn = facetForm.querySelector('button[type="submit"], .facets__form button, [name="filter-apply"]');
+      if (applyBtn) {
+        applyBtn.addEventListener('click', function (e) {
+          e.preventDefault();
+          var query = buildCollectionQuery();
+          if (typeof window.history !== 'undefined' && window.history.replaceState) {
+            window.history.replaceState({}, '', path + (query ? '?' + query : ''));
+          }
+          applyCollectionFilters();
+        });
+      }
     }
     window.addEventListener('popstate', applyCollectionFilters);
   }
