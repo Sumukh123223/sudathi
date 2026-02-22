@@ -1066,20 +1066,46 @@
       if (!isFilter) return;
       e.preventDefault();
       e.stopPropagation();
-      var base = href.split('?')[0];
-      var query = href.indexOf('?') !== -1 ? href.slice(href.indexOf('?') + 1) : '';
+      var base = (href.split('?')[0] || window.location.pathname).trim() || window.location.pathname;
+      var linkQuery = href.indexOf('?') !== -1 ? href.slice(href.indexOf('?') + 1) : '';
+      var isColorLink = linkQuery.indexOf('filter.p.m.global.color=') !== -1;
+      var query = linkQuery;
+      if (isColorLink && window.location.search) {
+        var currentParts = window.location.search.slice(1).split('&');
+        var out = [];
+        var colorVal = null;
+        var linkParams = linkQuery.split('&');
+        for (var qi = 0; qi < linkParams.length; qi++) {
+          if (linkParams[qi].indexOf('filter.p.m.global.color=') === 0) {
+            colorVal = linkParams[qi];
+            break;
+          }
+        }
+        for (var pi = 0; pi < currentParts.length; pi++) {
+          if (currentParts[pi].indexOf('filter.p.m.global.color=') === 0) continue;
+          out.push(currentParts[pi]);
+        }
+        if (colorVal) out.push(colorVal);
+        query = out.join('&');
+      }
       if (typeof window.history !== 'undefined' && window.history.replaceState) {
-        window.history.replaceState({}, '', (base || window.location.pathname) + (query ? '?' + query : ''));
+        window.history.replaceState({}, '', base + (query ? '?' + query : ''));
       }
       applyCollectionFilters();
     }, true);
     function buildCollectionQueryFromForm(form) {
       if (!form) return '';
       var parts = [];
+      var colorAdded = false;
       form.querySelectorAll('input[name^="filter.p.m.global"]:checked').forEach(function (inp) {
         var n = inp.getAttribute('name');
         var v = inp.value;
-        if (n && v) parts.push(encodeURIComponent(n) + '=' + encodeURIComponent(v));
+        if (!n || !v) return;
+        if (n.indexOf('filter.p.m.global.color') !== -1) {
+          if (colorAdded) return;
+          colorAdded = true;
+        }
+        parts.push(encodeURIComponent(n) + '=' + encodeURIComponent(v));
       });
       var gteInp = form.querySelector('input[name="filter.v.price.gte"]');
       var lteInp = form.querySelector('input[name="filter.v.price.lte"]');
