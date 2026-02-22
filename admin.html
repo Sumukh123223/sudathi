@@ -23,13 +23,14 @@
     .card-img { width: 100%; aspect-ratio: 3/4; object-fit: cover; background: #eee; }
     .card-body { padding: 0.75rem; }
     .card-title { font-weight: 600; font-size: 0.9rem; margin: 0 0 0.5rem; line-height: 1.3; }
-    .card select { width: 100%; padding: 0.35rem; margin-bottom: 0.4rem; font-size: 0.8rem; }
-    .card label { display: block; font-size: 0.7rem; color: #666; margin-bottom: 0.2rem; text-transform: uppercase; }
+    .card label.field-label { display: block; font-size: 0.7rem; color: #666; margin-bottom: 0.2rem; text-transform: uppercase; }
+    .card .check-group { max-height: 100px; overflow-y: auto; border: 1px solid #ddd; border-radius: 4px; padding: 0.35rem; margin-bottom: 0.5rem; background: #fafafa; }
+    .card .check-group label { display: flex; align-items: center; gap: 0.35rem; font-size: 0.75rem; font-weight: normal; color: #333; margin: 0.2rem 0; cursor: pointer; }
+    .card .check-group input[type="checkbox"] { margin: 0; flex-shrink: 0; }
     .card .handle { font-size: 0.7rem; color: #999; word-break: break-all; margin-top: 0.25rem; }
     .card .btn-save { width: 100%; margin-top: 0.5rem; padding: 0.5rem; background: #093174; color: #fff; border: none; border-radius: 4px; cursor: pointer; font-size: 0.85rem; }
     .card .btn-save:hover { opacity: 0.9; }
     .card .btn-save:disabled { opacity: 0.6; cursor: not-allowed; }
-    .multi-hint { font-size: 0.7rem; color: #888; margin-bottom: 0.5rem; }
     .error { background: #fee; color: #c00; padding: 1rem; border-radius: 4px; margin-bottom: 1rem; }
     .success { background: #efe; color: #060; padding: 0.5rem; border-radius: 4px; margin-bottom: 1rem; }
   </style>
@@ -44,7 +45,7 @@
     </div>
     <div id="admin-screen" style="display: none;">
       <h1>Product categories (admin)</h1>
-      <p>Assign Category, Color, Fabric and Type to each product. You can select <strong>multiple</strong> options per product (e.g. Office Wear + Festive). Hold <strong>Ctrl</strong> (Windows) or <strong>Cmd</strong> (Mac) to select multiple. Products will appear on the main site only under the categories/filters you choose here.</p>
+      <p>Assign Category, Color, Fabric and Type to each product. <strong>Tick as many as you like</strong> in each section (multiple categories, multiple colours, multiple fabrics, multiple types). Products will show on the main site under every option you select.</p>
       <div id="message"></div>
       <div class="toolbar">
         <input type="text" class="search" id="search" placeholder="Search by title or handle…">
@@ -105,19 +106,18 @@
       '<img class="card-img" src="' + (imgSrc || '') + '" alt="" onerror="this.style.background=\'#ddd\';this.alt=\'No image\'">' +
       '<div class="card-body">' +
       '<div class="card-title">' + (p.title || p.handle) + '</div>' +
-      '<div class="multi-hint">Ctrl/Cmd + click to select multiple</div>' +
-      '<label>Category</label><select multiple data-field="category">' +
-      options.category.map(function (v) { return '<option value="' + v + '"' + (cat.indexOf(v) !== -1 ? ' selected' : '') + '>' + v + '</option>'; }).join('') +
-      '</select>' +
-      '<label>Color</label><select multiple data-field="color">' +
-      options.color.map(function (v) { return '<option value="' + v + '"' + (col.indexOf(v) !== -1 ? ' selected' : '') + '>' + v + '</option>'; }).join('') +
-      '</select>' +
-      '<label>Fabric</label><select multiple data-field="fabric">' +
-      options.fabric.map(function (v) { return '<option value="' + v + '"' + (fab.indexOf(v) !== -1 ? ' selected' : '') + '>' + v + '</option>'; }).join('') +
-      '</select>' +
-      '<label>Type</label><select multiple data-field="type">' +
-      options.type.map(function (v) { return '<option value="' + v + '"' + (typ.indexOf(v) !== -1 ? ' selected' : '') + '>' + v + '</option>'; }).join('') +
-      '</select>' +
+      '<label class="field-label">Category (select multiple)</label><div class="check-group" data-field="category">' +
+      options.category.map(function (v) { return '<label><input type="checkbox" value="' + (v || '').replace(/"/g, '&quot;') + '"' + (cat.indexOf(v) !== -1 ? ' checked' : '') + '> ' + (v || '') + '</label>'; }).join('') +
+      '</div>' +
+      '<label class="field-label">Color (select multiple)</label><div class="check-group" data-field="color">' +
+      options.color.map(function (v) { return '<label><input type="checkbox" value="' + (v || '').replace(/"/g, '&quot;') + '"' + (col.indexOf(v) !== -1 ? ' checked' : '') + '> ' + (v || '') + '</label>'; }).join('') +
+      '</div>' +
+      '<label class="field-label">Fabric (select multiple)</label><div class="check-group" data-field="fabric">' +
+      options.fabric.map(function (v) { return '<label><input type="checkbox" value="' + (v || '').replace(/"/g, '&quot;') + '"' + (fab.indexOf(v) !== -1 ? ' checked' : '') + '> ' + (v || '') + '</label>'; }).join('') +
+      '</div>' +
+      '<label class="field-label">Type (select multiple)</label><div class="check-group" data-field="type">' +
+      options.type.map(function (v) { return '<label><input type="checkbox" value="' + (v || '').replace(/"/g, '&quot;') + '"' + (typ.indexOf(v) !== -1 ? ' checked' : '') + '> ' + (v || '') + '</label>'; }).join('') +
+      '</div>' +
       '<button type="button" class="btn-save" data-handle="' + (p.handle || '').replace(/"/g, '&quot;') + '">Save this product</button>' +
       '<div class="handle">' + p.handle + '</div></div>';
     return card;
@@ -129,12 +129,12 @@
     var out = {};
     out[handle] = {};
     ['category', 'color', 'fabric', 'type'].forEach(function (field) {
-      var sel = card.querySelector('select[data-field="' + field + '"]');
-      if (!sel) return;
+      var group = card.querySelector('.check-group[data-field="' + field + '"]');
+      if (!group) return;
       var val = [];
-      for (var i = 0; i < sel.options.length; i++) {
-        if (sel.options[i].selected) val.push(sel.options[i].value);
-      }
+      group.querySelectorAll('input[type="checkbox"]:checked').forEach(function (cb) {
+        if (cb.value) val.push(cb.value);
+      });
       out[handle][field] = val;
     });
     return out;
