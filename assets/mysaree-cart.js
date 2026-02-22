@@ -756,9 +756,9 @@
       if (i === -1) return;
       var key = decodeURIComponent(pair.slice(0, i)).trim();
       var val = decodeURIComponent(pair.slice(i + 1)).trim();
-      if (key === 'filter.v.price.gte') state.priceGte = parseInt(val, 10) || null;
-      else if (key === 'filter.v.price.lte') state.priceLte = parseInt(val, 10) || null;
-      else if (key === 'sort_by') state.sortBy = val;
+      if (key === 'filter.v.price.gte') state.priceGte = (val !== '' && !isNaN(parseInt(val, 10))) ? parseInt(val, 10) : null;
+      else if (key === 'filter.v.price.lte') state.priceLte = (val !== '' && !isNaN(parseInt(val, 10))) ? parseInt(val, 10) : null;
+      else if (key === 'sort_by') state.sortBy = val || '';
     });
     return state;
   }
@@ -831,9 +831,14 @@
     if (extra && extra.textContent) title = title + ' ' + extra.textContent.trim().toLowerCase();
     var text = (handle + ' ' + title).toLowerCase().replace(/-/g, ' ');
     for (var key in filterParams) {
-      var val = (filterParams[key] || '').toLowerCase().replace(/\s+/g, ' ');
+      var val = (filterParams[key] || '').toLowerCase().replace(/\s+/g, ' ').trim();
       if (!val) continue;
-      if (text.indexOf(val) === -1) return false;
+      if (val.indexOf(' ') !== -1) {
+        if (text.indexOf(val) === -1) return false;
+      } else {
+        var escaped = val.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+        if (!new RegExp('(^|\\s)' + escaped + '(\\s|$)', 'i').test(text)) return false;
+      }
     }
     return true;
   }
@@ -862,8 +867,11 @@
     }
     syncFacetFormToUrl(document.getElementById('FacetFiltersForm'));
     syncFacetFormToUrl(document.getElementById('FacetFiltersFormMobile'));
-    var cards = document.querySelectorAll('.grid__item');
-    if (!cards.length) cards = document.querySelectorAll('.card-wrapper[data-product-id], [data-flits-product-handle]');
+    var gridEl = document.getElementById('product-grid') || document.querySelector('#ProductGridContainer .product-grid');
+    var cards = gridEl ? gridEl.querySelectorAll('.grid__item') : [];
+    if (!cards.length) cards = document.querySelectorAll('#product-grid .grid__item, #ProductGridContainer .grid__item');
+    if (!cards.length) cards = document.querySelectorAll('.product-grid .grid__item');
+    if (!cards.length) cards = document.querySelectorAll('.grid__item');
     var visible = [];
     cards.forEach(function (el) {
       var card = el.classList && el.classList.contains('grid__item') ? el : (el.closest && el.closest('.grid__item')) || el;
@@ -904,6 +912,23 @@
     var countStr = visible.length === 1 ? '1 product' : visible.length + ' products';
     if (countEl) countEl.textContent = countStr;
     if (countMobile) countMobile.textContent = countStr;
+    var container = document.getElementById('ProductGridContainer') || gridEl && gridEl.parentElement;
+    var noResultsId = 'collection-no-results-message';
+    var noResults = document.getElementById(noResultsId);
+    if (visible.length === 0 && Object.keys(filterParams).length > 0 && container) {
+      if (!noResults) {
+        noResults = document.createElement('div');
+        noResults.id = noResultsId;
+        noResults.className = 'collection-no-results';
+        noResults.style.cssText = 'grid-column: 1 / -1; padding: 2rem; text-align: center;';
+        noResults.innerHTML = '<p>No products match your filters. Try changing filters or <a href="' + (path.split('?')[0]) + '">clear all</a>.</p>';
+        if (gridEl && gridEl.parentNode) gridEl.parentNode.insertBefore(noResults, gridEl.nextSibling);
+        else container.appendChild(noResults);
+      }
+      noResults.style.display = '';
+    } else if (noResults) {
+      noResults.style.display = 'none';
+    }
   }
 
   var quickFilterMap = {
