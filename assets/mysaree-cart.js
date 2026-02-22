@@ -803,7 +803,14 @@
     var handle = getHandleFromCard(card);
     if (!handle) return Object.keys(filterParams).length === 0;
     var title = getTitleFromCard(card) || '';
+    var flits = card.querySelector('[data-flits-product-handle]');
+    if (flits) title = (flits.getAttribute('data-flits-product-title') || title || '').trim();
+    var titleEl = card.querySelector('.card-information__text, .card__title, .card-information__text h4');
+    if (titleEl && !title) title = titleEl.textContent.trim();
+    var extra = card.querySelector('.card-information .full-unstyled-link [class*="visually-hidden"]');
+    if (extra && extra.textContent) title = title + ' ' + extra.textContent.trim();
     var startText = (title + ' ' + (handle || '')).replace(/-/g, ' ').toLowerCase().trim();
+    var text = (handle + ' ' + title).replace(/-/g, ' ').toLowerCase().trim();
     var vals = function (v) { return Array.isArray(v) ? v : (v ? [String(v).trim()] : []); };
     function colorStartsWith(productStartText, selectedColor) {
       var c = (selectedColor || '').toLowerCase().trim();
@@ -821,71 +828,58 @@
       }
       return false;
     }
-    if (filterData && filterData[handle]) {
-      var att = filterData[handle];
-      for (var key in filterParams) {
-        var filterVals = vals(filterParams[key]).filter(Boolean);
-        if (!filterVals.length) continue;
-        var match = false;
-        if (key.indexOf('filter.p.m.global.fabric') !== -1) {
-          if (!att.fabric || !att.fabric.length) return false;
+    function textMatchesFilter(text, filterVal) {
+      var val = (filterVal || '').toLowerCase().replace(/\s+/g, ' ').trim();
+      if (!val) return true;
+      if (val.indexOf(' ') !== -1) return text.indexOf(val) !== -1;
+      var escaped = val.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      return new RegExp('(^|\\s)' + escaped + '(\\s|$)', 'i').test(text);
+    }
+    var att = filterData && filterData[handle] ? filterData[handle] : null;
+    for (var key in filterParams) {
+      var filterVals = vals(filterParams[key]).filter(Boolean);
+      if (!filterVals.length) continue;
+      var match = false;
+      if (key.indexOf('filter.p.m.global.fabric') !== -1) {
+        if (att && att.fabric && att.fabric.length) {
           match = filterVals.some(function (val) {
             return att.fabric.some(function (f) { return f.toLowerCase() === val.toLowerCase(); });
           });
-        } else if (key.indexOf('filter.p.m.global.color') !== -1) {
-          if (att.color && att.color.length) {
-            match = filterVals.some(function (val) {
-              return att.color.some(function (c) { return c.toLowerCase() === (val || '').toLowerCase(); });
-            });
-          } else {
-            match = filterVals.some(function (val) { return colorStartsWith(startText, val); });
-          }
-          if (match && filterVals.length) {
-            var selColor = (filterVals[0] || '').toLowerCase().trim();
-            if (titleStartsWithOtherColor(startText, selColor)) return false;
-          }
-        } else if (key.indexOf('filter.p.m.global.type') !== -1 || key.indexOf('filter.p.m.global.work') !== -1) {
-          if (!att.type || !att.type.length) return false;
+        } else {
+          match = filterVals.some(function (val) { return textMatchesFilter(text, val); });
+        }
+      } else if (key.indexOf('filter.p.m.global.color') !== -1) {
+        if (att && att.color && att.color.length) {
+          match = filterVals.some(function (val) {
+            return att.color.some(function (c) { return c.toLowerCase() === (val || '').toLowerCase(); });
+          });
+        } else {
+          match = filterVals.some(function (val) { return colorStartsWith(startText, val); });
+        }
+        if (match && filterVals.length) {
+          var selColor = (filterVals[0] || '').toLowerCase().trim();
+          if (titleStartsWithOtherColor(startText, selColor)) match = false;
+        }
+      } else if (key.indexOf('filter.p.m.global.type') !== -1 || key.indexOf('filter.p.m.global.work') !== -1) {
+        if (att && att.type && att.type.length) {
           match = filterVals.some(function (val) {
             return att.type.some(function (t) { return t.toLowerCase() === val.toLowerCase(); });
           });
-        } else if (key.indexOf('filter.p.m.global.category') !== -1) {
-          if (!att.category || !att.category.length) return false;
+        } else {
+          match = filterVals.some(function (val) { return textMatchesFilter(text, val); });
+        }
+      } else if (key.indexOf('filter.p.m.global.category') !== -1) {
+        if (att && att.category && att.category.length) {
           match = filterVals.some(function (val) {
             return att.category.some(function (c) { return c.toLowerCase() === val.toLowerCase(); });
           });
-        }
-        if (!match) return false;
-      }
-      return true;
-    }
-    var flits = card.querySelector('[data-flits-product-handle]');
-    if (flits) title = (flits.getAttribute('data-flits-product-title') || '').toLowerCase();
-    var titleEl = card.querySelector('.card-information__text, .card__title, .card-information__text h4');
-    if (titleEl && !title) title = titleEl.textContent.trim().toLowerCase();
-    var extra = card.querySelector('.card-information .full-unstyled-link [class*="visually-hidden"]');
-    if (extra && extra.textContent) title = title + ' ' + extra.textContent.trim().toLowerCase();
-    startText = (title + ' ' + (handle || '')).replace(/-/g, ' ').toLowerCase().trim();
-    var text = (handle + ' ' + title).toLowerCase().replace(/-/g, ' ');
-    for (var key in filterParams) {
-      var filterVals = Array.isArray(filterParams[key]) ? filterParams[key] : [filterParams[key]];
-      var anyMatch;
-      if (key.indexOf('filter.p.m.global.color') !== -1) {
-        anyMatch = filterVals.some(function (val) { return colorStartsWith(startText, val); });
-        if (anyMatch && filterVals.length) {
-          var selColor = (filterVals[0] || '').toLowerCase().trim();
-          if (titleStartsWithOtherColor(startText, selColor)) anyMatch = false;
+        } else {
+          match = filterVals.some(function (val) { return textMatchesFilter(text, val); });
         }
       } else {
-        anyMatch = filterVals.some(function (val) {
-          val = (val || '').toLowerCase().replace(/\s+/g, ' ').trim();
-          if (!val) return true;
-          if (val.indexOf(' ') !== -1) return text.indexOf(val) !== -1;
-          var escaped = val.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-          return new RegExp('(^|\\s)' + escaped + '(\\s|$)', 'i').test(text);
-        });
+        match = filterVals.some(function (val) { return textMatchesFilter(text, val); });
       }
-      if (!anyMatch) return false;
+      if (!match) return false;
     }
     return true;
   }
@@ -938,7 +932,13 @@
     var container = document.getElementById('ProductGridContainer');
     var gridEl = document.getElementById('product-grid') || (container && container.querySelector('.product-grid'));
     if (!gridEl && container) gridEl = container.querySelector('ul[role="list"]');
-    var cards = gridEl ? gridEl.querySelectorAll('.grid__item') : [];
+    var cards = [];
+    if (gridEl && gridEl.id === 'product-grid') {
+      cards = Array.prototype.filter.call(gridEl.querySelectorAll('.grid__item'), function (el) {
+        return el.parentNode === gridEl && !el.classList.contains('multicolumn-list__item') && !el.classList.contains('featured-collection-container');
+      });
+    }
+    if (!cards.length && gridEl) cards = gridEl.querySelectorAll('.grid__item');
     if (!cards.length && container) cards = container.querySelectorAll('.grid__item');
     if (!cards.length) cards = document.querySelectorAll('#product-grid .grid__item, #ProductGridContainer .grid__item');
     if (!cards.length) cards = document.querySelectorAll('.product-grid .grid__item');
