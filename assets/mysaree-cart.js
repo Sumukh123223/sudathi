@@ -1045,14 +1045,15 @@
     }, 200);
     if (window.addEventListener) window.addEventListener('load', runFilter);
     fetch('/api/products-filter-data')
-      .then(function (r) { return r.json(); })
+      .then(function (r) { return r.ok ? r.json() : Promise.resolve({}); })
       .then(function (data) {
         collectionFilterData = data && typeof data === 'object' ? data : null;
         runFilter();
         setTimeout(runFilter, 100);
         setTimeout(runFilter, 800);
       })
-      .catch(function () { collectionFilterData = {}; runFilter(); });
+      .catch(function () { collectionFilterData = {}; runFilter(); })
+      .finally(function () { hideCollectionLoadingState(); runFilter(); });
     var gridContainer = document.getElementById('ProductGridContainer');
     if (gridContainer && typeof MutationObserver !== 'undefined') {
       var mo = new MutationObserver(function () { runFilter(); });
