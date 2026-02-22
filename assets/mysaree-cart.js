@@ -810,6 +810,17 @@
       if (!c) return true;
       return productStartText === c || productStartText.startsWith(c + ' ') || productStartText.startsWith(c + '-');
     }
+    function titleStartsWithOtherColor(productStartText, selectedColor) {
+      var sel = (selectedColor || '').toLowerCase().trim();
+      if (!sel || !productStartText) return false;
+      var others = ['red', 'navy', 'blue', 'black', 'white', 'green', 'yellow', 'pink', 'maroon', 'coral', 'beige', 'brown', 'grey', 'gray', 'cream', 'golden', 'orange', 'purple', 'teal', 'magenta', 'lavender', 'mustard', 'rust', 'wine', 'olive', 'mint', 'peach', 'off white', 'dusty', 'light blue', 'dark blue', 'baby pink', 'rani pink', 'sea blue', 'sky blue', 'parrot', 'sage', 'pista', 'lime', 'moss', 'khaki', 'copper', 'turquoise', 'indigo'];
+      for (var i = 0; i < others.length; i++) {
+        var o = others[i];
+        if (o === sel) continue;
+        if (productStartText === o || productStartText.startsWith(o + ' ') || productStartText.startsWith(o + '-')) return true;
+      }
+      return false;
+    }
     if (filterData && filterData[handle]) {
       var att = filterData[handle];
       for (var key in filterParams) {
@@ -828,6 +839,10 @@
             });
           } else {
             match = filterVals.some(function (val) { return colorStartsWith(startText, val); });
+          }
+          if (match && filterVals.length) {
+            var selColor = (filterVals[0] || '').toLowerCase().trim();
+            if (titleStartsWithOtherColor(startText, selColor)) return false;
           }
         } else if (key.indexOf('filter.p.m.global.type') !== -1 || key.indexOf('filter.p.m.global.work') !== -1) {
           if (!att.type || !att.type.length) return false;
@@ -857,6 +872,10 @@
       var anyMatch;
       if (key.indexOf('filter.p.m.global.color') !== -1) {
         anyMatch = filterVals.some(function (val) { return colorStartsWith(startText, val); });
+        if (anyMatch && filterVals.length) {
+          var selColor = (filterVals[0] || '').toLowerCase().trim();
+          if (titleStartsWithOtherColor(startText, selColor)) anyMatch = false;
+        }
       } else {
         anyMatch = filterVals.some(function (val) {
           val = (val || '').toLowerCase().replace(/\s+/g, ' ').trim();
@@ -979,18 +998,27 @@
   function initCollectionFilters() {
     var path = typeof window.location !== 'undefined' ? window.location.pathname || '' : '';
     if (path.indexOf('/collections/') !== 0 || path.indexOf('/products/') !== -1) return;
-    applyCollectionFilters();
-    setTimeout(applyCollectionFilters, 50);
-    setTimeout(applyCollectionFilters, 200);
-    setTimeout(applyCollectionFilters, 500);
+    function runFilter() { applyCollectionFilters(); }
+    runFilter();
+    setTimeout(runFilter, 50);
+    setTimeout(runFilter, 200);
+    setTimeout(runFilter, 500);
+    setTimeout(runFilter, 1000);
+    if (window.addEventListener) window.addEventListener('load', runFilter);
     fetch('/api/products-filter-data')
       .then(function (r) { return r.json(); })
       .then(function (data) {
         collectionFilterData = data && typeof data === 'object' ? data : null;
-        applyCollectionFilters();
-        setTimeout(applyCollectionFilters, 100);
+        runFilter();
+        setTimeout(runFilter, 100);
+        setTimeout(runFilter, 800);
       })
-      .catch(function () { collectionFilterData = {}; applyCollectionFilters(); });
+      .catch(function () { collectionFilterData = {}; runFilter(); });
+    var gridContainer = document.getElementById('ProductGridContainer');
+    if (gridContainer && typeof MutationObserver !== 'undefined') {
+      var mo = new MutationObserver(function () { runFilter(); });
+      mo.observe(gridContainer, { childList: true, subtree: true });
+    }
     document.addEventListener('click', function (e) {
       var path = window.location.pathname || '';
       var link = e.target && (e.target.closest ? e.target.closest('a') : null);
